@@ -1,0 +1,1047 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Cheatsheet for R, Python, and Matlab</title>
+    <meta name="description" content="A brief cheatsheet for R, Python, and Matlab">
+    <meta name="author" content="Saeid Amiri">
+
+    <!-- Enable responsive viewport -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Bootstrap styles -->
+    <link href="/assets/themes/bootstrap-3/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Optional theme -->
+    <link href="/assets/themes/bootstrap-3/bootstrap/css/bootstrap-theme.min.css" rel="stylesheet">
+    <!-- Sticky Footer -->
+    <link href="/assets/themes/bootstrap-3/bootstrap/css/bs-sticky-footer.css" rel="stylesheet">
+
+    <!-- Custom styles -->
+    <link href="/assets/themes/bootstrap-3/css/style.css?body=1" rel="stylesheet" type="text/css" media="all">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Fav and touch icons -->
+    <!-- Update these with your own images      -->
+      <link rel="shortcut icon" type="image/x-icon" href="http://localhost:4000/assets/images/iconified/favicon.ico">
+      <!-- <link rel="shortcut icon" type="image/png" href="http://localhost:4000/assets/images/iconified/apple-touch-icon.png"> -->
+      <link rel="apple-touch-icon" type="image/png" href="http://localhost:4000/assets/images/iconified/apple-touch-icon.png">
+      <link rel="apple-touch-icon" type="image/png" sizes="76x76" href="http://localhost:4000/images/iconified/apple-touch-icon-76x76.png">
+      <link rel="apple-touch-icon" type="image/png" sizes="114x114" href="http://localhost:4000/images/iconified/apple-touch-icon-114x114.png">
+
+    <!-- atom & rss feed -->
+    <link href="" type="application/atom+xml" rel="alternate" title="Sitewide ATOM Feed">
+    <link href="" type="application/rss+xml" rel="alternate" title="Sitewide RSS Feed">
+    
+  </head>
+
+ <div class="header">
+      <div id="wrap">
+      <nav class="navbar navbar-default" role="navigation">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#jb-navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <!-- <a class="navbar-brand" href="/">Posts relates</a> -->
+		  <a class="navbar-brand" href="/"><img src="https://raw.githubusercontent.com/saeidamiri1/saeidamiri1.github.io/master/public/image/1024px-Python.png" alt="logo" />Posts relates</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="jb-navbar-collapse">
+          <ul class="nav navbar-nav">
+            
+            
+            
+
+
+  
+    
+      
+      	
+      	<li><a href="/about">About</a></li>
+      	
+      
+    
+  
+    
+      
+      	
+      	<li><a href="/archive">Archive</a></li>
+      	
+      
+    
+  
+    
+      
+    
+  
+    
+      
+      	
+      	<li><a href="/categories">Categories</a></li>
+      	
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+      	
+      	<li><a href="/tags">Tags</a></li>
+      	
+      
+    
+  
+    
+  
+    
+  
+
+
+
+          </ul>
+        </div><!-- /.navbar-collapse -->
+      </nav>
+
+    </div>
+</div>
+
+  <body>
+    <div id="wrap">
+      <div class="container">
+        
+
+<div class="page-header">
+  <h1>Cheatsheet for R, Python, and Matlab </h1>
+</div>
+
+<!-- Paste the 3 next lines where you want the sharing button(s) to appear -->
+    <div class="post-sharing">
+     
+
+  
+  		<div id="fb-root"></div>
+
+<ul class="post-share ulno mob">
+
+<!-- Twitter -->
+<li class="tw"><a href="https://twitter.com/share" class="twitter-share-button" data-text="Cheatsheet for R, Python, and Matlab" data-via="" data-related="" data-count="" data-size="">Tweet</a>
+
+<!-- Google+ -->
+<li class="gp"><div class="g-plusone" data-size="medium" data-annotation="bubble" data-width=""></div>
+
+<!-- Facebook -->
+<li class="fb"><div class="fb-like" data-send="false" data-layout="button_count" data-width="90" data-show-faces="false" data-font=""></div>
+
+<!-- Reddit -->
+<li><script type="text/javascript" src="http://www.reddit.com/buttonlite.js?i=4"></script>
+</ul>
+
+<script>
+  
+(function(doc, script) {
+ 	
+    // Async Social Buttons
+    var js, 
+        fjs = doc.getElementsByTagName(script)[0],
+        add = function(url, id) {
+            if (doc.getElementById(id)) {return;}
+            js = doc.createElement(script);
+            js.src = url;
+            id && (js.id = id);
+            fjs.parentNode.insertBefore(js, fjs);
+        };
+
+    // Twitter SDK
+    add('//platform.twitter.com/widgets.js', 'twitter-wjs');
+    
+    // Google+ button
+    add('https://apis.google.com/js/plusone.js');
+    
+    // Facebook SDK
+    add('https://connect.facebook.net/en_GB/all.js#xfbml=1&appId=1424112504267565', 'facebook-jssdk');
+    
+}(document, 'script'));
+
+</script>
+  
+
+
+
+    </div>
+
+<div class="row post-full">
+  <div class="col-xs-12">
+    <div class="date">
+      <span>08 May 2019</span>
+    </div>
+    <div class="content">
+      <h1 id="r-python-matlab-basics">R-Python-Matlab (Basics)</h1>
+<p>A brief cheatsheet for those who use R daily, and use other script programing languages, Python and Matlab, occasionally.</p>
+
+<h2 id="contents">Contents</h2>
+<ul>
+  <li><a href="#arithmetic-operators">Arithmetic Operators</a></li>
+  <li><a href="#basic-function">Basic function</a></li>
+  <li><a href="#function">Function</a></li>
+  <li><a href="#round">Round</a></li>
+  <li><a href="#trigonometry">Trigonometry</a></li>
+  <li><a href="#logical-operators">Logical Operators</a></li>
+  <li><a href="#data-structure">Data structure</a></li>
+  <li><a href="#data-frame">Data frame</a></li>
+  <li><a href="#finding">Finding</a></li>
+  <li><a href="#missing">Missing</a></li>
+  <li><a href="#Set-operator">Set operator</a></li>
+  <li><a href="#conditional-operator">Conditional operator</a></li>
+  <li><a href="#loop">Loop</a></li>
+  <li><a href="#summary-statistics">Summary statistics</a></li>
+  <li><a href="#random-number">Random Number</a></li>
+  <li><a href="#sequences">Sequences</a></li>
+  <li><a href="#repeating">Repeating</a></li>
+  <li><a href="#working-directory">Working directory</a></li>
+</ul>
+
+<h2 id="arithmetic-operators">Arithmetic Operators</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>R</th>
+      <th>Python</th>
+      <th>Matlab</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>x&lt;-c <br /> x=c</td>
+      <td>x=c</td>
+      <td>x=c</td>
+      <td>define x and assign c to it</td>
+    </tr>
+    <tr>
+      <td>x+y</td>
+      <td>x+y</td>
+      <td>x+y</td>
+      <td>addition</td>
+    </tr>
+    <tr>
+      <td>x-y</td>
+      <td>x-y</td>
+      <td>x-y</td>
+      <td>subtraction</td>
+    </tr>
+    <tr>
+      <td>x*y</td>
+      <td>x*y</td>
+      <td>x*y</td>
+      <td>multiplication</td>
+    </tr>
+    <tr>
+      <td>x/y</td>
+      <td>x/y</td>
+      <td>x/y</td>
+      <td>division</td>
+    </tr>
+    <tr>
+      <td>x^y</td>
+      <td>x**y</td>
+      <td>x.^y</td>
+      <td>power</td>
+    </tr>
+    <tr>
+      <td>x%/%y</td>
+      <td>x%y</td>
+      <td>rem(x,y)</td>
+      <td>Reminder</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="basic-function">Basic function</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>R</th>
+      <th>Python</th>
+      <th>Matlab</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>sqrt(x)</td>
+      <td>math.sqrt(x)</td>
+      <td>sqrt(x)</td>
+      <td>square root</td>
+    </tr>
+    <tr>
+      <td>log(x)</td>
+      <td>math.log(x)</td>
+      <td>log(x)</td>
+      <td>logarithm base e</td>
+    </tr>
+    <tr>
+      <td>log10(x)</td>
+      <td>math.log10(x)</td>
+      <td>log10()</td>
+      <td>logarithm base 10</td>
+    </tr>
+    <tr>
+      <td>exp(x)</td>
+      <td>math.exp(x)</td>
+      <td>exp(x)</td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="function">Function</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>R</th>
+      <th>Python</th>
+      <th>Matlab</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>name&lt;-function(arguments){<br />  script <br />return(output)<br />}</td>
+      <td>def name (arguments):<br />    script<br />     return output</td>
+      <td>function [returns]=name(argument):<br />    script<br />    returns=output</td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="round">Round</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>R</th>
+      <th>Python</th>
+      <th>Matlab</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>round()</td>
+      <td>round()</td>
+      <td>round()</td>
+      <td>round</td>
+    </tr>
+    <tr>
+      <td>ceil()</td>
+      <td>math.ceil()</td>
+      <td>ceil()</td>
+      <td>round up</td>
+    </tr>
+    <tr>
+      <td>floor()</td>
+      <td>math.floor()</td>
+      <td>floor()</td>
+      <td>round down</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="trigonometry">Trigonometry</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>R</th>
+      <th>Python</th>
+      <th>Matlab</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>sin(x)</td>
+      <td>math.sin(x)</td>
+      <td>sin(x)</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>asin(x)</td>
+      <td>math.asin(x)</td>
+      <td>asin(x)</td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="logical-operators">Logical Operators</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>R</th>
+      <th>Python</th>
+      <th>Matlab</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>FALSE</td>
+      <td>False</td>
+      <td>false</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>TRUE</td>
+      <td>True</td>
+      <td>true</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>a &amp; b</td>
+      <td>a &amp; b</td>
+      <td>a &amp; b</td>
+      <td>AND</td>
+    </tr>
+    <tr>
+      <td>a|b</td>
+      <td>a|b</td>
+      <td>a|b</td>
+      <td>OR</td>
+    </tr>
+    <tr>
+      <td>!a</td>
+      <td>not a</td>
+      <td>~a</td>
+      <td>Not</td>
+    </tr>
+    <tr>
+      <td>xor(a,b)</td>
+      <td>a!=b</td>
+      <td>xor(a,b)</td>
+      <td>Logical exclusive OR</td>
+    </tr>
+    <tr>
+      <td>x&amp;&amp;y</td>
+      <td>and</td>
+      <td>x&amp;&amp;y</td>
+      <td>Short-circuit FALSE</td>
+    </tr>
+    <tr>
+      <td>||</td>
+      <td>or</td>
+      <td>||</td>
+      <td>Short-circuit TRUE</td>
+    </tr>
+    <tr>
+      <td>any(x,y)</td>
+      <td>any([x,y])</td>
+      <td>any(x,y)</td>
+      <td>TRUE if any element is TRUE</td>
+    </tr>
+    <tr>
+      <td>all(a,b)</td>
+      <td>all([x,y])</td>
+      <td>all(x,y)</td>
+      <td>TRUE if all element is TRUE</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="data-structure">Data structure</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>R</th>
+      <th>Python</th>
+      <th>Matlab</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>vec=c(x,y,z)</td>
+      <td>vec=np.array([[x, y, z]])</td>
+      <td>vec=[x y z]</td>
+      <td>vector</td>
+    </tr>
+    <tr>
+      <td>vec[i]</td>
+      <td>vec[i]</td>
+      <td>cev(i)</td>
+      <td>call the ith  element</td>
+    </tr>
+    <tr>
+      <td>t(c(x,y,z))</td>
+      <td>np.array([[x, y, z]]).T</td>
+      <td>[x y z]’</td>
+      <td>transpose of vector</td>
+    </tr>
+    <tr>
+      <td>mat=matrix(c(x,y,z,w),ncol=2)</td>
+      <td>mat=np.array([[x, y], [z,w]])</td>
+      <td>mat=[x y, z w]</td>
+      <td>matrix</td>
+    </tr>
+    <tr>
+      <td>matrix(0,x,y)</td>
+      <td>zeros(x,y)</td>
+      <td>zeros(x,y)</td>
+      <td>Zero x*y matrix</td>
+    </tr>
+    <tr>
+      <td>dim(mat)</td>
+      <td>mat.shape</td>
+      <td>size(mat)</td>
+      <td>size of matrix</td>
+    </tr>
+    <tr>
+      <td>diag(x)</td>
+      <td>np.diag(x)</td>
+      <td>diag(x)</td>
+      <td>diagonal matrix</td>
+    </tr>
+    <tr>
+      <td>mat[i,]</td>
+      <td>mat[i-1,]</td>
+      <td>mat(i,:)</td>
+      <td>call the ith  row</td>
+    </tr>
+    <tr>
+      <td>mat[,j]</td>
+      <td>mat[,j-1]</td>
+      <td>mat(:,j)</td>
+      <td>call the ith  column</td>
+    </tr>
+    <tr>
+      <td>rbind(mat1,mat2)</td>
+      <td>np.concatenate(mat1,mat2,axis=0)</td>
+      <td>[mat1;mat2]</td>
+      <td>combine by row</td>
+    </tr>
+    <tr>
+      <td>cbind(mat1,mat2)</td>
+      <td>np.concatenate(mat1,mat2,axis=1)</td>
+      <td>[mat1,mat2]</td>
+      <td>combine by column</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="data-frame">Data frame</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>R</th>
+      <th>Python</th>
+      <th>Matlab</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>df=data.frame()</td>
+      <td>df=pd.DataFrame()</td>
+      <td>ds = mat2dataset(X)</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>apply(df, 2, FUN)</td>
+      <td>df.apply(FUN, axis=1)</td>
+      <td>varfun(FUN,ds)</td>
+      <td>Run function on columns</td>
+    </tr>
+    <tr>
+      <td>apply(df, 1, FUN)</td>
+      <td>df.apply(FUN, axis=0)</td>
+      <td>varfun(FUN,ds)</td>
+      <td>Run function on rows</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>df = pd.DataFrame([[4, 4], [5, 5]])
+df.apply(lambda x: x.mean(), axis=0)
+df.apply(lambda x: x.mean(), axis=1)
+</code></pre></div></div>
+
+<h2 id="finding">Finding</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>R</th>
+      <th>Python</th>
+      <th>Matlab</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>which(x==a)</td>
+      <td>np.where(x == a)</td>
+      <td>find(x == a)</td>
+      <td>Check the condition</td>
+    </tr>
+    <tr>
+      <td>which.max(x)</td>
+      <td>np.where(x==np.max(x))</td>
+      <td>find(x == max(x))</td>
+      <td>Find maximum</td>
+    </tr>
+    <tr>
+      <td>which.min(x)</td>
+      <td>np.where(x==np.min(x))</td>
+      <td>find(x == min(x))</td>
+      <td>Find minimum</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="missing">Missing</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>R</th>
+      <th>Python</th>
+      <th>Matlab</th>
+      <th>Description</th>
+      <th> </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>NA</td>
+      <td>np.nan</td>
+      <td>NaN</td>
+      <td>Missing</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>NaN</td>
+      <td>np.nan</td>
+      <td>NaN</td>
+      <td>Not a number</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>Inf</td>
+      <td>‘inf’</td>
+      <td>Inf</td>
+      <td>infinity</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>is.na(x)</td>
+      <td>np.isnan(x)</td>
+      <td>isnan(x)</td>
+      <td>Test whether it na</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>anyNA(X)</td>
+      <td>x.isnull().any().any()</td>
+      <td> </td>
+      <td>sum(isnan(x)&gt;1</td>
+      <td>Test whether there is any na</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="set-operator">Set operator</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>R</th>
+      <th>Python</th>
+      <th>Matlab</th>
+      <th>Description</th>
+      <th> </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>unique(x)</td>
+      <td>np.unique(x)</td>
+      <td>unique(x)</td>
+      <td>find unique value</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>intersect(x,y)</td>
+      <td>x.intersectionf(y)</td>
+      <td>intersect(x,y)</td>
+      <td>find itersect value</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>setdiff(x,y)</td>
+      <td>x-y</td>
+      <td>setdiff(x,y)</td>
+      <td>difference of set</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>see below</td>
+      <td>x.symmetric_difference(y)</td>
+      <td>setxor(x,y)</td>
+      <td> </td>
+      <td>set exclusion</td>
+    </tr>
+    <tr>
+      <td>is.element(c,x)<br /> c%in%x</td>
+      <td>np.isin(c,x)</td>
+      <td>ismemner(c,x)</td>
+      <td>True if x includes c</td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+<p><code class="language-plaintext highlighter-rouge">setxor &lt;- function(x,y) setdiff(union(x,y), intersect(x,y))</code></p>
+
+<h2 id="conditional-operator">Conditional operator</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>R</th>
+      <th>Python</th>
+      <th>Matlab</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>if (condition){<br />dd<br />}</td>
+      <td>if condition : <br />    codes</td>
+      <td>if condition <br />   code <br /> end</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>ifelse</td>
+      <td>elif</td>
+      <td>elseif</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>else</td>
+      <td>else</td>
+      <td>else</td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="loop">loop</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>R</th>
+      <th>Python</th>
+      <th>Matlab</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>for (i in indices){ <br /> codes <br />}</td>
+      <td>for i in indices: <br />   codes</td>
+      <td>for i=indices <br />   codes <br />  <br /> end</td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="summary-statistics">Summary statistics</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>R</th>
+      <th>Python</th>
+      <th>Matlab</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>mean(x)</td>
+      <td>np.mean(x)</td>
+      <td>mean(x)</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>median(x)</td>
+      <td>np.median(x)</td>
+      <td>median(x)</td>
+      <td>calculate sample mdeian</td>
+    </tr>
+    <tr>
+      <td>var(x)</td>
+      <td>np.var(x)</td>
+      <td>var(x)</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>sd(x)</td>
+      <td>np.std(x)</td>
+      <td>std(x)</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>cov(x,y)</td>
+      <td>np.cov(x,y)</td>
+      <td>cov(x,y)</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>corr(x,y)</td>
+      <td>np.corrcoef(x,y)</td>
+      <td>corr(x,y)</td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="random-number">Random number</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>R</th>
+      <th>Python</th>
+      <th>Matlab</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>runif(n,a,b)</td>
+      <td>np.random.uniform(a,b,n)</td>
+      <td>unifrnd(a,b,1,n)</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>rnorm(n,a,b)</td>
+      <td>np.random.normal(a,b,n)</td>
+      <td>normrnd(a,b,1,n)</td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="sequences">Sequences</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>R</th>
+      <th>Python</th>
+      <th>Matlab</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>seq(a,b,by=c)</td>
+      <td>np.arange(a,b,c)</td>
+      <td>a:c:b</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>seq(a,b,length.out=c)</td>
+      <td>np.linspace(a,b,c)</td>
+      <td>linspace(a,b,c)</td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="repeating">Repeating</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>R</th>
+      <th>Python</th>
+      <th>Matlab</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>rep(a,n)</td>
+      <td>np.repeat(a,n)</td>
+      <td>repmat(a,1,n)</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>a:b</td>
+      <td>a:b</td>
+      <td>a:b</td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="working-directory">Working directory</h2>
+
+<p>R  | Python | Matlab|Description
+——-   | ——-| ——-| ——-
+dir()| os.dir(“.”) |dir |  list files and folders
+getwd|os.getwcd() | pwd | Display the current working directory
+setwd|os.chdir(“folder”) | cd folder | Change the current working directory
+ls()| dir() | who | list of loaded objects
+rm(x)| del x| clear x | clear object x from memory
+rm(list = ls())| see below|clear all |  clear all objects from memory</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>for obj in dir(): 
+    if obj[0] == '_': continue
+    del globals()[obj]
+</code></pre></div></div>
+<h2 id="needed-python-library">Needed Python library</h2>
+<p><code class="language-plaintext highlighter-rouge">import math</code><br />
+<code class="language-plaintext highlighter-rouge">import numpy as np</code><br />
+<code class="language-plaintext highlighter-rouge">import pandas as pd</code></p>
+
+<p>More useful link:</p>
+<ul>
+  <li><a href="https://umaine.edu/mathematics/wp-content/uploads/sites/70/2018/08/matlabR.pdf">Matlab / R</a></li>
+  <li><a href="http://mathesaurus.sourceforge.net/matlab-python-xref.pdf">MATLAB commands in numerical Python</a></li>
+</ul>
+
+<h3 id="license">License</h3>
+<p>Copyright (c) 2018 Saeid Amiri</p>
+
+<p><strong><a href="#contents">⬆ back to top</a></strong></p>
+
+    </div>
+
+  
+    <ul class="tag_box inline">
+      <li><i class="glyphicon glyphicon-open"></i></li>
+      
+      
+
+
+  
+     
+    	<li><a href="/categories.html#Cheat-sheet-ref">
+    		Cheat-sheet <span>2</span>
+    	</a></li>
+     
+    	<li><a href="/categories.html#R_learn-ref">
+    		R_learn <span>2</span>
+    	</a></li>
+     
+    	<li><a href="/categories.html#Python_learn-ref">
+    		Python_learn <span>16</span>
+    	</a></li>
+    
+  
+
+
+    </ul>
+    
+
+  
+    <ul class="tag_box inline">
+      <li><i class="glyphicon glyphicon-tags"></i></li>
+      
+      
+
+
+  
+     
+    	<li><a href="/tags.html#R-ref">R <span>2</span></a></li>
+     
+    	<li><a href="/tags.html#Python-ref">Python <span>5</span></a></li>
+     
+    	<li><a href="/tags.html#Matlab-ref">Matlab <span>1</span></a></li>
+     
+    	<li><a href="/tags.html#Cheat-sheet-ref">Cheat-sheet <span>2</span></a></li>
+    
+  
+
+
+
+    </ul>
+    
+  
+    <hr>
+    <ul class="pagination">
+    
+      <li class="prev disabled"><a>&larr; Previous</a></li>
+    
+      <li><a href="/archive.html">Archive</a></li>
+    
+      <li class="next"><a href="/python_learn/numpy/pandas/cheat-sheet/2019/10/05/cheatsheet-numpy-panda" title="Cheat Sheet of Numpy,  Panda and python core">Next &raquo;</a></li>
+    
+    </ul>
+    <hr>
+    
+  </div>
+</div>
+
+
+      </div>
+
+    </div>
+
+	   
+
+
+
+
+  </body>
+
+<div class="footer">
+    <div id="footer">
+      <div class="container">
+        <p>&copy; 2020 Saeid Amiri
+		<a href="https://www.researchgate.net/profile/Saeid_Amiri6"><img src="/assets/images/researchgate.png" /></a>
+		<a href="mailto:saeid.amiri1@gmail.com"><img src="/assets/images/gmail.jpeg" /></a>
+		<a href="https://github.com/saeidamiri1"><img src="/assets/images/GitHub-Mark-64px.png" /></a>
+           <a href="http://saeidamiri1.github.io" target="_blank">Saeid Amiri</a>
+        </p>
+      </div>
+    </div>
+
+    <!-- Latest compiled and minified JavaScript, requires jQuery 1.x (2.x not supported in IE8) -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="/assets/themes/bootstrap-3/bootstrap/js/bootstrap.min.js"></script>
+</div>
+</html>
+

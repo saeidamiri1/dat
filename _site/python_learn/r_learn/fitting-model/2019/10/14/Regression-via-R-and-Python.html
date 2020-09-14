@@ -1,0 +1,428 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Multiple Regression via R and Python</title>
+    <meta name="description" content="How to fit Multiple regression using R and Python">
+    <meta name="author" content="Saeid Amiri">
+
+    <!-- Enable responsive viewport -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Bootstrap styles -->
+    <link href="/assets/themes/bootstrap-3/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Optional theme -->
+    <link href="/assets/themes/bootstrap-3/bootstrap/css/bootstrap-theme.min.css" rel="stylesheet">
+    <!-- Sticky Footer -->
+    <link href="/assets/themes/bootstrap-3/bootstrap/css/bs-sticky-footer.css" rel="stylesheet">
+
+    <!-- Custom styles -->
+    <link href="/assets/themes/bootstrap-3/css/style.css?body=1" rel="stylesheet" type="text/css" media="all">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Fav and touch icons -->
+    <!-- Update these with your own images      -->
+      <link rel="shortcut icon" type="image/x-icon" href="http://localhost:4000/assets/images/iconified/favicon.ico">
+      <!-- <link rel="shortcut icon" type="image/png" href="http://localhost:4000/assets/images/iconified/apple-touch-icon.png"> -->
+      <link rel="apple-touch-icon" type="image/png" href="http://localhost:4000/assets/images/iconified/apple-touch-icon.png">
+      <link rel="apple-touch-icon" type="image/png" sizes="76x76" href="http://localhost:4000/images/iconified/apple-touch-icon-76x76.png">
+      <link rel="apple-touch-icon" type="image/png" sizes="114x114" href="http://localhost:4000/images/iconified/apple-touch-icon-114x114.png">
+
+    <!-- atom & rss feed -->
+    <link href="" type="application/atom+xml" rel="alternate" title="Sitewide ATOM Feed">
+    <link href="" type="application/rss+xml" rel="alternate" title="Sitewide RSS Feed">
+    
+  </head>
+
+ <div class="header">
+      <div id="wrap">
+      <nav class="navbar navbar-default" role="navigation">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#jb-navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <!-- <a class="navbar-brand" href="/">Posts relates</a> -->
+		  <a class="navbar-brand" href="/"><img src="https://raw.githubusercontent.com/saeidamiri1/saeidamiri1.github.io/master/public/image/1024px-Python.png" alt="logo" />Posts relates</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="jb-navbar-collapse">
+          <ul class="nav navbar-nav">
+            
+            
+            
+
+
+  
+    
+      
+      	
+      	<li><a href="/about">About</a></li>
+      	
+      
+    
+  
+    
+      
+      	
+      	<li><a href="/archive">Archive</a></li>
+      	
+      
+    
+  
+    
+      
+    
+  
+    
+      
+      	
+      	<li><a href="/categories">Categories</a></li>
+      	
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+      	
+      	<li><a href="/tags">Tags</a></li>
+      	
+      
+    
+  
+    
+  
+    
+  
+
+
+
+          </ul>
+        </div><!-- /.navbar-collapse -->
+      </nav>
+
+    </div>
+</div>
+
+  <body>
+    <div id="wrap">
+      <div class="container">
+        
+
+<div class="page-header">
+  <h1>Multiple Regression via R and Python </h1>
+</div>
+
+<!-- Paste the 3 next lines where you want the sharing button(s) to appear -->
+    <div class="post-sharing">
+     
+
+  
+  		<div id="fb-root"></div>
+
+<ul class="post-share ulno mob">
+
+<!-- Twitter -->
+<li class="tw"><a href="https://twitter.com/share" class="twitter-share-button" data-text="Multiple Regression via R and Python" data-via="" data-related="" data-count="" data-size="">Tweet</a>
+
+<!-- Google+ -->
+<li class="gp"><div class="g-plusone" data-size="medium" data-annotation="bubble" data-width=""></div>
+
+<!-- Facebook -->
+<li class="fb"><div class="fb-like" data-send="false" data-layout="button_count" data-width="90" data-show-faces="false" data-font=""></div>
+
+<!-- Reddit -->
+<li><script type="text/javascript" src="http://www.reddit.com/buttonlite.js?i=4"></script>
+</ul>
+
+<script>
+  
+(function(doc, script) {
+ 	
+    // Async Social Buttons
+    var js, 
+        fjs = doc.getElementsByTagName(script)[0],
+        add = function(url, id) {
+            if (doc.getElementById(id)) {return;}
+            js = doc.createElement(script);
+            js.src = url;
+            id && (js.id = id);
+            fjs.parentNode.insertBefore(js, fjs);
+        };
+
+    // Twitter SDK
+    add('//platform.twitter.com/widgets.js', 'twitter-wjs');
+    
+    // Google+ button
+    add('https://apis.google.com/js/plusone.js');
+    
+    // Facebook SDK
+    add('https://connect.facebook.net/en_GB/all.js#xfbml=1&appId=1424112504267565', 'facebook-jssdk');
+    
+}(document, 'script'));
+
+</script>
+  
+
+
+
+    </div>
+
+<div class="row post-full">
+  <div class="col-xs-12">
+    <div class="date">
+      <span>14 October 2019</span>
+    </div>
+    <div class="content">
+      <h1 id="data">Data</h1>
+<p>To show how fit the multiple regression using R and Python, we consider the car data [car] which has the car specifications; HwyMPG, Model, etc,. We fit different regreesion models to predict Highway MPG using the car specifications.</p>
+
+<h2 id="contents">Contents</h2>
+<ul>
+  <li><a href="#import-data">Import data</a></li>
+  <li><a href="#preprocessing-data">Preprocessing data</a></li>
+  <li><a href="#select-variables">Select variable</a></li>
+  <li><a href="#fit-model">Fit model </a></li>
+  <li><a href="#run-of-codes">Run of codes</a></li>
+</ul>
+
+<h2 id="import-data">Import data</h2>
+<h4 id="using-r">Using R</h4>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>car_data=read.csv2("https://raw.githubusercontent.com/saeidamiri1/saeidamiri1.github.io/master/public/data/cardata.csv")
+names(car_data)
+head(car_data)
+</code></pre></div></div>
+
+<h4 id="using-python">Using Python</h4>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>import pandas as pd
+car_data = pd.read_csv("https://raw.githubusercontent.com/saeidamiri1/saeidamiri1.github.io/master/public/data/cardata.csv", delimiter=";", decimal=",")
+car_data.columns
+car_data.head(10)
+</code></pre></div></div>
+
+<h2 id="preprocessing-data">Preprocessing data</h2>
+<p>Select the numerical variables to fit the simple regression model. The data have the missing values, so we run an imputuion procedure to fill the missiong values.</p>
+
+<h4 id="using-r-1">Using R</h4>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># Select numerical variables
+v0=as.numeric(which(unlist(lapply(car_data, is.numeric))))
+# Check there is any missing values 
+car_data=car_data[,v0]
+anyNA(car_data)
+apply(is.na(car_data),2,sum)
+# Run Imputation procedure
+library(mice)
+m_car_data&lt;-mice(car_data,print=FALSE)
+m_car_data&lt;-complete(m_car_data)
+anyNA(m_car_data$imp)
+</code></pre></div></div>
+
+<h4 id="using-python-1">Using Python</h4>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># Select numerical variables
+car_data=car_data.select_dtypes(exclude=['object'])
+# Check there is any missing values 
+car_data.isnull().any().any()
+car_data.apply(lambda x: x.isnull().any().any(), axis=0)
+# Run Imputation procedure
+import numpy as np
+from sklearn.experimental import enable_iterative_imputer
+from sklearn.impute import IterativeImputer
+imp = IterativeImputer(missing_values=np.NaN)
+imp.fit(car_data)
+m_car_data=pd.DataFrame(imp.transform(car_data))
+m_car_data.columns=car_data.columns
+</code></pre></div></div>
+
+<h2 id="select-variables">Select variables</h2>
+<p>To select variable, calculate the correlation</p>
+
+<h4 id="using-r-2">Using R</h4>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cor(m_car_data,m_car_data$HwyMPG,)
+cor(m_car_data$HwyMPG,m_car_data$GasTank)
+cor(m_car_data$HwyMPG,m_car_data$Rev)
+
+plot(car_data[,c('HwyMPG','GasTank','Rev')])
+</code></pre></div></div>
+
+<h4 id="using-python-2">Using Python</h4>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>m_car_data.corr().HwyMPG
+m_car_data.loc[:,['HwyMPG','Length']].corr()
+m_car_data.loc[:,['HwyMPG','Width']].corr()
+
+import seaborn as sns
+import matplotlib.pyplot as plt
+aa=pd.plotting.scatter_matrix(m_car_data.loc[:,['HwyMPG','GasTank','Rev']])
+plt.show()
+</code></pre></div></div>
+
+<h2 id="fit-model">Fit model</h2>
+<h3 id="using-r-3">Using R</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>model_r=lm(HwyMPG ~ Rev, data=m_car_data)
+summary(model_r)$r.squared
+
+model_g=lm(HwyMPG ~ GasTank, data=m_car_data)
+summary(model_g)$r.squared
+
+model_rg=lm(HwyMPG ~ Rev+GasTank, data=m_car_data)
+summary(model_rg)$r.squared
+</code></pre></div></div>
+
+<h3 id="using-python-3">Using Python</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>from sklearn.linear_model import LinearRegression
+lr = LinearRegression(normalize=True)
+model_r=lr.fit(m_car_data.loc[:,['Rev']], m_car_data.HwyMPG)
+model_r_pred = model_r.predict(m_car_data.loc[:,['Rev']])
+from sklearn.metrics import r2_score
+r2_score(m_car_data.HwyMPG, model_r_pred)
+
+model_g=lr.fit(m_car_data.loc[:,['GasTank']], m_car_data.HwyMPG)
+model_g_pred= model_g.predict(m_car_data.loc[:,['GasTank']])
+r2_score(m_car_data.HwyMPG,model_g_pred)
+
+model_rg=lr.fit(m_car_data.loc[:,['Rev','GasTank']], m_car_data.HwyMPG)
+model_rg_pred = model_rg.predict(m_car_data.loc[:,['Rev','GasTank']])
+r2_score(m_car_data.HwyMPG, model_rg_pred )
+</code></pre></div></div>
+
+<h2 id="run-of-codes">Run of codes</h2>
+
+<iframe src="https://saeidamiri1.github.io/source/post/2019-10-14-Regression-via-R-and-Python.html" height="600" width="100%">
+ </iframe>
+
+<p><strong><a href="#contents">⬆ back to top</a></strong></p>
+
+<h2 id="references">References</h2>
+
+<p>[car] Consumer Reports: The 1993 Cars - Annual Auto Issue (April 1993), Yonkers, NY: Consumers Union.</p>
+
+<h3 id="license">License</h3>
+<p>Copyright (c) 2019 Saeid Amiri</p>
+
+    </div>
+
+  
+    <ul class="tag_box inline">
+      <li><i class="glyphicon glyphicon-open"></i></li>
+      
+      
+
+
+  
+     
+    	<li><a href="/categories.html#Python_learn-ref">
+    		Python_learn <span>16</span>
+    	</a></li>
+     
+    	<li><a href="/categories.html#R_learn-ref">
+    		R_learn <span>2</span>
+    	</a></li>
+     
+    	<li><a href="/categories.html#Fitting-Model-ref">
+    		Fitting-Model <span>2</span>
+    	</a></li>
+    
+  
+
+
+    </ul>
+    
+
+  
+    <ul class="tag_box inline">
+      <li><i class="glyphicon glyphicon-tags"></i></li>
+      
+      
+
+
+  
+     
+    	<li><a href="/tags.html#Python-ref">Python <span>5</span></a></li>
+     
+    	<li><a href="/tags.html#R-ref">R <span>2</span></a></li>
+     
+    	<li><a href="/tags.html#Regression-ref">Regression <span>1</span></a></li>
+    
+  
+
+
+
+    </ul>
+    
+  
+    <hr>
+    <ul class="pagination">
+    
+      <li class="prev"><a href="/python_learn/numpy/pandas/cheat-sheet/2019/10/05/cheatsheet-numpy-panda" title="Cheat Sheet of Numpy,  Panda and python core">&laquo; Previous</a></li>
+    
+      <li><a href="/archive.html">Archive</a></li>
+    
+      <li class="next"><a href="/deep-learning/fitting-model/2019/10/20/Keras-Introduct-classification" title="An introduction to Keras-Classification.">Next &raquo;</a></li>
+    
+    </ul>
+    <hr>
+    
+  </div>
+</div>
+
+
+      </div>
+
+    </div>
+
+	   
+
+
+
+
+  </body>
+
+<div class="footer">
+    <div id="footer">
+      <div class="container">
+        <p>&copy; 2020 Saeid Amiri
+		<a href="https://www.researchgate.net/profile/Saeid_Amiri6"><img src="/assets/images/researchgate.png" /></a>
+		<a href="mailto:saeid.amiri1@gmail.com"><img src="/assets/images/gmail.jpeg" /></a>
+		<a href="https://github.com/saeidamiri1"><img src="/assets/images/GitHub-Mark-64px.png" /></a>
+           <a href="http://saeidamiri1.github.io" target="_blank">Saeid Amiri</a>
+        </p>
+      </div>
+    </div>
+
+    <!-- Latest compiled and minified JavaScript, requires jQuery 1.x (2.x not supported in IE8) -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="/assets/themes/bootstrap-3/bootstrap/js/bootstrap.min.js"></script>
+</div>
+</html>
+

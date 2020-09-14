@@ -1,0 +1,6 @@
+I"3<h2 id="adding-new-column-to-data-frame">Adding new column to data-frame</h2>
+<p>A column can easily be added to data-frame</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>df0=pd.DataFrame([38,40,25,33])
+df['Ave_hour']=df0
+</code></pre></div></div>
+:ET

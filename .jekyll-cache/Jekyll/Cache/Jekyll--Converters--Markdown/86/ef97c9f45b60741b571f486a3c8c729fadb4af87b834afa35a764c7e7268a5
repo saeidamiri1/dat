@@ -1,0 +1,340 @@
+I"�.
+<ul class="posts">
+    
+      <li>
+        <h2>
+          <span>30 Dec 2019</span> &raquo; <a href="/python_learn/plot/2019/12/30/plot">Introductory Notes on Matplotlib</a>
+        </h2>
+        <span class="post-meta">Saeid Amiri</span>
+      </li>
+
+      <img src="/" />
+
+      <p>
+      <h2 id="introductory-notes-on-matplotlib">Introductory Notes on Matplotlib</h2>
+
+      <a class="btn btn-default" href="/python_learn/plot/2019/12/30/plot"> Read more...</a>
+      </p>
+
+    
+      <li>
+        <h2>
+          <span>02 Nov 2019</span> &raquo; <a href="/algorithm/2019/11/02/approximation">Optimization</a>
+        </h2>
+        <span class="post-meta">Saeid Amiri</span>
+      </li>
+
+      <img src="/" />
+
+      <p>
+      <h2 id="optimization">Optimization</h2>
+
+      <a class="btn btn-default" href="/algorithm/2019/11/02/approximation"> Read more...</a>
+      </p>
+
+    
+      <li>
+        <h2>
+          <span>02 Nov 2019</span> &raquo; <a href="/python_learn/2019/11/02/iteration">Iteration</a>
+        </h2>
+        <span class="post-meta">Saeid Amiri</span>
+      </li>
+
+      <img src="/" />
+
+      <p>
+      <h2 id="iteration">Iteration</h2>
+<p>Python is equipped with strong tools for the repeat of some commands or produce sequence number.</p>
+
+      <a class="btn btn-default" href="/python_learn/2019/11/02/iteration"> Read more...</a>
+      </p>
+
+    
+      <li>
+        <h2>
+          <span>01 Nov 2019</span> &raquo; <a href="/data/structures/python_learn/2019/11/01/data-control-structure">Data control structure</a>
+        </h2>
+        <span class="post-meta">Saeid Amiri</span>
+      </li>
+
+      <img src="/" />
+
+      <p>
+      <h2 id="data-control-structure">Data control structure</h2>
+
+      <a class="btn btn-default" href="/data/structures/python_learn/2019/11/01/data-control-structure"> Read more...</a>
+      </p>
+
+    
+      <li>
+        <h2>
+          <span>24 Oct 2019</span> &raquo; <a href="/python_learn/2019/10/24/function-in-python">Function in Python</a>
+        </h2>
+        <span class="post-meta">Saeid Amiri</span>
+      </li>
+
+      <img src="/" />
+
+      <p>
+      <h2 id="function">Function</h2>
+<p>In the context of programming, a function is a sequence of statements that performs a computation. Functions has three parts; argument, script, and output. Python has two kinds of function: built-in function that is in the core of Python or are collected as package. User-defined function that is written by user.</p>
+
+      <a class="btn btn-default" href="/python_learn/2019/10/24/function-in-python"> Read more...</a>
+      </p>
+
+    
+      <li>
+        <h2>
+          <span>22 Oct 2019</span> &raquo; <a href="/python_learn/data/structures/2019/10/22/data-structure">Data Structure</a>
+        </h2>
+        <span class="post-meta">Saeid Amiri</span>
+      </li>
+
+      <img src="/" />
+
+      <p>
+      <h2 id="data-structures">Data Structures</h2>
+<p>Python provides a variety of useful data structures, such as lists, sets, and dictionaries, and a new structure define by programmer which called class.</p>
+
+      <a class="btn btn-default" href="/python_learn/data/structures/2019/10/22/data-structure"> Read more...</a>
+      </p>
+
+    
+      <li>
+        <h2>
+          <span>21 Oct 2019</span> &raquo; <a href="/python_learn/pandas/2019/10/21/summarizing-data-frame">Summarizing data-frame</a>
+        </h2>
+        <span class="post-meta">Saeid Amiri</span>
+      </li>
+
+      <img src="/" />
+
+      <p>
+      <h2 id="summarizing-data-frame">Summarizing data-frame</h2>
+<p>To see the type, the information and summary of variables in the data-frame, use <code class="language-plaintext highlighter-rouge">.dtypes</code>,  <code class="language-plaintext highlighter-rouge">.describe()</code>, and   <code class="language-plaintext highlighter-rouge">.info()</code>.</p>
+
+      <a class="btn btn-default" href="/python_learn/pandas/2019/10/21/summarizing-data-frame"> Read more...</a>
+      </p>
+
+    
+      <li>
+        <h2>
+          <span>21 Oct 2019</span> &raquo; <a href="/python_learn/pandas/2019/10/21/pipline">Pipline</a>
+        </h2>
+        <span class="post-meta">Saeid Amiri</span>
+      </li>
+
+      <img src="/" />
+
+      <p>
+      <h2 id="pipeline">pipeline</h2>
+<p>Pipeline in Pandas allows to build a sequence of function to run in order on data-frame.</p>
+
+      <a class="btn btn-default" href="/python_learn/pandas/2019/10/21/pipline"> Read more...</a>
+      </p>
+
+    
+      <li>
+        <h2>
+          <span>21 Oct 2019</span> &raquo; <a href="/python_learn/pandas/2019/10/21/new-column-to-data-frame">new column to data-frame</a>
+        </h2>
+        <span class="post-meta">Saeid Amiri</span>
+      </li>
+
+      <img src="/" />
+
+      <p>
+      <h2 id="adding-new-column-to-data-frame">Adding new column to data-frame</h2>
+<p>A column can easily be added to data-frame</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>df0=pd.DataFrame([38,40,25,33])
+df['Ave_hour']=df0
+</code></pre></div></div>
+
+      <a class="btn btn-default" href="/python_learn/pandas/2019/10/21/new-column-to-data-frame"> Read more...</a>
+      </p>
+
+    
+      <li>
+        <h2>
+          <span>21 Oct 2019</span> &raquo; <a href="/python_learn/pandas/2019/10/21/merging-dataframe">Merging data-frame</a>
+        </h2>
+        <span class="post-meta">Saeid Amiri</span>
+      </li>
+
+      <img src="/" />
+
+      <p>
+      <h2 id="merging-data-frames">Merging data-frames</h2>
+<p>Panada is very useful for merging dataset; to merging data consider the following data sets, where ‘id1’ and ‘id2’ include the ids of data.</p>
+
+      <a class="btn btn-default" href="/python_learn/pandas/2019/10/21/merging-dataframe"> Read more...</a>
+      </p>
+
+    
+      <li>
+        <h2>
+          <span>21 Oct 2019</span> &raquo; <a href="/python_learn/pandas/2019/10/21/manipulating-data-frame">Manipulating data-frame</a>
+        </h2>
+        <span class="post-meta">Saeid Amiri</span>
+      </li>
+
+      <img src="/" />
+
+      <p>
+      <h2 id="manipulating-data-frame">Manipulating data-frame</h2>
+<p>To select the data use the name of variable, or specify the indices via <code class="language-plaintext highlighter-rouge">.iloc</code> and <code class="language-plaintext highlighter-rouge">.loc</code> (link)[http://pandas.pydata.org/pandas-docs/version/0.22/indexing.html].  <code class="language-plaintext highlighter-rouge">.iloc</code> is an integer-based select and should be used with integer indies. On contrary, <code class="language-plaintext highlighter-rouge">.loc</code>   is primarily label based, and may also be used with a boolean array.</p>
+
+      <a class="btn btn-default" href="/python_learn/pandas/2019/10/21/manipulating-data-frame"> Read more...</a>
+      </p>
+
+    
+      <li>
+        <h2>
+          <span>21 Oct 2019</span> &raquo; <a href="/python_learn/pandas/2019/10/21/data-frame">Data-frame</a>
+        </h2>
+        <span class="post-meta">Saeid Amiri</span>
+      </li>
+
+      <img src="/" />
+
+      <p>
+      <h2 id="data-frame">Data-frame</h2>
+<p>Data-frame via pandas is very useful format for working with dataset, its structure is two-dimensional size-mutable, potentially heterogeneous
+tabular data structure with labeled axes (rows and columns). The following codes create a data-frame from a dictionary.</p>
+
+      <a class="btn btn-default" href="/python_learn/pandas/2019/10/21/data-frame"> Read more...</a>
+      </p>
+
+    
+      <li>
+        <h2>
+          <span>21 Oct 2019</span> &raquo; <a href="/python_learn/pandas/2019/10/21/cross-tabulate">Crosstab</a>
+        </h2>
+        <span class="post-meta">Saeid Amiri</span>
+      </li>
+
+      <img src="/" />
+
+      <p>
+      <h2 id="crosstab">Crosstab</h2>
+<p>To show how generate the cross tabulate, let us categorize the columns; consider two continuous variables ( e.g., housing_median_age and total_rooms), categorize them according their .3 and .7 quantiles, and label the elements as L, M, and H. Then find the cross tabulate of them,</p>
+
+      <a class="btn btn-default" href="/python_learn/pandas/2019/10/21/cross-tabulate"> Read more...</a>
+      </p>
+
+    
+      <li>
+        <h2>
+          <span>21 Oct 2019</span> &raquo; <a href="/python_learn/pandas/2019/10/21/applying-function-to-data-frame">Applying function on data-frame</a>
+        </h2>
+        <span class="post-meta">Saeid Amiri</span>
+      </li>
+
+      <img src="/" />
+
+      <p>
+      <h2 id="applying-a-function-on-row-or-column">Applying a function on row or column</h2>
+<p>Using <code class="language-plaintext highlighter-rouge">df.apply(fun)</code> can apply a function on columns or row:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>df.apply(np.sum, axis=0)
+df.apply(np.sum, axis=1)
+</code></pre></div></div>
+
+      <a class="btn btn-default" href="/python_learn/pandas/2019/10/21/applying-function-to-data-frame"> Read more...</a>
+      </p>
+
+    
+      <li>
+        <h2>
+          <span>20 Oct 2019</span> &raquo; <a href="/deep-learning/fitting-model/2019/10/20/Keras-Introduct-classification">An introduction to Keras-Classification.</a>
+        </h2>
+        <span class="post-meta">Saeid Amiri</span>
+      </li>
+
+      <img src="/" />
+
+      <p>
+      <p><a href="https://keras.io/">Keras</a> is a deep learning library written in Python which is running on top of TensorFlow, CNTK, or Theano.</p>
+<h3 id="object">Object</h3>
+<ul>
+  <li>Learn a basic knowledge about the Keras</li>
+  <li>Learn classification</li>
+</ul>
+
+      <a class="btn btn-default" href="/deep-learning/fitting-model/2019/10/20/Keras-Introduct-classification"> Read more...</a>
+      </p>
+
+    
+      <li>
+        <h2>
+          <span>14 Oct 2019</span> &raquo; <a href="/python_learn/r_learn/fitting-model/2019/10/14/Regression-via-R-and-Python">Multiple Regression via R and Python</a>
+        </h2>
+        <span class="post-meta">Saeid Amiri</span>
+      </li>
+
+      <img src="/" />
+
+      <p>
+      <h1 id="data">Data</h1>
+<p>To show how fit the multiple regression using R and Python, we consider the car data [car] which has the car specifications; HwyMPG, Model, etc,. We fit different regreesion models to predict Highway MPG using the car specifications.</p>
+
+      <a class="btn btn-default" href="/python_learn/r_learn/fitting-model/2019/10/14/Regression-via-R-and-Python"> Read more...</a>
+      </p>
+
+    
+      <li>
+        <h2>
+          <span>05 Oct 2019</span> &raquo; <a href="/python_learn/numpy/pandas/cheat-sheet/2019/10/05/cheatsheet-numpy-panda">Cheat Sheet of Numpy,  Panda and python core</a>
+        </h2>
+        <span class="post-meta">Saeid Amiri</span>
+      </li>
+
+      <img src="/" />
+
+      <p>
+      <h2 id="contents">Contents</h2>
+
+      <a class="btn btn-default" href="/python_learn/numpy/pandas/cheat-sheet/2019/10/05/cheatsheet-numpy-panda"> Read more...</a>
+      </p>
+
+    
+      <li>
+        <h2>
+          <span>08 May 2019</span> &raquo; <a href="/cheat-sheet/r_learn/python_learn/2019/05/08/R-Python-Matlab">Cheatsheet for R, Python, and Matlab</a>
+        </h2>
+        <span class="post-meta">Saeid Amiri</span>
+      </li>
+
+      <img src="/" />
+
+      <p>
+      <h1 id="r-python-matlab-basics">R-Python-Matlab (Basics)</h1>
+<p>A brief cheatsheet for those who use R daily, and use other script programing languages, Python and Matlab, occasionally.</p>
+
+      <a class="btn btn-default" href="/cheat-sheet/r_learn/python_learn/2019/05/08/R-Python-Matlab"> Read more...</a>
+      </p>
+
+    
+
+  </ul>
+
+<div class="row-fluid">
+  <div class="span12">
+    <div class="pagination">
+      <ul>
+        
+        <li><span class="disabled">Prev</span></li>
+        
+        
+        <li><a href="/">1</a></li>
+        
+        
+        
+        <li><span class="disabled">Next</span></li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+
+<hr />
+:ET

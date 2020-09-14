@@ -1,0 +1,16 @@
+I"<h2 id="adding-new-column-to-data-frame">Adding new column to data-frame</h2>
+<p>A column can easily be added to data-frame</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>df0=pd.DataFrame([38,40,25,33])
+df['Ave_hour']=df0
+</code></pre></div></div>
+
+<p>Using <code class="language-plaintext highlighter-rouge">assign()</code> can also add new columns, new columns can be generated using functions, see below</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>df=df.assign(Ave_hour=df0)
+df=df.assign(PI1=lambda x: x['population']*x['median_income'],PI2=df['population']/df['median_income'] )
+</code></pre></div></div>
+
+<p>A new column can be added to data-frame</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>df.columns=['population1','median_income','Ave_hour','PI1','PI2']
+df=df.rename(columns={'population1': 'pop', 'median_income': 'med_income'})
+</code></pre></div></div>
+:ET

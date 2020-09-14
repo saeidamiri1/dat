@@ -1,0 +1,3 @@
+I"h<h2 id="summarizing-data-frame">Summarizing data-frame</h2>
+<p>To see the type, the information and summary of variables in the data-frame, use <code class="language-plaintext highlighter-rouge">.dtypes</code>,  <code class="language-plaintext highlighter-rouge">.describe()</code>, and   <code class="language-plaintext highlighter-rouge">.info()</code>.</p>
+:ET

@@ -1,0 +1,145 @@
+I"<h2 id="function">Function</h2>
+<p>In the context of programming, a function is a sequence of statements that performs a computation. Functions has three parts; argument, script, and output. Python has two kinds of function: built-in function that is in the core of Python or are collected as package. User-defined function that is written by user.</p>
+
+<h2 id="contents">Contents</h2>
+<ul>
+  <li><a href="#built-in-function">Built-in function</a></li>
+  <li><a href="#user-function">User function</a></li>
+  <li><a href="#in-line-function">In-line function</a></li>
+  <li><a href="#map-and-filter">Map and Filter</a></li>
+  <li><a href="#decorators">Decorators</a></li>
+</ul>
+
+<h3 id="built-in-function">Built-in function</h3>
+<p>Python has a number of functions in its core that are always available, <a href="https://docs.python.org/3/library/functions.html">see</a></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>x=[1,2,3]
+type(x)
+len(x)
+min(x)
+</code></pre></div></div>
+<p>To round the value, use the <code class="language-plaintext highlighter-rouge">round(value,size)</code> function</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>round(0.12345,2)
+round(0.12345,3)
+</code></pre></div></div>
+
+<h3 id="user-function">User function</h3>
+<p>Functions has three parts; argument, script, and output. It has simple structure</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>def name (argument):  
+  script
+  return output
+</code></pre></div></div>
+
+<p>For instance write a function get two argument, add them together and return it.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>def sum0 (x,y):  
+  s0=x+y
+  return s0
+</code></pre></div></div>
+
+<p>If you do not specify the arguments, use a * argument,</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>def sum0 (x,*y):  
+  s0=x+mean(y)
+  return s0
+</code></pre></div></div>
+
+<p>You can define a default value for argument.</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>def sum0 (x,y=1):  
+  s0=x+y
+  return s0
+</code></pre></div></div>
+
+<p>You can define an optional argument.</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>def sum0 (x,y=None):  
+  if y is None:
+    return x
+  elif:
+     return x+y
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>def letterGrade(score):
+    if score &gt;= 90:
+        letter = 'A'
+    elif score &gt;= 80:
+        letter = 'B'
+    elif score &gt;= 70:
+        letter = 'C'
+    elif score &gt;= 60:
+        letter = 'D'
+    else:
+        letter = 'F'
+    return letter
+</code></pre></div></div>
+<h3 id="in-line-function">In-line function</h3>
+<p>A simple function can be written in one line,</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sum0 = lambda x, y: x + y
+sum0(2,3)
+</code></pre></div></div>
+
+<p>Such function is more suitable for using inside the other operation, the follow get first and second name, then it sort according the last name.</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>names = ['Sam Amiri', 'Leila Alimehr','Ryan Amiri']
+sorted(names, key=lambda name: name.split()[-1].lower())
+&gt;&gt;&gt; sorted(names, key=lambda name: name.split()[-1].lower())
+['Leila Alimehr', 'Sam Amiri', 'Ryan Amiri']
+&gt;&gt;&gt; sorted(names)
+['Leila Alimehr', 'Ryan Amiri', 'Sam Amiri']
+</code></pre></div></div>
+
+<h3 id="map-and-filter">Map and Filter</h3>
+<p>Python access to a higher order function  which allows a function operates on other functions, either by taking a function as its argument, or by returning a function. Most popular ones are <code class="language-plaintext highlighter-rouge">map</code> (apply function on element) and <code class="language-plaintext highlighter-rouge">filter</code> (apply function, if it is true return element)</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>x=[-1,0,1]
+list(map(abs, x))
+list(filter(lambda x: x &lt;= 0,x))
+</code></pre></div></div>
+
+<p>Example: Write a function to divide two number, if the denominator is zero, stop the function and give an notification.</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>def divide(x, y):
+  try:
+    x / y
+  except: 
+   print('Can not divide by zero!')
+  else:
+   return x / y
+
+divide(3,1)
+divide(3,0)
+</code></pre></div></div>
+
+<p>The function is also can be rewritten using <code class="language-plaintext highlighter-rouge">raise</code>, which raise an error and stop the function.</p>
+
+<p>def divide(x, y):
+    “"”Divide Function”””
+    if y == 0:
+        raise Exception(‘Can not divide by zero!’)
+    return x / y</p>
+
+<h3 id="decorators">Decorators</h3>
+<p>Decoreators in Python allows you to take a function and add additional uses without modifying its structure, the following example is from <a href="https://realpython.com/primer-on-python-decorators/#functions">ref</a>
+```{Python, echo = FALSE, message = FALSE}
+def my_decorator(func):
+   def wrapper():
+       print(“Something is happening before the function is called.”)
+       func()
+       print(“Something is happening after the function is called.”)
+   return wrapper</p>
+
+<p>def say_whee():
+   print(“Whee!”)</p>
+
+<p>say_whee()</p>
+
+<p>say_whee = my_decorator(say_whee)
+say_whee()</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+The decorator often simplify using
+``@name of decorator``
+</code></pre></div></div>
+<p>def say_whee():
+   print(“Whee!”)
+```</p>
+
+<p><strong><a href="#contents">⬆ back to top</a></strong></p>
+<h3 id="license">License</h3>
+<p>Copyright (c) 2019 Saeid Amiri</p>
+:ET

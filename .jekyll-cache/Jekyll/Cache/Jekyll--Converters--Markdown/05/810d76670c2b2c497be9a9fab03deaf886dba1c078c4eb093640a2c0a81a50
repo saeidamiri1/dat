@@ -1,0 +1,82 @@
+I"†<p><a href="https://keras.io/">Keras</a> is a deep learning library written in Python which is running on top of TensorFlow, CNTK, or Theano.</p>
+<h3 id="object">Object</h3>
+<ul>
+  <li>Learn a basic knowledge about the Keras</li>
+  <li>Learn classification</li>
+</ul>
+
+<h2 id="contents">Contents</h2>
+<ul>
+  <li><a href="#preparing-data">Preparing data</a></li>
+  <li><a href="#keras-model">Keras Model</a></li>
+  <li><a href="#building-model">Building Model</a></li>
+  <li><a href="#fit-model">Fit model </a></li>
+  <li><a href="#run-of-codes">Run of codes</a></li>
+</ul>
+
+<h2 id="preparing-data">Preparing data</h2>
+<p>Here we consider the iris data that is well-known data set which often used for the classification, the following codes import data from from the UC Irvine Machine Learning Repository,</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&gt;&gt;&gt; import pandas as pd
+&gt;&gt;&gt; dataset = pd.read_csv("http://archive.ics.uci.edu/ml/machine-learning-databases/iris/iris.data",header=None,names=['SepalLength','SepalWidth','
+PetalLength','PetalWidth','Species'])
+&gt;&gt;&gt; dataset.head()
+   SepalLength  SepalWidth  PetalLength  PetalWidth      Species
+0          5.1         3.5          1.4         0.2  Iris-setosa
+1          4.9         3.0          1.4         0.2  Iris-setosa
+2          4.7         3.2          1.3         0.2  Iris-setosa
+3          4.6         3.1          1.5         0.2  Iris-setosa
+
+4          5.0         3.6          1.4         0.2  Iris-setosa
+&gt;&gt;&gt; dataset.dtypes
+SepalLength    float64
+SepalWidth     float64
+PetalLength    float64
+PetalWidth     float64
+Species         object
+dtype: object
+</code></pre></div></div>
+
+<p>Define the dependent variable and covariates. The dependent variable (Species) is categorical and should change to the dummy variables, it can be done using simple codes:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>X = dataset.values[:,0:4]
+Y = pd.get_dummies(dataset['Species'])
+</code></pre></div></div>
+
+<h2 id="keras-model">Keras Model</h2>
+<p>The model part of neural networks includes the sequential layers so, the following
+code imports the sequential module  which is a linear stack of layers and add it to model</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>from keras.models import Sequential
+model = Sequential()
+</code></pre></div></div>
+
+<h2 id="building-model">Building Model</h2>
+<p>You can also simply add layers using <code class="language-plaintext highlighter-rouge">.add()</code> , one needs to
+define the structure of layer. The simplest layer is the  densely-connected NN layer,</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>from keras.layers import Dense
+</code></pre></div></div>
+
+<p>The following codes show a  baseline neural network model for our data; first data line contains 10 neurons, since we have four variables, we assign <code class="language-plaintext highlighter-rouge">input_dim=4</code>. The second line creates output and emphasizes it has three values, one for each class.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>model.add(Dense(10, input_dim=4, activation='relu'))
+model.add(Dense(3, activation='softmax'))
+</code></pre></div></div>
+
+<h2 id="fitting-model">Fitting Model</h2>
+<p>Once the model is built, it should be compiled, the following code define a loss function, optimizer, and a metric parameter.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
+</code></pre></div></div>
+<p>The following functions use X (covariates) and Y (dependent variable), and select subsamples, batch_size, to train the model</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>model.fit(X, Y, nb_epoch=200, batch_size=10)
+accuracy = model.evaluate(X,Y)
+print("%s: %.2f%%" % (model.metrics_names[1], accuracy[1]*100))
+</code></pre></div></div>
+
+<h2 id="references">References</h2>
+<p>There are very interesting websites that might be useful to <br />
+[Web1] https://machinelearningmastery.com/multi-class-classification-tutorial-keras-deep-learning-library/</p>
+:ET

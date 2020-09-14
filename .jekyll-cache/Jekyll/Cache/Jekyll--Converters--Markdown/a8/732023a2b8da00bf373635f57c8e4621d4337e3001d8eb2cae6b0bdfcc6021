@@ -1,0 +1,3 @@
+I"@<h2 id="crosstab">Crosstab</h2>
+<p>To show how generate the cross tabulate, let us categorize the columns; consider two continuous variables ( e.g., housing_median_age and total_rooms), categorize them according their .3 and .7 quantiles, and label the elements as L, M, and H. Then find the cross tabulate of them,</p>
+:ET

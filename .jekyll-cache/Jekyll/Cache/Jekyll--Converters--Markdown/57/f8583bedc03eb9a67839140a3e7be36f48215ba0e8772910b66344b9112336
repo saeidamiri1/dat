@@ -1,0 +1,30 @@
+I"“<h2 id="data-frame">Data-frame</h2>
+<p>Data-frame via pandas is very useful format for working with dataset, its structure is two-dimensional size-mutable, potentially heterogeneous
+tabular data structure with labeled axes (rows and columns). The following codes create a data-frame from a dictionary.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>var={"A": [1,2,0], "B": [2,3,4]}
+df= pd.DataFrame(data=var,index=['A', 'Z', 'C'])
+</code></pre></div></div>
+
+<p>The label column can be easily changed:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>raw_data = {'population': [ 1015.0, 1129.0, 333.0,  515.0],'median_income': [ 1.5, 1.8,  1.7,  3.2]}
+df=pd.DataFrame(raw_data, columns = ['population', 'median_income'])
+</code></pre></div></div>
+
+<p>In some circumstances, it is better to consider the time of collecting data as index, the following script changes the data format to the time format and save it as index.</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>df = df.set_index(pd.to_datetime(['2019-04-01','2019-05-04','2019-06-01','2019-07-02']))
+</code></pre></div></div>
+
+<p>To create an empty data-frame, run the following</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>df1=pd.DataFrame(columns = ['population', 'median_income'])
+df2=pd.DataFrame()
+</code></pre></div></div>
+
+<p>Dimension of data-frame is 2 which can be seen via <code class="language-plaintext highlighter-rouge">.ndim</code>, the number of rows and columns can be obtained using   <code class="language-plaintext highlighter-rouge">.shape</code>.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>df.ndim
+df.shape
+df.shape[0]
+df.shape[1]
+</code></pre></div></div>
+:ET

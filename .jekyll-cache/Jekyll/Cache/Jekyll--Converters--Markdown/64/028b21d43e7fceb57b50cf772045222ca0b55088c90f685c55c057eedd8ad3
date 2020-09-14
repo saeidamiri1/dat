@@ -1,0 +1,3 @@
+I"p<h2 id="manipulating-data-frame">Manipulating data-frame</h2>
+<p>To select the data use the name of variable, or specify the indices via <code class="language-plaintext highlighter-rouge">.iloc</code> and <code class="language-plaintext highlighter-rouge">.loc</code> (link)[http://pandas.pydata.org/pandas-docs/version/0.22/indexing.html].  <code class="language-plaintext highlighter-rouge">.iloc</code> is an integer-based select and should be used with integer indies. On contrary, <code class="language-plaintext highlighter-rouge">.loc</code>   is primarily label based, and may also be used with a boolean array.</p>
+:ET

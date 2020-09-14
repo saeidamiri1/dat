@@ -1,0 +1,189 @@
+I"Ú<h2 id="summarizing-data-frame">Summarizing data-frame</h2>
+<p>To see the type, the information and summary of variables in the data-frame, use <code class="language-plaintext highlighter-rouge">.dtypes</code>,  <code class="language-plaintext highlighter-rouge">.describe()</code>, and   <code class="language-plaintext highlighter-rouge">.info()</code>.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>source ="https://storage.googleapis.com/mledu-datasets/california_housing_train.csv"
+CHT = pd.read_csv(source, sep=",")
+# show the type of variables
+CHT.dtypes
+# generate summary
+CHT.describe()
+CHT.info()
+</code></pre></div></div>
+
+<p>Beside the function print, pandas can show the first and the last part of data, using <code class="language-plaintext highlighter-rouge">.head()</code> and <code class="language-plaintext highlighter-rouge">.tail()</code>. By passing a number in the parenthesis, one can specify the output.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>CHT.head(10)
+CHT.tail(10)
+CHT.sort_values(by='housing_median_age', ascending=False).head(3)
+CHT.columns
+</code></pre></div></div>
+
+<p>It is easy to find the duplicates in data-frame  and  drop them, see below.</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>CHT.duplicated()
+CHT.drop_duplicates()
+</code></pre></div></div>
+<p>To check the duplication in variables, specify their names as well,</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>CHT.duplicated(['longitude'])
+CHT.drop_duplicates(['longitude'], keep='last')
+CHT.index.duplicated()
+</code></pre></div></div>
+
+<p>Although <code class="language-plaintext highlighter-rouge">.describe</code> can give a summary of variables,  more specific summery of variables (columns) can be extracted, see below.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>CHT.count()
+CHT[CHT.iloc[:,1]&lt;34].nunique()
+</code></pre></div></div>
+
+<p>The following table includes the useful functions.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Function</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">count</code></td>
+      <td>Number of non-null observations</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">sum</code></td>
+      <td>Sum of values</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">mean</code></td>
+      <td>Mean of value</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">mad</code></td>
+      <td>Mean absolute deviation</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">median</code></td>
+      <td>median of values</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">min</code></td>
+      <td>Minimum</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">max</code></td>
+      <td>Maximum</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">mode</code></td>
+      <td>Mode</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">abs</code></td>
+      <td>Absolute Value</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">prod</code></td>
+      <td>Product of values</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">std</code></td>
+      <td>Unbiased standard deviation</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">var</code></td>
+      <td>Unbiased variance</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">sem</code></td>
+      <td>Unbiased standard error of the mean</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">skew</code></td>
+      <td>Unbiased skewness (3rd moment)</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">kurt</code></td>
+      <td>Unbiased kurtosis (4th moment)</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">quantile</code></td>
+      <td>Sample quantile (value at %)</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">cumsum</code></td>
+      <td>Cumulative sum</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">cumprod</code></td>
+      <td>Cumulative product</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">cummax</code></td>
+      <td>Cumulative maximum</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">cummin</code></td>
+      <td>Cumulative minimum</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">nunique</code></td>
+      <td>number of unique elements</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">value_counts</code></td>
+      <td>Counts of unique values</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">cov</code></td>
+      <td>Calculate the covariance between columns</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">corr</code></td>
+      <td>Calculate the correlation between columns</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>The summaries can be obtained using any grouping variables in the data set:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>CHT.groupby(['famlev']).groups.keys()
+CHT.groupby(['famlev']).groups['H']
+CHT.groupby(['famlev']).first()
+
+CHT.groupby(['famlev']).sum()
+
+CHT.groupby(['famlev'])['median_house_value'].sum()
+# better output
+CHT.groupby(['famlev'])[['median_house_value']].sum()
+</code></pre></div></div>
+
+<p>The grouped variables would be assigned as indices, to bring them back as variables use <code class="language-plaintext highlighter-rouge">df.reset_index()</code></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>CHT.reset_index()
+</code></pre></div></div>
+
+<p>It is possible to apply even complex function, the following scripts calculate the coefficient of data.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>def cv(x):
+ return (np.mean(x)/np.var(x))
+
+aggr = {
+    'total_rooms':'sum',
+    'population': lambda x: cv(x)
+}
+CHT.groupby('famlev').agg(aggr)
+</code></pre></div></div>
+
+<p>The output can be tidied up,</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>aggr = {
+    'total_rooms':['mean','std']
+}
+grouped = CHT.groupby('famlev').agg(aggr)
+grouped.columns = grouped.columns.droplevel(level=0)
+grouped.rename(columns={"mean": "total_rooms", "std": "total_rooms"})
+grouped.head()
+</code></pre></div></div>
+
+<p>The summarizations can be done using pivot table,</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pd.pivot_table(CHT, index=['famlev'], aggfunc=['mean'])
+</code></pre></div></div>
+:ET

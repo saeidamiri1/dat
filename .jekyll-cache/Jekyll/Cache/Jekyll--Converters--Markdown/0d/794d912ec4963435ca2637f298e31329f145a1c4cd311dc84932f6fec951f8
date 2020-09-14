@@ -1,0 +1,14 @@
+I"¸<h2 id="applying-a-function-on-row-or-column">Applying a function on row or column</h2>
+<p>Using <code class="language-plaintext highlighter-rouge">df.apply(fun)</code> can apply a function on columns or row:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>df.apply(np.sum, axis=0)
+df.apply(np.sum, axis=1)
+</code></pre></div></div>
+
+<p>Even can write a new function and run on columns or rows</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>def prod(col):
+    return col['A'] * col['B']
+
+df.apply(prod, axis=1)
+df['productcolmn']=df.apply(prod, axis=1)
+</code></pre></div></div>
+:ET

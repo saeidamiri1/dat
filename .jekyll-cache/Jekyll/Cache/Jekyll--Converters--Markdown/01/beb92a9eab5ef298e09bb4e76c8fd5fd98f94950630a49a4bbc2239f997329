@@ -1,0 +1,48 @@
+I"�<h2 id="merging-data-frames">Merging data-frames</h2>
+<p>Panada is very useful for merging dataset; to merging data consider the following data sets, where ‘id1’ and ‘id2’ include the ids of data.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>raw_data = {'id1': range(4),'income': [10,12,14,16]}
+dat1 =pd.DataFrame(raw_data, columns = ['id1', 'income'])
+
+raw_data = {'id2': range(6),'pay': [9,11,13,15,17,19]}
+dat2 =pd.DataFrame(raw_data, columns = ['id2', 'pay'])
+</code></pre></div></div>
+
+<p>Obviously the id variables are not the same, they can be
+compared using</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>dat1['id1'].isin(dat2['id2']).value_counts()
+dat2['id2'].isin(dat1['id1']).value_counts()
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">pd.merge</code> can merge different data-frames, the merging can be done based on the identities of left dataset, if there is no match in the right file, Python adds <code class="language-plaintext highlighter-rouge">NaN</code>.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>result = pd.merge(dat1, dat2, left_on='id1', right_on='id2',how='left')
+</code></pre></div></div>
+<p>On contrary, one can the right dataset as matching,</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>result = pd.merge(dat1, dat2, left_on='id1', right_on='id2',how='right')
+</code></pre></div></div>
+
+<p>Since the ids are not the same, one can do merging based on the
+intersection of the ids,</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>result = pd.merge(dat1, dat2, left_on='id1', right_on='id2',how='inner')
+</code></pre></div></div>
+
+<p>Merging can also be done based on the union of the ids,</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>result = pd.merge(dat1, dat2, left_on='id1', right_on='id2',how='outer')
+</code></pre></div></div>
+
+<p>Note: If the names of id variables are the same in the both datasets, you can use <code class="language-plaintext highlighter-rouge">on=id_name</code> instead of <code class="language-plaintext highlighter-rouge">left_on=</code> and <code class="language-plaintext highlighter-rouge">right_on=</code>.</p>
+
+<p>Note: if you want to identify where the elements in rows are from, add  argument <code class="language-plaintext highlighter-rouge">indicator=True</code>, then new column named <code class="language-plaintext highlighter-rouge">_merge</code> would be added to the merged data which shows its originate.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>result = pd.merge(dat1, dat2, left_on='id1', right_on='id2',how='outer', indicator=True)
+</code></pre></div></div>
+
+<p>To combine datasets row-wisely, use <code class="language-plaintext highlighter-rouge">concat</code>,</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>result = pd.concat([dat1, dat2],axis=1)
+</code></pre></div></div>
+:ET

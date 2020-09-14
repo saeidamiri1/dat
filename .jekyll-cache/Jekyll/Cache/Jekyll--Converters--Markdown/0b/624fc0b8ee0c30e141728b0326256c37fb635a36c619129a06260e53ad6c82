@@ -1,0 +1,4 @@
+I"2<h2 id="data-frame">Data-frame</h2>
+<p>Data-frame via pandas is very useful format for working with dataset, its structure is two-dimensional size-mutable, potentially heterogeneous
+tabular data structure with labeled axes (rows and columns). The following codes create a data-frame from a dictionary.</p>
+:ET

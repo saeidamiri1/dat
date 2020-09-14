@@ -1,0 +1,136 @@
+I"�<h2 id="data-control-structure">Data control structure</h2>
+
+<h2 id="contents">Contents</h2>
+<ul>
+  <li><a href="#boolean-value">Boolean value</a></li>
+  <li><a href="#control-structure">Control Structure</a></li>
+  <li><a href="#try-except">Try Except</a></li>
+</ul>
+
+<h3 id="boolean-value">Boolean value</h3>
+<p>The value True (T) and False (F) are referred to as logical values and used the same in Python; their corresponding values are 1 and 0. Run the following codes and explains what the codes do.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&gt;&gt;&gt; 8&lt;9
+True
+&gt;&gt;&gt; 9&lt;8
+False
+&gt;&gt;&gt; x=3
+&gt;&gt;&gt; y=9
+&gt;&gt;&gt; x&lt;y
+True
+&gt;&gt;&gt; x&gt;y
+False
+&gt;&gt;&gt;
+&gt;&gt;&gt; X=range(-3,3)
+&gt;&gt;&gt; [X[i]&lt;2 for i in range(6)]
+[True, True, True, True, True, False]
+&gt;&gt;&gt; sum([X[i]&lt;2 for i in range(6)])
+5
+&gt;&gt;&gt; sum(X)
+-3
+</code></pre></div></div>
+
+<p>One of the main application of logical operator is to extract specific elements, see the following codes,</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&gt;&gt;&gt; weight=[58,89,68,74,62,77,65,65]
+&gt;&gt;&gt; [weight[i]&lt;74 for i in range(len(weight))]
+[True, False, True, False, True, False, True, True]
+&gt;&gt;&gt; weight&lt;74
+Traceback (most recent call last):
+  File "&lt;stdin&gt;", line 1, in &lt;module&gt;
+TypeError: '&lt;' not supported between instances of 'list' and 'int'
+</code></pre></div></div>
+
+<p>Obviously <code class="language-plaintext highlighter-rouge">weight&lt;74</code> does not work for the list, To run it change the data to the <a href="https://saeidamiri1.github.io/pythonseum/numpy/2019/10/22/data-structure">array</a> provided in Numpy:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&gt;&gt;&gt; weight=np.array(weight)
+&gt;&gt;&gt; weight&lt;74
+array([ True, False,  True, False,  True, False,  True,True], dtype=bool)
+&gt;&gt;&gt; (weight&lt;74) &amp; (weight==89)
+array([False, False, False, False, False, False, False, False], dtype=bool)
+&gt;&gt;&gt; weight[(weight&lt;74) &amp; (weight==89)]
+array([], dtype=int64)
+&gt;&gt;&gt; weight[(weight&lt;74) &amp; (weight==62)]
+array([62])
+&gt;&gt;&gt; weight[(weight&lt;74) | (weight==62)]
+array([58, 68, 62, 65, 65])
+&gt;&gt;&gt; weight[~(weight&lt;74) &amp; (weight==62)]
+array([], dtype=int64)
+&gt;&gt;&gt; weight[~((weight&lt;74) | (weight==62))]
+array([89, 74, 77])
+</code></pre></div></div>
+
+<h3 id="control-structure">Control Structure</h3>
+<p>Commands with control structure often include conditional command that use comparisons operators (&gt;, &lt;, =&gt;, &lt;=, ==, !=, ~, is)</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&gt;&gt;&gt; 3&lt;4
+True
+&gt;&gt;&gt; 3!=4
+True
+&gt;&gt;&gt; 3==4
+False
+&gt;&gt;&gt; 3 is 4
+False
+&gt;&gt;&gt; 'hi' == 'h' + 'i'
+True
+&gt;&gt;&gt; 'HI' != 'hi'
+True
+&gt;&gt;&gt; [1, 2] != [2, 1]
+True
+&gt;&gt;&gt; ~True
+-2
+&gt;&gt;&gt; ~False
+-1
+
+</code></pre></div></div>
+
+<p>The structure command of if is as below.</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>If cond satisfies the cons.expr run otherwise alt.expr run.
+if(cond) cons.expr elif (condition) alt.expr else alt.expr
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>x=4
+y=4
+
+if x&lt;y: 
+  print('x is less than y')
+elif x&gt;y:
+ print('x greater than y')
+else: 
+ print(' x and y are equal')
+</code></pre></div></div>
+
+<p>To pass the value inside the quote, use the f-string format</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>if x&lt;y: 
+  print( f'{x} is less than {y}')
+elif x&gt;y:
+ print(f'{x}greater than {y}')
+else: 
+ print(f'x={x} and y={y} are equal')
+</code></pre></div></div>
+
+<h3 id="try-except">Try except</h3>
+<p>When there is any possibility for error, it is better to use <code class="language-plaintext highlighter-rouge">try except</code>, which tests the statement infront try, if there is an error, it goes to except, otherwise passes and goes to else.</p>
+
+<p>```{Python, echo = FALSE, message = FALSE}<br />
+x=’Just test’
+try:
+  print(x)
+except:
+  print(“Something went wrong”)
+else:
+  print(“Nothing went wrong”)</p>
+
+<p>try:
+  print(y)
+except:
+  print(“Something went wrong”)
+else:
+  print(“Nothing went wrong”)
+```</p>
+
+<p><strong><a href="#contents">⬆ back to top</a></strong></p>
+<h3 id="license">License</h3>
+<p>Copyright (c) 2019 Saeid Amiri</p>
+:ET

@@ -1,0 +1,127 @@
+I"û<h2 id="optimization">Optimization</h2>
+
+<h2 id="contents">Contents</h2>
+<ul>
+  <li><a href="#newton-raphson">Newton-Raphson</a></li>
+  <li><a href="#gradient-descent">Gradient Descent</a></li>
+</ul>
+
+<h2 id="newton-raphson-method">Newton-Raphson method</h2>
+<p>The Newton-Raphson algorithm is one of the old iterative algorithm to approximately find the roots of a real-valued function;
+<img src="https://latex.codecogs.com/svg.latex?f(x)=0" alt="eq1" />. The idea behind of it is based on the simple linear approximation.
+Given <code class="language-plaintext highlighter-rouge">x_0</code>, a starting point, by solving the root of function by solving<br />
+<img src="https://latex.codecogs.com/svg.latex?x_{n+1}=x_n-%20\frac{f(x_n)}{\partial%20f(x_{n})}" alt="eq2" />, we get closer to the solution.</p>
+
+<p>The simple and plain algorithm of Newton-Raphosn is given in the below</p>
+
+<p><img src="https://raw.githubusercontent.com/saeidamiri1/pythonseum/master/public/image/Figure-2019-11-05-newton-raphson-algorithm.png" width="350" height="300" /></p>
+
+<p>Since we should run the iteration for many time; it is better to replace <code class="language-plaintext highlighter-rouge">for</code> with <code class="language-plaintext highlighter-rouge">while</code> loop. In the below, we present the algorithm in Python.</p>
+
+<p>To write the algorithm in code, we consider <img src="https://latex.codecogs.com/svg.latex?f(x)=x^4-3x^2+2" alt="E_0=mc^2" /> that is also used in <a href="https://en.wikipedia.org/wiki/Gradient_descent">Wikipedia</a>.</p>
+
+<p>Define the function</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>def f(x):
+    return x**4 - 3 * x**3+2
+
+def df(x):
+    return 4 * x**3 - 9 * x**2
+</code></pre></div></div>
+
+<p>To see the minimum of the function, plot it:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>from matplotlib import pyplot as plt
+import numpy as np 
+x_ran_0 = np.linspace(-7,7,100) 
+plt.plot(x_ran_0 ,f(x_ran_0))
+plt.xlabel('x')
+plt.ylabel('f(x)')
+plt.show(block=False)
+</code></pre></div></div>
+
+<p><img src="https://raw.githubusercontent.com/saeidamiri1/pythonseum/master/public/image/Figure-2019-11-05-approximations-1.png" width="350" height="300" /></p>
+
+<p>To see how the algorithm works, we can add the plot pf gradients along running the iterations:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>import matplotlib as mpl
+
+x_s = -4 # Starting point
+cur_x = x_s
+diff_cur_prev= 1
+precision = 0.001
+max_ite = 1000  #Maximum number of iterations
+
+#Choose different colors for each gradient
+colors = mpl.cm.autumn(np.linspace(0,5,max_ite)) 
+
+plt.plot(x_ran_0 ,f(x_ran_0)) # plot again the  f(x)
+
+i= 1
+while diff_cur_prev &gt; precision:
+    #Plot the points 
+    plt.scatter(cur_x, f(cur_x), color='black', s=10, zorder=2);
+    plt.scatter(cur_x, f(cur_x), color='white', s=5, zorder=2)  
+    x_ran_1= np.linspace(cur_x-5,cur_x+5,10)
+    plt.plot(x_ran_1, (df(cur_x) * (x_ran_1 - cur_x)) + f(cur_x), color=colors[i], zorder=1)
+    prev_x = cur_x
+    cur_x += -f(prev_x) / df(prev_x)
+    diff_cur_prev = abs(cur_x - prev_x)
+    print("Run: %d, Current: %f, Previous: %f, Different: %f" % (i, cur_x,prev_x,diff_cur_prev))
+    i+= 1
+
+plt.xlim([-10,10])
+plt.xlabel('x')
+plt.ylabel('f(x)')
+plt.show(block=False)
+</code></pre></div></div>
+<p><img src="https://raw.githubusercontent.com/saeidamiri1/pythonseum/master/public/image/Figure-2019-11-05-approximations-2.png" width="350" height="300" /></p>
+
+<h2 id="gradient-descent">Gradient Descent</h2>
+<p>Gradient Descent is variant of Newton-Raphson that can be used to find the minimum value of a differentiable function. The local minimum can be obtained by solving</p>
+
+<p><img src="https://latex.codecogs.com/svg.latex?x_{n+1}=x_n-\gamma%20\frac{\partial%20f}{\partial%20x_{n}}" alt="eq3" /></p>
+
+<p>where <img src="https://latex.codecogs.com/svg.latex?\gamma" alt="eq4" /> is called the step size or learning rate, see <a href="https://en.wikipedia.org/wiki/Gradient_descent">Wikipedia</a>.  Obviously, the criterion function is different from the Newton-Raphson Algorithm.</p>
+
+<p>To write a simple code to find the minimum using the Gradient Descent consider <img src="https://latex.codecogs.com/svg.latex?f(x)=x^4-3x^2+2" alt="eq5" /> that is already used for explaining the Newton-Raphson.</p>
+
+<p>The plot of gradient can be obtained using running the following script:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>import matplotlib as mpl
+
+x_s = -4 # Starting point
+cur_x = x_s
+diff_cur_prev= 1
+gamma = 0.001 
+precision = 0.001
+max_ite = 1000  #Maximum number of iterations
+
+#Choose different colors for each gradient
+colors = mpl.cm.autumn(np.linspace(0,5,max_ite)) 
+
+plt.plot(x_ran_0 ,f(x_ran_0)) # plot again the  f(x)
+
+i= 1
+while diff_cur_prev &gt; precision:
+    #Plot the points 
+    plt.scatter(cur_x, f(cur_x), color='black', s=10, zorder=2);
+    plt.scatter(cur_x, f(cur_x), color='white', s=5, zorder=2)  
+    x_ran_1= np.linspace(cur_x-5,cur_x+5,10)
+    plt.plot(x_ran_1, (df(cur_x) * (x_ran_1 - cur_x)) + f(cur_x), color=colors[i], zorder=1)
+    prev_x = cur_x
+    cur_x += -gamma * df(prev_x)
+    diff_cur_prev = abs(cur_x - prev_x)
+    print("Run: %d, Current: %f, Previous: %f, Different: %f" % (i, cur_x,prev_x,diff_cur_prev))
+    i+= 1
+
+plt.xlim([-10,10])
+plt.xlabel('x')
+plt.ylabel('f(x)')
+plt.show(block=False)
+</code></pre></div></div>
+
+<p><img src="https://raw.githubusercontent.com/saeidamiri1/pythonseum/master/public/image/Figure-2019-11-05-approximations-3.png" width="350" height="300" /></p>
+
+<p><strong><a href="#contents">â¬† back to top</a></strong></p>
+<h3 id="license">License</h3>
+<p>Copyright (c) 2019 Saeid Amiri</p>
+:ET

@@ -1,0 +1,71 @@
+I"�<h2 id="manipulating-data-frame">Manipulating data-frame</h2>
+<p>To select the data use the name of variable, or specify the indices via <code class="language-plaintext highlighter-rouge">.iloc</code> and <code class="language-plaintext highlighter-rouge">.loc</code> (link)[http://pandas.pydata.org/pandas-docs/version/0.22/indexing.html].  <code class="language-plaintext highlighter-rouge">.iloc</code> is an integer-based select and should be used with integer indies. On contrary, <code class="language-plaintext highlighter-rouge">.loc</code>   is primarily label based, and may also be used with a boolean array.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>source ="https://storage.googleapis.com/mledu-datasets/california_housing_train.csv"
+CHT = pd.read_csv(source, sep=",")
+CHT.head()
+CHT.longitude
+CHT['longitude']
+CHT.iloc[:,1]
+CHT.iloc[:,[1,3]]
+</code></pre></div></div>
+
+<p>To select part of row, you can also use iloc[idenx of row,:], also rows can be selected using the logical values</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>CHT.iloc[2:10]
+CHT.iloc[2:10,:]
+CHT[CHT.iloc[:,1]&lt;34]
+</code></pre></div></div>
+
+<p>To retieve part of row, should pass boolean variable, <code class="language-plaintext highlighter-rouge">.iloc</code> does not work with the boolean variable, and <code class="language-plaintext highlighter-rouge">.loc</code> should be used.  Consider the median_income in our data, by using quartile divide it into three categories.</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>CHT['famlev'] = ''
+C1=CHT.median_income&lt;=CHT.median_income.quantile(.3)
+C2=CHT.median_income&gt;=CHT.median_income.quantile(.7)
+CHT.loc[C1,'famlev']='L'
+CHT.loc[~C1&amp;~C2,'famlev']='M'
+CHT.loc[C2,'famlev']='H'
+</code></pre></div></div>
+
+<p>In this case we used <code class="language-plaintext highlighter-rouge">.loc</code>, obviously we specify column labels to retrieve columns instead of by position. Note: You can also using [][] apply different conditions on data.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>CHT['median_house_value'][CHT['famlev'] == 'M'].mean()
+</code></pre></div></div>
+
+<p>Selecting or searching can also be done using <code class="language-plaintext highlighter-rouge">np.where</code>,  which evaluates the conditions and return the data that satisfy the conditions.</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>CHT_R=CHT[['total_rooms','total_bedrooms']]
+CHT_R.where(CHT.total_rooms&lt;1000)
+CHT_R.where(CHT.total_rooms&lt;1000,0)
+con= CHT_R&lt;1000
+CHT_R.where(con, -999)
+</code></pre></div></div>
+
+<p>If you want to select specific elements in data-frame, use <code class="language-plaintext highlighter-rouge">.isin()</code>,  the following select element where ‘famlev=M’,</p>
+<pre><code class="language-np.where(CHT.loc[:,'famlev'].isin(['M']))```">
+The ```np.where``` can be used to create a new column:
+
+</code></pre>
+<p>CHT[‘size’]=np.where(CHT.total_rooms&lt;1000, ‘small’, ‘big’)
+CHT_R=CHT[[‘total_rooms’,’total_bedrooms’]]
+CHT_R.where(CHT.total_rooms&lt;1000)
+CHT_R.where(CHT.total_rooms&lt;1000,0)
+con= CHT_R&lt;1000
+CHT_R.where(con, -999)</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Opposite of `np.where` is `np.mask`, replace it with `np.where` and rerun the codes. 
+To drop row and columns use ```.drop```.
+</code></pre></div></div>
+<p>CHT.drop([0,5], axis=0)
+CHT.drop(‘longitude’,axis=1, inplace=True)</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+To replace values, use `df.replace()`
+
+</code></pre></div></div>
+<p>CHT[‘famlev’].replace(‘L’,’Low’).replace(‘M’,’Middle’).replace(‘H’,’High’)
+CHT.drop(‘longitude’,axis=1, inplace=True)</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+Note: the argument ```inplace=True``` apply the change on the original data.
+
+Simple operation using the list comprehension can be done on data-frame as well.
+</code></pre></div></div>
+<p>CHT[‘NN’]=[0 for x in CHT[‘total_rooms’] if x&lt;100]
+CHT[‘size’]=[‘small’ if x&lt;100  else ‘big’  for x in CHT[‘total_rooms’]]</p>
+:ET

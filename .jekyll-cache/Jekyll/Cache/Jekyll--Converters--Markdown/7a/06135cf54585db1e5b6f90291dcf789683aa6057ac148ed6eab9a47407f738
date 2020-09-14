@@ -1,0 +1,3 @@
+I"	<h1 id="data">Data</h1>
+<p>To show how fit the multiple regression using R and Python, we consider the car data [car] which has the car specifications; HwyMPG, Model, etc,. We fit different regreesion models to predict Highway MPG using the car specifications.</p>
+:ET

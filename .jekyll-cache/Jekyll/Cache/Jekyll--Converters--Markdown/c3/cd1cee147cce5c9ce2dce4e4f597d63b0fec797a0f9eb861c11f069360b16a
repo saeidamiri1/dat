@@ -1,0 +1,150 @@
+I"Ï<h2 id="iteration">Iteration</h2>
+<p>Python is equipped with strong tools for the repeat of some commands or produce sequence number.</p>
+
+<h2 id="contents">Contents</h2>
+<ul>
+  <li><a href="#range">Range</a></li>
+  <li><a href="#for">For</a></li>
+  <li><a href="#while">While</a></li>
+  <li><a href="#comprehension-structure">Comprehension structure</a></li>
+</ul>
+
+<h3 id="range">Range</h3>
+<p>The function <code class="language-plaintext highlighter-rouge">range</code> can be used to produce series of number between two numbers.</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>range(3,15)
+</code></pre></div></div>
+
+<p>The advance function of <code class="language-plaintext highlighter-rouge">range</code> is <code class="language-plaintext highlighter-rouge">arange</code> in <code class="language-plaintext highlighter-rouge">numpy</code> which can be used to generate a series of number from a number to another number with specific increment:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&gt;&gt;&gt; np.arange(8, 20,1)
+array([ 8,  9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19])
+&gt;&gt;&gt; np.arange(2,1,-0.1)
+array([ 2. ,  1.9,  1.8,  1.7,  1.6,  1.5,  1.4,  1.3,  1.2,  1.1])
+</code></pre></div></div>
+
+<p>A specified element can be repeated for specific number.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&gt;&gt;&gt; [2,3]*2
+[2, 3, 2, 3]
+&gt;&gt;&gt; np.repeat([2, 3],[2,3])
+array([2, 2, 3, 3, 3])
+&gt;&gt;&gt; np.repeat(["A", "B"],[2,3])
+array(['A', 'A', 'B', 'B', 'B'],dtype='&lt;U1')
+</code></pre></div></div>
+
+<h3 id="for">For</h3>
+<p>The most useful function for the iteration is <code class="language-plaintext highlighter-rouge">for</code>  that repeats the specified commands for specified times, run the following codes to see how does it work</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&gt;&gt;&gt; for r in range(1,5):
+...  print(r^3)
+...
+2
+1
+0
+7
+
+ &gt;&gt;&gt; for i in [2,3,1,7]:
+...  print(i^3)
+...
+1
+0
+2
+4
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&gt;&gt;&gt; score=[10, 15, 7, 20]
+&gt;&gt;&gt; for i in (range(0,4)):
+...  if (score[i]&lt;10):
+...       print("fail")
+...  else:
+...        print("pass")
+...
+pass
+pass
+fail
+pass
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&gt;&gt;&gt; for i in range(0,4):
+...   if score[i]&lt;10:
+...       print("fail")
+...   elif(score[i]&gt;=10&amp;score[i]&lt;14):
+...       print("middle")
+...   elif(score[i]&gt;=14&amp;score[i]&lt;17):
+...        print("good")
+...   elif(score[i]&gt;=17):
+...       print("BEST")
+...
+middle
+middle
+fail
+middle
+</code></pre></div></div>
+
+<h3 id="while">While</h3>
+<p>The command <code class="language-plaintext highlighter-rouge">while</code> runs iteration until the condition be attained,</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&gt;&gt;&gt; x=8
+&gt;&gt;&gt; i=0
+&gt;&gt;&gt; while(x&lt;12):
+...   i=i+1
+...   x=x+x/8
+...   print(i,x)
+...
+1 9.0
+2 10.125
+3 11.390625
+4 12.814453125
+</code></pre></div></div>
+
+<p>Inversely, the command of repeat continue until the condition situated inside commands be attained, in the following codes, the loop continues until the condition <code class="language-plaintext highlighter-rouge">(x&gt;12)</code>  is violated.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&gt;&gt;&gt; x=8
+&gt;&gt;&gt; i=0
+&gt;&gt;&gt; while True:
+...  i=i+1
+...  x=x+x/8
+...  print(i,x)
+...  if (x&gt;12):
+...    break
+...
+1 9.0
+2 10.125
+3 11.390625
+4 12.814453125
+</code></pre></div></div>
+
+<h3 id="comprehension-structure">Comprehension structure</h3>
+<p>Comprehension structure in Python helps to combine several iteration in one line, to practice let write a simple function to select pair of unequal numbers between (1, 100).</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>combs=[]
+for x in range(3):
+ for y in range(3):
+  if x!= y:
+    combs.append((x,y))
+</code></pre></div></div>
+
+<p>The code can be simplify as list comprehension</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[(x,y) for x in range(3) for y in range(3) if x!=y]
+</code></pre></div></div>
+
+<p>Comprehension structure can be used for different Python structures, see the following script that generates numbers between (1,10) and put them in different Python structures.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># A generator expression
+
+print ((x for x in range(10)))
+
+# A list comprehension
+print ([x for x in range(10)])
+
+# A set comprehension
+print ({x for x in range(10)})
+
+# A dictionary comprehension
+print ({x: x for x in range(10)})
+</code></pre></div></div>
+
+<p><strong><a href="#contents">â¬† back to top</a></strong></p>
+<h3 id="license">License</h3>
+<p>Copyright (c) 2019 Saeid Amiri</p>
+:ET
