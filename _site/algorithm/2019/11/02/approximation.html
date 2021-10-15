@@ -1,0 +1,415 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Optimization</title>
+    <meta name="description" content="Optimization using Newton-Raphson and Gradient Descent">
+    <meta name="author" content="Saeid Amiri">
+
+    <!-- Enable responsive viewport -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Bootstrap styles -->
+    <link href="/assets/themes/bootstrap-3/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Optional theme -->
+    <link href="/assets/themes/bootstrap-3/bootstrap/css/bootstrap-theme.min.css" rel="stylesheet">
+    <!-- Sticky Footer -->
+    <link href="/assets/themes/bootstrap-3/bootstrap/css/bs-sticky-footer.css" rel="stylesheet">
+
+    <!-- Custom styles -->
+    <link href="/assets/themes/bootstrap-3/css/style.css?body=1" rel="stylesheet" type="text/css" media="all">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Fav and touch icons -->
+    <!-- Update these with your own images      -->
+      <link rel="shortcut icon" type="image/x-icon" href="http://localhost:4000/assets/images/iconified/favicon.ico">
+      <!-- <link rel="shortcut icon" type="image/png" href="http://localhost:4000/assets/images/iconified/apple-touch-icon.png"> -->
+      <link rel="apple-touch-icon" type="image/png" href="http://localhost:4000/assets/images/iconified/apple-touch-icon.png">
+      <link rel="apple-touch-icon" type="image/png" sizes="76x76" href="http://localhost:4000/images/iconified/apple-touch-icon-76x76.png">
+      <link rel="apple-touch-icon" type="image/png" sizes="114x114" href="http://localhost:4000/images/iconified/apple-touch-icon-114x114.png">
+
+    <!-- atom & rss feed -->
+    <link href="" type="application/atom+xml" rel="alternate" title="Sitewide ATOM Feed">
+    <link href="" type="application/rss+xml" rel="alternate" title="Sitewide RSS Feed">
+    
+  </head>
+
+ <div class="header">
+      <div id="wrap">
+      <nav class="navbar navbar-default" role="navigation">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#jb-navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <!-- <a class="navbar-brand" href="/">Posts relates</a> -->
+		  <a class="navbar-brand" href="/"><img src="https://raw.githubusercontent.com/saeidamiri1/saeidamiri1.github.io/master/public/image/1024px-Python.png" alt="logo" />Posts relates</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="jb-navbar-collapse">
+          <ul class="nav navbar-nav">
+            
+            
+            
+
+
+  
+    
+      
+      	
+      	<li><a href="/about">About</a></li>
+      	
+      
+    
+  
+    
+      
+      	
+      	<li><a href="/archive">Archive</a></li>
+      	
+      
+    
+  
+    
+      
+    
+  
+    
+      
+      	
+      	<li><a href="/categories">Categories</a></li>
+      	
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+      	
+      	<li><a href="/tags">Tags</a></li>
+      	
+      
+    
+  
+    
+  
+    
+  
+
+
+
+          </ul>
+        </div><!-- /.navbar-collapse -->
+      </nav>
+
+    </div>
+</div>
+
+  <body>
+    <div id="wrap">
+      <div class="container">
+        
+
+<div class="page-header">
+  <h1>Optimization </h1>
+</div>
+
+<!-- Paste the 3 next lines where you want the sharing button(s) to appear -->
+    <div class="post-sharing">
+     
+
+  
+  		<div id="fb-root"></div>
+
+<ul class="post-share ulno mob">
+
+<!-- Twitter -->
+<li class="tw"><a href="https://twitter.com/share" class="twitter-share-button" data-text="Optimization" data-via="" data-related="" data-count="" data-size="">Tweet</a>
+
+<!-- Google+ -->
+<li class="gp"><div class="g-plusone" data-size="medium" data-annotation="bubble" data-width=""></div>
+
+<!-- Facebook -->
+<li class="fb"><div class="fb-like" data-send="false" data-layout="button_count" data-width="90" data-show-faces="false" data-font=""></div>
+
+<!-- Reddit -->
+<li><script type="text/javascript" src="http://www.reddit.com/buttonlite.js?i=4"></script>
+</ul>
+
+<script>
+  
+(function(doc, script) {
+ 	
+    // Async Social Buttons
+    var js, 
+        fjs = doc.getElementsByTagName(script)[0],
+        add = function(url, id) {
+            if (doc.getElementById(id)) {return;}
+            js = doc.createElement(script);
+            js.src = url;
+            id && (js.id = id);
+            fjs.parentNode.insertBefore(js, fjs);
+        };
+
+    // Twitter SDK
+    add('//platform.twitter.com/widgets.js', 'twitter-wjs');
+    
+    // Google+ button
+    add('https://apis.google.com/js/plusone.js');
+    
+    // Facebook SDK
+    add('https://connect.facebook.net/en_GB/all.js#xfbml=1&appId=1424112504267565', 'facebook-jssdk');
+    
+}(document, 'script'));
+
+</script>
+  
+
+
+
+    </div>
+
+<div class="row post-full">
+  <div class="col-xs-12">
+    <div class="date">
+      <span>02 November 2019</span>
+    </div>
+    <div class="content">
+      <h2 id="optimization">Optimization</h2>
+
+<h2 id="contents">Contents</h2>
+<ul>
+  <li><a href="#newton-raphson">Newton-Raphson</a></li>
+  <li><a href="#gradient-descent">Gradient Descent</a></li>
+</ul>
+
+<h2 id="newton-raphson-method">Newton-Raphson method</h2>
+<p>The Newton-Raphson algorithm is one of the old iterative algorithm to approximately find the roots of a real-valued function;
+<img src="https://latex.codecogs.com/svg.latex?f(x)=0" alt="eq1" />. The idea behind of it is based on the simple linear approximation.
+Given <code class="language-plaintext highlighter-rouge">x_0</code>, a starting point, by solving the root of function by solving<br />
+<img src="https://latex.codecogs.com/svg.latex?x_{n+1}=x_n-%20\frac{f(x_n)}{\partial%20f(x_{n})}" alt="eq2" />, we get closer to the solution.</p>
+
+<p>The simple and plain algorithm of Newton-Raphosn is given in the below</p>
+
+<p><img src="https://raw.githubusercontent.com/saeidamiri1/pythonseum/master/public/image/Figure-2019-11-05-newton-raphson-algorithm.png" width="350" height="300" /></p>
+
+<p>Since we should run the iteration for many time; it is better to replace <code class="language-plaintext highlighter-rouge">for</code> with <code class="language-plaintext highlighter-rouge">while</code> loop. In the below, we present the algorithm in Python.</p>
+
+<p>To write the algorithm in code, we consider <img src="https://latex.codecogs.com/svg.latex?f(x)=x^4-3x^2+2" alt="E_0=mc^2" /> that is also used in <a href="https://en.wikipedia.org/wiki/Gradient_descent">Wikipedia</a>.</p>
+
+<p>Define the function</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>def f(x):
+    return x**4 - 3 * x**3+2
+
+def df(x):
+    return 4 * x**3 - 9 * x**2
+</code></pre></div></div>
+
+<p>To see the minimum of the function, plot it:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>from matplotlib import pyplot as plt
+import numpy as np 
+x_ran_0 = np.linspace(-7,7,100) 
+plt.plot(x_ran_0 ,f(x_ran_0))
+plt.xlabel('x')
+plt.ylabel('f(x)')
+plt.show(block=False)
+</code></pre></div></div>
+
+<p><img src="https://raw.githubusercontent.com/saeidamiri1/pythonseum/master/public/image/Figure-2019-11-05-approximations-1.png" width="350" height="300" /></p>
+
+<p>To see how the algorithm works, we can add the plot pf gradients along running the iterations:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>import matplotlib as mpl
+
+x_s = -4 # Starting point
+cur_x = x_s
+diff_cur_prev= 1
+precision = 0.001
+max_ite = 1000  #Maximum number of iterations
+
+#Choose different colors for each gradient
+colors = mpl.cm.autumn(np.linspace(0,5,max_ite)) 
+
+plt.plot(x_ran_0 ,f(x_ran_0)) # plot again the  f(x)
+
+i= 1
+while diff_cur_prev &gt; precision:
+    #Plot the points 
+    plt.scatter(cur_x, f(cur_x), color='black', s=10, zorder=2);
+    plt.scatter(cur_x, f(cur_x), color='white', s=5, zorder=2)  
+    x_ran_1= np.linspace(cur_x-5,cur_x+5,10)
+    plt.plot(x_ran_1, (df(cur_x) * (x_ran_1 - cur_x)) + f(cur_x), color=colors[i], zorder=1)
+    prev_x = cur_x
+    cur_x += -f(prev_x) / df(prev_x)
+    diff_cur_prev = abs(cur_x - prev_x)
+    print("Run: %d, Current: %f, Previous: %f, Different: %f" % (i, cur_x,prev_x,diff_cur_prev))
+    i+= 1
+
+plt.xlim([-10,10])
+plt.xlabel('x')
+plt.ylabel('f(x)')
+plt.show(block=False)
+</code></pre></div></div>
+<p><img src="https://raw.githubusercontent.com/saeidamiri1/pythonseum/master/public/image/Figure-2019-11-05-approximations-2.png" width="350" height="300" /></p>
+
+<h2 id="gradient-descent">Gradient Descent</h2>
+<p>Gradient Descent is variant of Newton-Raphson that can be used to find the minimum value of a differentiable function. The local minimum can be obtained by solving</p>
+
+<p><img src="https://latex.codecogs.com/svg.latex?x_{n+1}=x_n-\gamma%20\frac{\partial%20f}{\partial%20x_{n}}" alt="eq3" /></p>
+
+<p>where <img src="https://latex.codecogs.com/svg.latex?\gamma" alt="eq4" /> is called the step size or learning rate, see <a href="https://en.wikipedia.org/wiki/Gradient_descent">Wikipedia</a>.  Obviously, the criterion function is different from the Newton-Raphson Algorithm.</p>
+
+<p>To write a simple code to find the minimum using the Gradient Descent consider <img src="https://latex.codecogs.com/svg.latex?f(x)=x^4-3x^2+2" alt="eq5" /> that is already used for explaining the Newton-Raphson.</p>
+
+<p>The plot of gradient can be obtained using running the following script:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>import matplotlib as mpl
+
+x_s = -4 # Starting point
+cur_x = x_s
+diff_cur_prev= 1
+gamma = 0.001 
+precision = 0.001
+max_ite = 1000  #Maximum number of iterations
+
+#Choose different colors for each gradient
+colors = mpl.cm.autumn(np.linspace(0,5,max_ite)) 
+
+plt.plot(x_ran_0 ,f(x_ran_0)) # plot again the  f(x)
+
+i= 1
+while diff_cur_prev &gt; precision:
+    #Plot the points 
+    plt.scatter(cur_x, f(cur_x), color='black', s=10, zorder=2);
+    plt.scatter(cur_x, f(cur_x), color='white', s=5, zorder=2)  
+    x_ran_1= np.linspace(cur_x-5,cur_x+5,10)
+    plt.plot(x_ran_1, (df(cur_x) * (x_ran_1 - cur_x)) + f(cur_x), color=colors[i], zorder=1)
+    prev_x = cur_x
+    cur_x += -gamma * df(prev_x)
+    diff_cur_prev = abs(cur_x - prev_x)
+    print("Run: %d, Current: %f, Previous: %f, Different: %f" % (i, cur_x,prev_x,diff_cur_prev))
+    i+= 1
+
+plt.xlim([-10,10])
+plt.xlabel('x')
+plt.ylabel('f(x)')
+plt.show(block=False)
+</code></pre></div></div>
+
+<p><img src="https://raw.githubusercontent.com/saeidamiri1/pythonseum/master/public/image/Figure-2019-11-05-approximations-3.png" width="350" height="300" /></p>
+
+<p><strong><a href="#contents">⬆ back to top</a></strong></p>
+<h3 id="license">License</h3>
+<p>Copyright (c) 2019 Saeid Amiri</p>
+
+    </div>
+
+  
+    <ul class="tag_box inline">
+      <li><i class="glyphicon glyphicon-open"></i></li>
+      
+      
+
+
+  
+     
+    	<li><a href="/categories.html#Algorithm-ref">
+    		Algorithm <span>1</span>
+    	</a></li>
+    
+  
+
+
+    </ul>
+    
+
+  
+    <ul class="tag_box inline">
+      <li><i class="glyphicon glyphicon-tags"></i></li>
+      
+      
+
+
+  
+     
+    	<li><a href="/tags.html#Gradient-Descent-ref">Gradient-Descent <span>1</span></a></li>
+     
+    	<li><a href="/tags.html#Newton-Raphson-ref">Newton-Raphson <span>1</span></a></li>
+     
+    	<li><a href="/tags.html#Python-ref">Python <span>5</span></a></li>
+    
+  
+
+
+
+    </ul>
+    
+  
+    <hr>
+    <ul class="pagination">
+    
+      <li class="prev"><a href="/python_learn/2019/11/02/iteration" title="Iteration">&laquo; Previous</a></li>
+    
+      <li><a href="/archive.html">Archive</a></li>
+    
+      <li class="next"><a href="/python_learn/plot/2019/12/30/plot" title="Introductory Notes on Matplotlib">Next &raquo;</a></li>
+    
+    </ul>
+    <hr>
+    
+  </div>
+</div>
+
+
+      </div>
+
+    </div>
+
+	   
+
+
+
+
+  </body>
+
+<div class="footer">
+    <div id="footer">
+      <div class="container">
+        <p>&copy; 2020 Saeid Amiri
+		<a href="https://www.researchgate.net/profile/Saeid_Amiri6"><img src="/assets/images/researchgate.png" /></a>
+		<a href="mailto:saeid.amiri1@gmail.com"><img src="/assets/images/gmail.jpeg" /></a>
+		<a href="https://github.com/saeidamiri1"><img src="/assets/images/GitHub-Mark-64px.png" /></a>
+           <a href="http://saeidamiri1.github.io" target="_blank">Saeid Amiri</a>
+        </p>
+      </div>
+    </div>
+
+    <!-- Latest compiled and minified JavaScript, requires jQuery 1.x (2.x not supported in IE8) -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="/assets/themes/bootstrap-3/bootstrap/js/bootstrap.min.js"></script>
+</div>
+</html>
+

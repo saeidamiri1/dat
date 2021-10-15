@@ -1,0 +1,1732 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Cheat Sheet of Numpy,  Panda and python core</title>
+    <meta name="description" content="A brief of Useful functions of Numpy and Panda">
+    <meta name="author" content="Saeid Amiri">
+
+    <!-- Enable responsive viewport -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Bootstrap styles -->
+    <link href="/assets/themes/bootstrap-3/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Optional theme -->
+    <link href="/assets/themes/bootstrap-3/bootstrap/css/bootstrap-theme.min.css" rel="stylesheet">
+    <!-- Sticky Footer -->
+    <link href="/assets/themes/bootstrap-3/bootstrap/css/bs-sticky-footer.css" rel="stylesheet">
+
+    <!-- Custom styles -->
+    <link href="/assets/themes/bootstrap-3/css/style.css?body=1" rel="stylesheet" type="text/css" media="all">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Fav and touch icons -->
+    <!-- Update these with your own images      -->
+      <link rel="shortcut icon" type="image/x-icon" href="http://localhost:4000/assets/images/iconified/favicon.ico">
+      <!-- <link rel="shortcut icon" type="image/png" href="http://localhost:4000/assets/images/iconified/apple-touch-icon.png"> -->
+      <link rel="apple-touch-icon" type="image/png" href="http://localhost:4000/assets/images/iconified/apple-touch-icon.png">
+      <link rel="apple-touch-icon" type="image/png" sizes="76x76" href="http://localhost:4000/images/iconified/apple-touch-icon-76x76.png">
+      <link rel="apple-touch-icon" type="image/png" sizes="114x114" href="http://localhost:4000/images/iconified/apple-touch-icon-114x114.png">
+
+    <!-- atom & rss feed -->
+    <link href="" type="application/atom+xml" rel="alternate" title="Sitewide ATOM Feed">
+    <link href="" type="application/rss+xml" rel="alternate" title="Sitewide RSS Feed">
+    
+  </head>
+
+ <div class="header">
+      <div id="wrap">
+      <nav class="navbar navbar-default" role="navigation">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#jb-navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <!-- <a class="navbar-brand" href="/">Posts relates</a> -->
+		  <a class="navbar-brand" href="/"><img src="https://raw.githubusercontent.com/saeidamiri1/saeidamiri1.github.io/master/public/image/1024px-Python.png" alt="logo" />Posts relates</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="jb-navbar-collapse">
+          <ul class="nav navbar-nav">
+            
+            
+            
+
+
+  
+    
+      
+      	
+      	<li><a href="/about">About</a></li>
+      	
+      
+    
+  
+    
+      
+      	
+      	<li><a href="/archive">Archive</a></li>
+      	
+      
+    
+  
+    
+      
+    
+  
+    
+      
+      	
+      	<li><a href="/categories">Categories</a></li>
+      	
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+      	
+      	<li><a href="/tags">Tags</a></li>
+      	
+      
+    
+  
+    
+  
+    
+  
+
+
+
+          </ul>
+        </div><!-- /.navbar-collapse -->
+      </nav>
+
+    </div>
+</div>
+
+  <body>
+    <div id="wrap">
+      <div class="container">
+        
+
+<div class="page-header">
+  <h1>Cheat Sheet of Numpy,  Panda and python core </h1>
+</div>
+
+<!-- Paste the 3 next lines where you want the sharing button(s) to appear -->
+    <div class="post-sharing">
+     
+
+  
+  		<div id="fb-root"></div>
+
+<ul class="post-share ulno mob">
+
+<!-- Twitter -->
+<li class="tw"><a href="https://twitter.com/share" class="twitter-share-button" data-text="Cheat Sheet of Numpy,  Panda and python core" data-via="" data-related="" data-count="" data-size="">Tweet</a>
+
+<!-- Google+ -->
+<li class="gp"><div class="g-plusone" data-size="medium" data-annotation="bubble" data-width=""></div>
+
+<!-- Facebook -->
+<li class="fb"><div class="fb-like" data-send="false" data-layout="button_count" data-width="90" data-show-faces="false" data-font=""></div>
+
+<!-- Reddit -->
+<li><script type="text/javascript" src="http://www.reddit.com/buttonlite.js?i=4"></script>
+</ul>
+
+<script>
+  
+(function(doc, script) {
+ 	
+    // Async Social Buttons
+    var js, 
+        fjs = doc.getElementsByTagName(script)[0],
+        add = function(url, id) {
+            if (doc.getElementById(id)) {return;}
+            js = doc.createElement(script);
+            js.src = url;
+            id && (js.id = id);
+            fjs.parentNode.insertBefore(js, fjs);
+        };
+
+    // Twitter SDK
+    add('//platform.twitter.com/widgets.js', 'twitter-wjs');
+    
+    // Google+ button
+    add('https://apis.google.com/js/plusone.js');
+    
+    // Facebook SDK
+    add('https://connect.facebook.net/en_GB/all.js#xfbml=1&appId=1424112504267565', 'facebook-jssdk');
+    
+}(document, 'script'));
+
+</script>
+  
+
+
+
+    </div>
+
+<div class="row post-full">
+  <div class="col-xs-12">
+    <div class="date">
+      <span>05 October 2019</span>
+    </div>
+    <div class="content">
+      <h2 id="contents">Contents</h2>
+
+<ul>
+  <li><a href="#primer">Primer</a>
+    <ul>
+      <li><a href="#libraries">Libraries</a></li>
+      <li><a href="#starting">Starting</a></li>
+      <li><a href="#mathematical-operations">Mathematical operations</a></li>
+      <li><a href="#built-in-Constants">Built-in Constants</a></li>
+      <li><a href="#type">Type</a></li>
+      <li><a href="#lists">Lists</a></li>
+      <li><a href="#dictionary">Dictionary</a></li>
+      <li><a href="#built-in-function">Built-in function</a></li>
+      <li><a href="#user-function">User Function</a></li>
+      <li><a href="#iterates">Iterates</a></li>
+      <li><a href="#boolean-comparisons">Boolean Comparisons</a></li>
+    </ul>
+  </li>
+  <li><a href="#numpy">Numpy</a>
+    <ul>
+      <li><a href="#arrays">Arrays</a></li>
+      <li><a href="#random">Random</a></li>
+      <li><a href="#o\s">O\S</a></li>
+      <li><a href="#inspecting-arrays">Inspecting arrays</a></li>
+      <li><a href="#sorting">sorting</a></li>
+      <li><a href="#reshaping">Reshaping</a></li>
+      <li><a href="#concatenate">Concatenate</a></li>
+      <li><a href="#copying">Copying</a></li>
+      <li><a href="#adding/removing-elements">Adding/Removing Elements</a></li>
+      <li><a href="#indexing">Indexing</a></li>
+      <li><a href="#slicing">Slicing</a></li>
+      <li><a href="#subsetting">Subsetting</a></li>
+      <li><a href="#vector-Math">Vector Math</a></li>
+      <li><a href="#aggregate-functions">Aggregate Functions</a></li>
+    </ul>
+  </li>
+  <li><a href="#pandas">Pandas </a>
+    <ul>
+      <li><a href="#create-data-frame-and-series">Create Data frame and series</a></li>
+      <li><a href="#i/o">I/O</a></li>
+      <li><a href="#inspecting-arrays">Inspecting arrays</a></li>
+      <li><a href="#sorting">sorting</a></li>
+      <li><a href="#adding/removing-elements">Adding/Removing Elements</a></li>
+      <li><a href="#missing">Missing </a></li>
+      <li><a href="#indexing">Indexing</a></li>
+      <li><a href="#subsetting">Subsetting</a></li>
+      <li><a href="#group-by">Group by</a></li>
+      <li><a href="#apply">Apply </a></li>
+      <li><a href="#join/Combine">Join/Combine</a></li>
+      <li><a href="#aggregate-functions">Aggregate Functions</a></li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="primer">Primer</h1>
+
+<h2 id="libraries">Libraries</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th> </th>
+      <th> </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">pip install numpy</code></td>
+      <td>Install library</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">pip install git+https://github.com/mwaskom/seaborn.git</code></td>
+      <td>Install from GitHub</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">import numpy</code></td>
+      <td>load library</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="starting">starting</h2>
+
+<p>By putting # infront line, Python ignores running the rest.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th> </th>
+      <th> </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">x=1 # Python ignore</code></td>
+      <td>Python ignores running after #</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">import os</code> <br /></td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">os.getcwd()</code></td>
+      <td>See the working directory</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">os.chdir()</code></td>
+      <td>Change  the working directory</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="mathematical-operations">Mathematical operations</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th> </th>
+      <th> </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">1 + 2</code></td>
+      <td>Addition</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">1 - 2</code></td>
+      <td>Subtraction</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">1 / 2</code></td>
+      <td>Division</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">1 * 2</code></td>
+      <td>Multiplication</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">1 ** 2</code></td>
+      <td>Power</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">x += 1</code></td>
+      <td>Assign the value of x + 1 to x</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">x -= 1</code></td>
+      <td>Assign the value of x - 1 to x</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="built-in-constants">Built-in Constants</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th> </th>
+      <th> </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">None</code></td>
+      <td>Absence of a value</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">False</code></td>
+      <td>The bool type false</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">True</code></td>
+      <td>The bool type true</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="type">Type</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th> </th>
+      <th> </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">str()</code></td>
+      <td>Convert the string</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">int()</code></td>
+      <td>Convert the integer</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">float()</code></td>
+      <td>Convert the floating</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">bool()</code></td>
+      <td>Convert the boolen</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="lists">Lists</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th> </th>
+      <th> </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">l = list()</code></td>
+      <td>Assign an empty list to l</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">l = [3,2]</code></td>
+      <td>Create list and assgn 3 and 2 to it</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">l[0]</code></td>
+      <td>Return the first value</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">l[-1]</code></td>
+      <td>Return the last value</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">l[-4:]</code></td>
+      <td>Return that last 4 items.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">l[1:4]</code></td>
+      <td>Return subset containing the second till  fourth values</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">l[1::3]</code></td>
+      <td>Return every third items starting from l[1]</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">l.append(1)</code></td>
+      <td>Append the value 1 to the end of l</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">l+[1]</code></td>
+      <td>Append the value 1 to the end of l</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">l.sort()</code></td>
+      <td>Sort l and replace original with it</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">l.reverse()</code></td>
+      <td>Sort reversely the items in l</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">l.remove(a)</code></td>
+      <td>Removes the first item equals to a.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">l.pop(2)</code></td>
+      <td>Restun the second item and drop it from l</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">[i for i in range(1,100) if i%2==0]</code></td>
+      <td>Generate list of even number between 1 and 100</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">l= [1, "", 3]</code></td>
+      <td>Creat a list with missing value.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="dictionary">Dictionary</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th> </th>
+      <th> </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">d={"weight":2.4, "height":15}</code></td>
+      <td>Creat a dictionary with keys “weight” and “height”, and their corresponding values of 2.4, 15</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">d["weight"]</code></td>
+      <td>Return values corrsponding “weight”</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">d.keys()</code></td>
+      <td>Return the keys from d</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">d.values()</code></td>
+      <td>Return the values from d</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">d.items()</code></td>
+      <td>Return  (key, value) pairs from d</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="built-in-function">Built-in function</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th> </th>
+      <th> </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">len(x)</code></td>
+      <td>Return the number of elements in x</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">min(x)</code></td>
+      <td>Return the min of the values of x</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">sum(x)</code></td>
+      <td>Return the sum of the values of x</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">type(x)</code></td>
+      <td>Return type of the values of x</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">range(3,10)</code></td>
+      <td>Generate a series of number from a number (3) to another number (10) with specific increment</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="user-function">User Function</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th> </th>
+      <th> </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">def name (argument):</code> <br />   <code class="language-plaintext highlighter-rouge">script</code> <br /><code class="language-plaintext highlighter-rouge">return output</code></td>
+      <td>Create a function</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">name = lambda arguments: script</code></td>
+      <td>Create one line function</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">if state1:</code><br />  <code class="language-plaintext highlighter-rouge">script1</code> <br /> <code class="language-plaintext highlighter-rouge">elif x &lt; 0:</code><br />   <code class="language-plaintext highlighter-rouge">script2</code> <br /> <code class="language-plaintext highlighter-rouge">else:</code><br />   <code class="language-plaintext highlighter-rouge">script3</code></td>
+      <td>Test state1 and state2, and run script corresponding to the correct statement, otherwise run script3</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="iterates">Iterates</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th> </th>
+      <th> </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">for value in obj:</code><br />  <code class="language-plaintext highlighter-rouge">script</code></td>
+      <td>Iterate the code for each value in obj</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">while cond:</code><br />   <code class="language-plaintext highlighter-rouge">script</code></td>
+      <td>Run the code until reach to condion</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="boolean-comparisons">Boolean Comparisons</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th> </th>
+      <th> </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">x == 2</code></td>
+      <td>Test whether x is equal to 2</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">x != 2</code></td>
+      <td>Test whether x is not equal to 2</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">x &lt; 2</code></td>
+      <td>Test whether x is less than 2</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">x &lt;= 2</code></td>
+      <td>Test whether x is less than or equal to 2</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">x &gt; 2</code></td>
+      <td>Test whether x is greater than 2</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">x &gt;= 2</code></td>
+      <td>Test whether x is greater than or equal to 2</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">(x == 2) or (y == 1)</code></td>
+      <td>Test whether x is equal to 5 or y is equal to 1</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">(x == 2) | (y == 1)</code></td>
+      <td>Test whether x is equal to 5 or y is equal to 1</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">(x == 2) and  (y == 1)</code></td>
+      <td>Test whether x is equal to 5 and y is equal to 1</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">(x == 2) &amp; (y == 1)</code></td>
+      <td>Test whether x is equal to 5 and  y is equal to 1</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">3 in l</code></td>
+      <td>Checks whether the value 3 exists in the  l</td>
+    </tr>
+  </tbody>
+</table>
+
+<h1 id="numpy">Numpy</h1>
+
+<p>Numpy (NUMerical PYthon) provides very useful arrays structure to work with data.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th> </th>
+      <th> </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">import numpy as np</code></td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">pips install numpy</code></td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">python3 -m pip install --upgrade  numpy</code></td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="arrays">Arrays</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th> </th>
+      <th> </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">np.array([1,2,3])</code></td>
+      <td>One dimensional array</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">np.array([(1,2,3),(4,5,6)])</code></td>
+      <td>Two dimensional array</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">arr[i]</code></td>
+      <td>The ith element</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">arr[i:]</code></td>
+      <td>The ith row</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">arr[i][j]</code></td>
+      <td>The ith and jth element, the same as <code class="language-plaintext highlighter-rouge">arr[i,j]</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">np.full((2,1),2.2)</code></td>
+      <td>2x1 array with all values 2.2</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">np.linspace(0, 1, 10)</code></td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">np.eye(3)</code></td>
+      <td>A diagonal array of size 3x3 (Identity matrix)</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">np.zeros(3)</code></td>
+      <td>An array of length 3 with all values 0</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">np.ones((4,2))</code></td>
+      <td>An array of size 4x2 with all values 1</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">np.arange(1,14,4)</code></td>
+      <td>An 1D array from 1 to 14 with step 4</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="random">Random</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th> </th>
+      <th> </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">np.random.rand(4,2)</code></td>
+      <td>Generates a 4x2  array of random number from uniform</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">np.random.rand(4,2)</code></td>
+      <td>Generates a 4x2 array  of random number from standard normal</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">np.random.randint(low=1,high=20, size=(2,3))</code></td>
+      <td>Generates a 2x3 array of random ints between 1–20</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">np.random.choice(arr,size=s,replace=True,p=pr)</code></td>
+      <td>Resamples of size s from arr acording probability pr</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="os">O\S</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th> </th>
+      <th> </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">np.savetxt('file.txt',arr,delimiter=' ')</code></td>
+      <td>Writes to a text file</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">np.savetxt('file.csv',arr,delimiter=',')</code></td>
+      <td>Writes to a CSV file</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">np.loadtxt('file.txt')</code></td>
+      <td>Loads from a text file</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">np.genfromtxt('file.csv',delimiter=',')</code></td>
+      <td>Loads from a CSV file</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">np.save('file_of_arr.npy ', arr)</code></td>
+      <td>Saves  array into a file</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">np.savez('file_of_arr.npz', arr1, arr2)</code></td>
+      <td>Saves  array into a file</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">np.load('my_array.npy')</code></td>
+      <td>Loads arrays</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="inspecting-arrays">Inspecting arrays</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th> </th>
+      <th> </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">arr.dtype</code></td>
+      <td>Returns type of elements in array</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">arr.size</code></td>
+      <td>Returns number of elements in array</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">len(arr)</code></td>
+      <td>Length of array</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">arr.shape</code></td>
+      <td>Returns dimensions of arr</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">arr.astype(dtype)</code></td>
+      <td>Convert arr elements to type dtype</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">arr.tolist()</code></td>
+      <td>Convert arr to a Python list</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="sorting">Sorting</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th> </th>
+      <th> </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">arr.sort()</code></td>
+      <td>Sort elements of arr</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">arr.sort(axis=0)</code></td>
+      <td>Sorts elements of axis=0 of arr</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="reshaping">Reshaping</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th> </th>
+      <th> </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">arr.reshape(4,3)</code></td>
+      <td>Reshapes arr to 4x3 without changing data</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">arr.resize((4,3))</code></td>
+      <td>Changes arr shape to 4x3 and fills new values with 0</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">arr.T</code></td>
+      <td>Transposes arr</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="concatenate">Concatenate</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th> </th>
+      <th> </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">np.concatenate(arr1,arr2,axis=0)</code></td>
+      <td>concatenate arr2 to arr1 along  the axis</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">np.hstack((arr1,arr2))</code></td>
+      <td>Stack arrays horizontally (column wise)</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">np.vstack((arr1,arr2))</code></td>
+      <td>Stack arrays vertically (row wise)</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="copying">Copying</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th> </th>
+      <th> </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">arr2 = arr1.view()</code></td>
+      <td>Create a view of the array with the same data</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">np.copy(arr)</code></td>
+      <td>Create a copy of aar</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">arr2 = arr1.copy()</code></td>
+      <td>Create a deep copy of the array</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="addingremoving-elements">Adding/Removing Elements</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th> </th>
+      <th> </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">np.append(arr1,arr2)</code></td>
+      <td>Append arr2 to arr1</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">np.insert(arr, 1, 10)</code></td>
+      <td>Insert 10 on index 1 items</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">np.delete(a,2)</code></td>
+      <td>Delete element on index 1 from array</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="indexing">Indexing</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th> </th>
+      <th> </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">arr[2]</code></td>
+      <td>Returns the element at index 2</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">arr[2]=3</code></td>
+      <td>Assigns 3 to the element on index 2</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">arr[2,3]</code></td>
+      <td>Returns the array element on index [2,3]</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">arr[2,3]=10</code></td>
+      <td>Assigns 3 to the element on index [2,3]</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="slicing">Slicing</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th> </th>
+      <th> </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">arr[:2]</code></td>
+      <td>Returns the elements at indices 0,1</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">arr[2:4]</code></td>
+      <td>Returns the elements at indices 2,3</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">arr[0:2,3]</code></td>
+      <td>Returns the elements on rows 0,1 at column 3</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">arr[:,1]</code></td>
+      <td>Returns the elements on column 2</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">arr[[1,2],[2,3]]</code></td>
+      <td>Returns the elements at indices [1,3] and [2,3]</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="subsetting">Subsetting</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th> </th>
+      <th> </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">arr&lt;2</code></td>
+      <td>Returns a boolen array, True for arr&lt;2 and False for the rest</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">(arr1&lt;2) &amp; (arr2&gt;3)</code></td>
+      <td>Returns a boolen array, True for (arr1&lt;3) &amp; (arr2&gt;5) and False for the rest</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">arr[arr&lt;2]</code></td>
+      <td>Select array with elements smaller than 2</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">arr[~(arr&lt;2)]</code></td>
+      <td>Select array with elements not smaller than 2</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="vector-math">Vector Math</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th> </th>
+      <th> </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">np.add(arr1,arr2)</code></td>
+      <td>Elementwise add arr2 to arr1</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">np.subtract(arr1,arr2)</code></td>
+      <td>Elementwise subtract arr2 from arr1</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">np.multiply(arr1,arr2)</code></td>
+      <td>Elementwise multiply arr1 by arr2</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">np.divide(arr1,arr2)</code></td>
+      <td>Elementwise divide arr1 by arr2</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">np.power(arr1,arr2)</code></td>
+      <td>Elementwise raise arr1 raised to the power of arr2</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">np.array_equal(arr1,arr2)</code></td>
+      <td>Returns True if the arrays have the same elements and shape</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">np.sqrt(arr)</code></td>
+      <td>Square root of each element in the array</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">np.sin(arr)</code></td>
+      <td>Sine of each element in the array</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">np.log(arr)</code></td>
+      <td>Natural log of each element in the array</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">np.abs(arr)</code></td>
+      <td>Absolute value of each element in the array</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">np.ceil(arr)</code></td>
+      <td>Rounds up to the nearest int</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">np.floor(arr)</code></td>
+      <td>Rounds down to the nearest int</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">np.round(arr)</code></td>
+      <td>Rounds to the nearest int</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="aggregate-functions">Aggregate Functions</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th> </th>
+      <th> </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">arr.min()</code></td>
+      <td>Returns minimum value of arr</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">arr.max(axis=0)</code></td>
+      <td>Returns maximum value of specific axis</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">np.mean(arr,axis=0)</code></td>
+      <td>Returns mean of specific axis</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">np.median(arr,axis=0)</code></td>
+      <td>Returns median of  specific axis</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">arr.sum()</code></td>
+      <td>Returns sum of arr</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">np.var(arr)</code></td>
+      <td>Returns the variance of array</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">np.std(arr,axis=1)</code></td>
+      <td>Returns the standard deviation of specific axis</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">np.quantile(arr,q=(q1,q2,..), axis=1)</code></td>
+      <td>Returns the (q1,q2, ….) quantiles of specific axis</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">arr.corrcoef()</code></td>
+      <td>Returns correlation coefficient of array</td>
+    </tr>
+  </tbody>
+</table>
+
+<h1 id="pandas">Pandas</h1>
+
+<p>Pandas is built for working with data set.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th> </th>
+      <th> </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">import pandas as pd</code></td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">pip3 install pandas</code></td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">python3 -m pip install --upgrade  pandas</code></td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="create-data-frame-and-series">Create Data frame and series</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th> </th>
+      <th> </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">pd.DataFrame(matrix, column=)</code></td>
+      <td>Create data frame from matrix.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">pd.DataFrame(dict)</code></td>
+      <td>Create data frame from a dict, keys would be used as the name of columns</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">pd.Series(list)</code></td>
+      <td>Create a series from a list</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">df.index = pd.date_range('2000/1/1', periods=df.shape[0])</code></td>
+      <td>Add a date index to the data frame</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="io">I/O</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th> </th>
+      <th> </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">pd.read_csv(filename)</code></td>
+      <td>Load CSV file</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">pd.read_table(filename)</code></td>
+      <td>Load from a delimited text file</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">pd.read_excel(filename)</code></td>
+      <td>Load from an Excel file</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">pd.read_sql(query, connection_object)</code></td>
+      <td>Load from a SQL table/database</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">pd.read_json(json_string)</code></td>
+      <td>Load from Read JSON formatted file s</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">pd.read_html(url)</code></td>
+      <td>Create a data from from an html URL</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">pd.read_clipboard()</code></td>
+      <td>Create a data frame from  the contents of your clipboard</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">df.to_csv(filename)</code></td>
+      <td>Save df as  a CSV file</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">df.to_excel(filename)</code></td>
+      <td>Save df as an Excel file</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">df.to_sql(table_name, connection_object)</code></td>
+      <td>Save df to a SQL table</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">df.to_json(filename)</code></td>
+      <td>Save df as a file in JSON format</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="inspecting-arrays-1">Inspecting arrays</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th> </th>
+      <th> </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">arr.dtype</code></td>
+      <td>Returns type of elements in array</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">arr.size</code></td>
+      <td>Returns number of elements in array</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">len(arr)</code></td>
+      <td>Length of array</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">arr.shape</code></td>
+      <td>Returns dimensions of arr</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">arr.astype(dtype)</code></td>
+      <td>Convert arr elements to type dtype</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">arr.tolist()</code></td>
+      <td>Convert arr to a Python list</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">arr.value_counts(dropna=False)</code></td>
+      <td>View unique values and counts</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">df.head(l)</code></td>
+      <td>Return the first l rows of the DataFrame</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">df.tail(l)</code></td>
+      <td>Return  the last l rows of the DataFrame</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">df.shape</code></td>
+      <td>Return the number of rows and columns</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">df.info()</code></td>
+      <td>Return index, datatype, and memory information</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">df.describe()</code></td>
+      <td>Return the summary statistics of numerical columns</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="sorting-1">Sorting</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th> </th>
+      <th> </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">df.sort_values(col)</code></td>
+      <td>Sort data frame values by col in ascending order</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">df.sort_values(col,ascending=False)</code></td>
+      <td>Sort data frame values by col in descending order</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">df.sort_values([col1,col2],ascending=[True,False])</code></td>
+      <td>data frame values by col1 in ascending order then col2 in descending order</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="addingremoving-elements-1">Adding/Removing Elements</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th> </th>
+      <th> </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">df.columns = ['name1','name2']</code></td>
+      <td>Add new name to  columns</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">df.rename(columns={'old_name': 'new_ name'})</code></td>
+      <td>Rename columns</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">df.set_index('colu')</code></td>
+      <td>Change the index to the given column</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">s.replace([1,2],['two','one'])</code></td>
+      <td>Replace 1 and 2 with  ‘two’ and ‘one’, respectively</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="missing">Missing</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th> </th>
+      <th> </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">pd.isnull()</code></td>
+      <td>Find the null values, True for the null</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">pd.notnull()</code></td>
+      <td>Opposite to  pd.isnull()</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">df.dropna()</code></td>
+      <td>Drop all rows that contain null values</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">df.dropna(axis=1)</code></td>
+      <td>Drop all columns that contain null values</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">df.dropna(axis=1,thresh=n)</code></td>
+      <td>Keep only the column with at least n non null values</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">df.fillna(x)</code></td>
+      <td>Replace all null values with x</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">df.fillna([‘A’:0,‘B’:0])</code></td>
+      <td>Replace all null values in column ‘A’, and ‘B’, with 0, 1 respectively.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">s.fillna(s.mean())</code></td>
+      <td>Replace all null values with the mean or any other statistics you define</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="indexing-1">Indexing</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th> </th>
+      <th> </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">df[col]</code></td>
+      <td>Returns column with label col as Series</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">df[[col1, col2]]</code></td>
+      <td>Returns columns corresponding  col1, col2</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">df.iloc[i,:]</code></td>
+      <td>The (i-1)th row</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">df.iloc[i,j]</code></td>
+      <td>The (i-1)th and (j-1)th element</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">s.iloc[i]</code></td>
+      <td>Return elements in position (i-1) by position</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">s.loc['index']</code></td>
+      <td>Return elements correspondingthe index</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="subsetting-1">Subsetting</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th> </th>
+      <th> </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">df[df[col] &lt; 1]</code></td>
+      <td>Return element less than 1 in column col</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">df[(df[col] &gt; 0.5) &amp; (df[col] &lt; 1)]</code></td>
+      <td>Return 0.5&lt; element &lt; 1 in column col</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="group-by">Group by</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th> </th>
+      <th> </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">df.groupby(col)</code></td>
+      <td>Group data frame based on col.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">df.groupby(col).mean()</code></td>
+      <td>Calculate mean after grouping based on col.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">df.groupby(col1).agg(fun)</code></td>
+      <td>Group the data frame based on col and run function on it.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">df.pivot_table(index=col1,values=[col2,col3],aggfunc=mean)</code></td>
+      <td>Create a pivot table using index of col1 and calculates the mean (or any other function) of col2 and col3</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="apply">Apply</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th> </th>
+      <th> </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">df.apply(fun)</code></td>
+      <td>Apply the function fun across each column</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">df.apply(np.max,axis=1)</code></td>
+      <td>Apply the function fun across each row</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="joincombine">Join/Combine</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th> </th>
+      <th> </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">df1.append(df2)</code></td>
+      <td>Add the rows in df1 to the end of df2 (columns should be identical)</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">pd.concat([df1, df2],axis=1)</code></td>
+      <td>Add the columns in df1 to the end of df2 (rows index should be identical)</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="aggregate-functions-1">Aggregate Functions</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th> </th>
+      <th> </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">df.describe()</code></td>
+      <td>Summary statistics for numerical columns</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">df.count()</code></td>
+      <td>Returns the number of non-null values in each DataFrame column</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">df.min()</code></td>
+      <td>Returns the minimum in each column</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">df.max()</code></td>
+      <td>Returns the maximum in each column</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">df.mean()</code></td>
+      <td>Returns the mean in each column</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">df.median()</code></td>
+      <td>Returns the median in each column</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">df.std()</code></td>
+      <td>Returns the standard deviation in each column</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">df.corr()</code></td>
+      <td>Returns the correlation between columns</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong><a href="#contents">⬆ back to top</a></strong></p>
+<h2 id="references">References</h2>
+
+<p>[sw] https://swcarpentry.github.io/sql-novice-survey/ <br />
+[dpo] https://docs.python.org/3.7/library/sqlite3.html <br />
+[sw2] https://swcarpentry.github.io/sql-novice-survey/10-prog/index.html <br />
+[gc] https://github.com/CoreyMSchafer/code_snippets/tree/master/Python-SQLite <br />
+[dor] https://datacarpentry.org/R-ecology-lesson/05-r-and-databases.html <br />
+[wdc] https://www.datacamp.com/community/tutorials/sqlite-in-r <br />
+[sw3] https://swcarpentry.github.io/sql-novice-survey/11-prog-R/index.html <br />
+[w3]  https://www.w3schools.com/sql/sql_create_table.asp <br />
+[wt] https://www.techonthenet.com/sql/index.php <br />
+[qlt] https://www.sqlitetutorial.net <br /></p>
+
+<h3 id="license">License</h3>
+<p>Copyright (c) 2019 Saeid Amiri and Leila Alimehr</p>
+
+    </div>
+
+  
+    <ul class="tag_box inline">
+      <li><i class="glyphicon glyphicon-open"></i></li>
+      
+      
+
+
+  
+     
+    	<li><a href="/categories.html#Python_learn-ref">
+    		Python_learn <span>16</span>
+    	</a></li>
+     
+    	<li><a href="/categories.html#Numpy-ref">
+    		Numpy <span>1</span>
+    	</a></li>
+     
+    	<li><a href="/categories.html#Pandas-ref">
+    		Pandas <span>9</span>
+    	</a></li>
+     
+    	<li><a href="/categories.html#Cheat-sheet-ref">
+    		Cheat-sheet <span>2</span>
+    	</a></li>
+    
+  
+
+
+    </ul>
+    
+
+  
+    <ul class="tag_box inline">
+      <li><i class="glyphicon glyphicon-tags"></i></li>
+      
+      
+
+
+  
+     
+    	<li><a href="/tags.html#Python-ref">Python <span>5</span></a></li>
+     
+    	<li><a href="/tags.html#Numpy-ref">Numpy <span>3</span></a></li>
+     
+    	<li><a href="/tags.html#Pandas-ref">Pandas <span>9</span></a></li>
+     
+    	<li><a href="/tags.html#Cheat-sheet-ref">Cheat-sheet <span>2</span></a></li>
+    
+  
+
+
+
+    </ul>
+    
+  
+    <hr>
+    <ul class="pagination">
+    
+      <li class="prev"><a href="/cheat-sheet/r_learn/python_learn/2019/05/08/R-Python-Matlab" title="Cheatsheet for R, Python, and Matlab">&laquo; Previous</a></li>
+    
+      <li><a href="/archive.html">Archive</a></li>
+    
+      <li class="next"><a href="/python_learn/r_learn/fitting-model/2019/10/14/Regression-via-R-and-Python" title="Multiple Regression via R and Python">Next &raquo;</a></li>
+    
+    </ul>
+    <hr>
+    
+  </div>
+</div>
+
+
+      </div>
+
+    </div>
+
+	   
+
+
+
+
+  </body>
+
+<div class="footer">
+    <div id="footer">
+      <div class="container">
+        <p>&copy; 2020 Saeid Amiri
+		<a href="https://www.researchgate.net/profile/Saeid_Amiri6"><img src="/assets/images/researchgate.png" /></a>
+		<a href="mailto:saeid.amiri1@gmail.com"><img src="/assets/images/gmail.jpeg" /></a>
+		<a href="https://github.com/saeidamiri1"><img src="/assets/images/GitHub-Mark-64px.png" /></a>
+           <a href="http://saeidamiri1.github.io" target="_blank">Saeid Amiri</a>
+        </p>
+      </div>
+    </div>
+
+    <!-- Latest compiled and minified JavaScript, requires jQuery 1.x (2.x not supported in IE8) -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="/assets/themes/bootstrap-3/bootstrap/js/bootstrap.min.js"></script>
+</div>
+</html>
+

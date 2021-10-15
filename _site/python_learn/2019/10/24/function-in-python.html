@@ -1,0 +1,441 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Function in Python</title>
+    <meta name="description" content="Function in Python">
+    <meta name="author" content="Saeid Amiri">
+
+    <!-- Enable responsive viewport -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Bootstrap styles -->
+    <link href="/assets/themes/bootstrap-3/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Optional theme -->
+    <link href="/assets/themes/bootstrap-3/bootstrap/css/bootstrap-theme.min.css" rel="stylesheet">
+    <!-- Sticky Footer -->
+    <link href="/assets/themes/bootstrap-3/bootstrap/css/bs-sticky-footer.css" rel="stylesheet">
+
+    <!-- Custom styles -->
+    <link href="/assets/themes/bootstrap-3/css/style.css?body=1" rel="stylesheet" type="text/css" media="all">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Fav and touch icons -->
+    <!-- Update these with your own images      -->
+      <link rel="shortcut icon" type="image/x-icon" href="http://localhost:4000/assets/images/iconified/favicon.ico">
+      <!-- <link rel="shortcut icon" type="image/png" href="http://localhost:4000/assets/images/iconified/apple-touch-icon.png"> -->
+      <link rel="apple-touch-icon" type="image/png" href="http://localhost:4000/assets/images/iconified/apple-touch-icon.png">
+      <link rel="apple-touch-icon" type="image/png" sizes="76x76" href="http://localhost:4000/images/iconified/apple-touch-icon-76x76.png">
+      <link rel="apple-touch-icon" type="image/png" sizes="114x114" href="http://localhost:4000/images/iconified/apple-touch-icon-114x114.png">
+
+    <!-- atom & rss feed -->
+    <link href="" type="application/atom+xml" rel="alternate" title="Sitewide ATOM Feed">
+    <link href="" type="application/rss+xml" rel="alternate" title="Sitewide RSS Feed">
+    
+  </head>
+
+ <div class="header">
+      <div id="wrap">
+      <nav class="navbar navbar-default" role="navigation">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#jb-navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <!-- <a class="navbar-brand" href="/">Posts relates</a> -->
+		  <a class="navbar-brand" href="/"><img src="https://raw.githubusercontent.com/saeidamiri1/saeidamiri1.github.io/master/public/image/1024px-Python.png" alt="logo" />Posts relates</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="jb-navbar-collapse">
+          <ul class="nav navbar-nav">
+            
+            
+            
+
+
+  
+    
+      
+      	
+      	<li><a href="/about">About</a></li>
+      	
+      
+    
+  
+    
+      
+      	
+      	<li><a href="/archive">Archive</a></li>
+      	
+      
+    
+  
+    
+      
+    
+  
+    
+      
+      	
+      	<li><a href="/categories">Categories</a></li>
+      	
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+      	
+      	<li><a href="/tags">Tags</a></li>
+      	
+      
+    
+  
+    
+  
+    
+  
+
+
+
+          </ul>
+        </div><!-- /.navbar-collapse -->
+      </nav>
+
+    </div>
+</div>
+
+  <body>
+    <div id="wrap">
+      <div class="container">
+        
+
+<div class="page-header">
+  <h1>Function in Python </h1>
+</div>
+
+<!-- Paste the 3 next lines where you want the sharing button(s) to appear -->
+    <div class="post-sharing">
+     
+
+  
+  		<div id="fb-root"></div>
+
+<ul class="post-share ulno mob">
+
+<!-- Twitter -->
+<li class="tw"><a href="https://twitter.com/share" class="twitter-share-button" data-text="Function in Python" data-via="" data-related="" data-count="" data-size="">Tweet</a>
+
+<!-- Google+ -->
+<li class="gp"><div class="g-plusone" data-size="medium" data-annotation="bubble" data-width=""></div>
+
+<!-- Facebook -->
+<li class="fb"><div class="fb-like" data-send="false" data-layout="button_count" data-width="90" data-show-faces="false" data-font=""></div>
+
+<!-- Reddit -->
+<li><script type="text/javascript" src="http://www.reddit.com/buttonlite.js?i=4"></script>
+</ul>
+
+<script>
+  
+(function(doc, script) {
+ 	
+    // Async Social Buttons
+    var js, 
+        fjs = doc.getElementsByTagName(script)[0],
+        add = function(url, id) {
+            if (doc.getElementById(id)) {return;}
+            js = doc.createElement(script);
+            js.src = url;
+            id && (js.id = id);
+            fjs.parentNode.insertBefore(js, fjs);
+        };
+
+    // Twitter SDK
+    add('//platform.twitter.com/widgets.js', 'twitter-wjs');
+    
+    // Google+ button
+    add('https://apis.google.com/js/plusone.js');
+    
+    // Facebook SDK
+    add('https://connect.facebook.net/en_GB/all.js#xfbml=1&appId=1424112504267565', 'facebook-jssdk');
+    
+}(document, 'script'));
+
+</script>
+  
+
+
+
+    </div>
+
+<div class="row post-full">
+  <div class="col-xs-12">
+    <div class="date">
+      <span>24 October 2019</span>
+    </div>
+    <div class="content">
+      <h2 id="function">Function</h2>
+<p>In the context of programming, a function is a sequence of statements that performs a computation. Functions has three parts; argument, script, and output. Python has two kinds of function: built-in function that is in the core of Python or are collected as package. User-defined function that is written by user.</p>
+
+<h2 id="contents">Contents</h2>
+<ul>
+  <li><a href="#built-in-function">Built-in function</a></li>
+  <li><a href="#user-function">User function</a></li>
+  <li><a href="#in-line-function">In-line function</a></li>
+  <li><a href="#map-and-filter">Map and Filter</a></li>
+  <li><a href="#decorators">Decorators</a></li>
+</ul>
+
+<h3 id="built-in-function">Built-in function</h3>
+<p>Python has a number of functions in its core that are always available, <a href="https://docs.python.org/3/library/functions.html">see</a></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>x=[1,2,3]
+type(x)
+len(x)
+min(x)
+</code></pre></div></div>
+<p>To round the value, use the <code class="language-plaintext highlighter-rouge">round(value,size)</code> function</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>round(0.12345,2)
+round(0.12345,3)
+</code></pre></div></div>
+
+<h3 id="user-function">User function</h3>
+<p>Functions has three parts; argument, script, and output. It has simple structure</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>def name (argument):  
+  script
+  return output
+</code></pre></div></div>
+
+<p>For instance write a function get two argument, add them together and return it.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>def sum0 (x,y):  
+  s0=x+y
+  return s0
+</code></pre></div></div>
+
+<p>If you do not specify the arguments, use a * argument,</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>def sum0 (x,*y):  
+  s0=x+mean(y)
+  return s0
+</code></pre></div></div>
+
+<p>You can define a default value for argument.</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>def sum0 (x,y=1):  
+  s0=x+y
+  return s0
+</code></pre></div></div>
+
+<p>You can define an optional argument.</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>def sum0 (x,y=None):  
+  if y is None:
+    return x
+  elif:
+     return x+y
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>def letterGrade(score):
+    if score &gt;= 90:
+        letter = 'A'
+    elif score &gt;= 80:
+        letter = 'B'
+    elif score &gt;= 70:
+        letter = 'C'
+    elif score &gt;= 60:
+        letter = 'D'
+    else:
+        letter = 'F'
+    return letter
+</code></pre></div></div>
+<h3 id="in-line-function">In-line function</h3>
+<p>A simple function can be written in one line,</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sum0 = lambda x, y: x + y
+sum0(2,3)
+</code></pre></div></div>
+
+<p>Such function is more suitable for using inside the other operation, the follow get first and second name, then it sort according the last name.</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>names = ['Sam Amiri', 'Leila Alimehr','Ryan Amiri']
+sorted(names, key=lambda name: name.split()[-1].lower())
+&gt;&gt;&gt; sorted(names, key=lambda name: name.split()[-1].lower())
+['Leila Alimehr', 'Sam Amiri', 'Ryan Amiri']
+&gt;&gt;&gt; sorted(names)
+['Leila Alimehr', 'Ryan Amiri', 'Sam Amiri']
+</code></pre></div></div>
+
+<h3 id="map-and-filter">Map and Filter</h3>
+<p>Python access to a higher order function  which allows a function operates on other functions, either by taking a function as its argument, or by returning a function. Most popular ones are <code class="language-plaintext highlighter-rouge">map</code> (apply function on element) and <code class="language-plaintext highlighter-rouge">filter</code> (apply function, if it is true return element)</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>x=[-1,0,1]
+list(map(abs, x))
+list(filter(lambda x: x &lt;= 0,x))
+</code></pre></div></div>
+
+<p>Example: Write a function to divide two number, if the denominator is zero, stop the function and give an notification.</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>def divide(x, y):
+  try:
+    x / y
+  except: 
+   print('Can not divide by zero!')
+  else:
+   return x / y
+
+divide(3,1)
+divide(3,0)
+</code></pre></div></div>
+
+<p>The function is also can be rewritten using <code class="language-plaintext highlighter-rouge">raise</code>, which raise an error and stop the function.</p>
+
+<p>def divide(x, y):
+    “"”Divide Function”””
+    if y == 0:
+        raise Exception(‘Can not divide by zero!’)
+    return x / y</p>
+
+<h3 id="decorators">Decorators</h3>
+<p>Decoreators in Python allows you to take a function and add additional uses without modifying its structure, the following example is from <a href="https://realpython.com/primer-on-python-decorators/#functions">ref</a>
+```{Python, echo = FALSE, message = FALSE}
+def my_decorator(func):
+   def wrapper():
+       print(“Something is happening before the function is called.”)
+       func()
+       print(“Something is happening after the function is called.”)
+   return wrapper</p>
+
+<p>def say_whee():
+   print(“Whee!”)</p>
+
+<p>say_whee()</p>
+
+<p>say_whee = my_decorator(say_whee)
+say_whee()</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+The decorator often simplify using
+``@name of decorator``
+</code></pre></div></div>
+<p>def say_whee():
+   print(“Whee!”)
+```</p>
+
+<p><strong><a href="#contents">⬆ back to top</a></strong></p>
+<h3 id="license">License</h3>
+<p>Copyright (c) 2019 Saeid Amiri</p>
+
+    </div>
+
+  
+    <ul class="tag_box inline">
+      <li><i class="glyphicon glyphicon-open"></i></li>
+      
+      
+
+
+  
+     
+    	<li><a href="/categories.html#Python_learn-ref">
+    		Python_learn <span>16</span>
+    	</a></li>
+    
+  
+
+
+    </ul>
+    
+
+  
+    <ul class="tag_box inline">
+      <li><i class="glyphicon glyphicon-tags"></i></li>
+      
+      
+
+
+  
+     
+    	<li><a href="/tags.html#Numpy-ref">Numpy <span>3</span></a></li>
+     
+    	<li><a href="/tags.html#List-ref">List <span>2</span></a></li>
+     
+    	<li><a href="/tags.html#Tuple-ref">Tuple <span>2</span></a></li>
+     
+    	<li><a href="/tags.html#Dictionary-ref">Dictionary <span>2</span></a></li>
+     
+    	<li><a href="/tags.html#Arrays-ref">Arrays <span>2</span></a></li>
+     
+    	<li><a href="/tags.html#Class-ref">Class <span>2</span></a></li>
+     
+    	<li><a href="/tags.html#set-ref">set <span>2</span></a></li>
+    
+  
+
+
+
+    </ul>
+    
+  
+    <hr>
+    <ul class="pagination">
+    
+      <li class="prev"><a href="/python_learn/data/structures/2019/10/22/data-structure" title="Data Structure">&laquo; Previous</a></li>
+    
+      <li><a href="/archive.html">Archive</a></li>
+    
+      <li class="next"><a href="/data/structures/python_learn/2019/11/01/data-control-structure" title="Data control structure">Next &raquo;</a></li>
+    
+    </ul>
+    <hr>
+    
+  </div>
+</div>
+
+
+      </div>
+
+    </div>
+
+	   
+
+
+
+
+  </body>
+
+<div class="footer">
+    <div id="footer">
+      <div class="container">
+        <p>&copy; 2020 Saeid Amiri
+		<a href="https://www.researchgate.net/profile/Saeid_Amiri6"><img src="/assets/images/researchgate.png" /></a>
+		<a href="mailto:saeid.amiri1@gmail.com"><img src="/assets/images/gmail.jpeg" /></a>
+		<a href="https://github.com/saeidamiri1"><img src="/assets/images/GitHub-Mark-64px.png" /></a>
+           <a href="http://saeidamiri1.github.io" target="_blank">Saeid Amiri</a>
+        </p>
+      </div>
+    </div>
+
+    <!-- Latest compiled and minified JavaScript, requires jQuery 1.x (2.x not supported in IE8) -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="/assets/themes/bootstrap-3/bootstrap/js/bootstrap.min.js"></script>
+</div>
+</html>
+

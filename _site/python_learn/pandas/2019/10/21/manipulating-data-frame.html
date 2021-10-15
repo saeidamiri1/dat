@@ -1,0 +1,375 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Manipulating data-frame</title>
+    <meta name="description" content="Manipulating data-frame">
+    <meta name="author" content="Saeid Amiri">
+
+    <!-- Enable responsive viewport -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Bootstrap styles -->
+    <link href="/assets/themes/bootstrap-3/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Optional theme -->
+    <link href="/assets/themes/bootstrap-3/bootstrap/css/bootstrap-theme.min.css" rel="stylesheet">
+    <!-- Sticky Footer -->
+    <link href="/assets/themes/bootstrap-3/bootstrap/css/bs-sticky-footer.css" rel="stylesheet">
+
+    <!-- Custom styles -->
+    <link href="/assets/themes/bootstrap-3/css/style.css?body=1" rel="stylesheet" type="text/css" media="all">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Fav and touch icons -->
+    <!-- Update these with your own images      -->
+      <link rel="shortcut icon" type="image/x-icon" href="http://localhost:4000/assets/images/iconified/favicon.ico">
+      <!-- <link rel="shortcut icon" type="image/png" href="http://localhost:4000/assets/images/iconified/apple-touch-icon.png"> -->
+      <link rel="apple-touch-icon" type="image/png" href="http://localhost:4000/assets/images/iconified/apple-touch-icon.png">
+      <link rel="apple-touch-icon" type="image/png" sizes="76x76" href="http://localhost:4000/images/iconified/apple-touch-icon-76x76.png">
+      <link rel="apple-touch-icon" type="image/png" sizes="114x114" href="http://localhost:4000/images/iconified/apple-touch-icon-114x114.png">
+
+    <!-- atom & rss feed -->
+    <link href="" type="application/atom+xml" rel="alternate" title="Sitewide ATOM Feed">
+    <link href="" type="application/rss+xml" rel="alternate" title="Sitewide RSS Feed">
+    
+  </head>
+
+ <div class="header">
+      <div id="wrap">
+      <nav class="navbar navbar-default" role="navigation">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#jb-navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <!-- <a class="navbar-brand" href="/">Posts relates</a> -->
+		  <a class="navbar-brand" href="/"><img src="https://raw.githubusercontent.com/saeidamiri1/saeidamiri1.github.io/master/public/image/1024px-Python.png" alt="logo" />Posts relates</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="jb-navbar-collapse">
+          <ul class="nav navbar-nav">
+            
+            
+            
+
+
+  
+    
+      
+      	
+      	<li><a href="/about">About</a></li>
+      	
+      
+    
+  
+    
+      
+      	
+      	<li><a href="/archive">Archive</a></li>
+      	
+      
+    
+  
+    
+      
+    
+  
+    
+      
+      	
+      	<li><a href="/categories">Categories</a></li>
+      	
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+      	
+      	<li><a href="/tags">Tags</a></li>
+      	
+      
+    
+  
+    
+  
+    
+  
+
+
+
+          </ul>
+        </div><!-- /.navbar-collapse -->
+      </nav>
+
+    </div>
+</div>
+
+  <body>
+    <div id="wrap">
+      <div class="container">
+        
+
+<div class="page-header">
+  <h1>Manipulating data-frame </h1>
+</div>
+
+<!-- Paste the 3 next lines where you want the sharing button(s) to appear -->
+    <div class="post-sharing">
+     
+
+  
+  		<div id="fb-root"></div>
+
+<ul class="post-share ulno mob">
+
+<!-- Twitter -->
+<li class="tw"><a href="https://twitter.com/share" class="twitter-share-button" data-text="Manipulating data-frame" data-via="" data-related="" data-count="" data-size="">Tweet</a>
+
+<!-- Google+ -->
+<li class="gp"><div class="g-plusone" data-size="medium" data-annotation="bubble" data-width=""></div>
+
+<!-- Facebook -->
+<li class="fb"><div class="fb-like" data-send="false" data-layout="button_count" data-width="90" data-show-faces="false" data-font=""></div>
+
+<!-- Reddit -->
+<li><script type="text/javascript" src="http://www.reddit.com/buttonlite.js?i=4"></script>
+</ul>
+
+<script>
+  
+(function(doc, script) {
+ 	
+    // Async Social Buttons
+    var js, 
+        fjs = doc.getElementsByTagName(script)[0],
+        add = function(url, id) {
+            if (doc.getElementById(id)) {return;}
+            js = doc.createElement(script);
+            js.src = url;
+            id && (js.id = id);
+            fjs.parentNode.insertBefore(js, fjs);
+        };
+
+    // Twitter SDK
+    add('//platform.twitter.com/widgets.js', 'twitter-wjs');
+    
+    // Google+ button
+    add('https://apis.google.com/js/plusone.js');
+    
+    // Facebook SDK
+    add('https://connect.facebook.net/en_GB/all.js#xfbml=1&appId=1424112504267565', 'facebook-jssdk');
+    
+}(document, 'script'));
+
+</script>
+  
+
+
+
+    </div>
+
+<div class="row post-full">
+  <div class="col-xs-12">
+    <div class="date">
+      <span>21 October 2019</span>
+    </div>
+    <div class="content">
+      <h2 id="manipulating-data-frame">Manipulating data-frame</h2>
+<p>To select the data use the name of variable, or specify the indices via <code class="language-plaintext highlighter-rouge">.iloc</code> and <code class="language-plaintext highlighter-rouge">.loc</code> (link)[http://pandas.pydata.org/pandas-docs/version/0.22/indexing.html].  <code class="language-plaintext highlighter-rouge">.iloc</code> is an integer-based select and should be used with integer indies. On contrary, <code class="language-plaintext highlighter-rouge">.loc</code>   is primarily label based, and may also be used with a boolean array.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>source ="https://storage.googleapis.com/mledu-datasets/california_housing_train.csv"
+CHT = pd.read_csv(source, sep=",")
+CHT.head()
+CHT.longitude
+CHT['longitude']
+CHT.iloc[:,1]
+CHT.iloc[:,[1,3]]
+</code></pre></div></div>
+
+<p>To select part of row, you can also use iloc[idenx of row,:], also rows can be selected using the logical values</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>CHT.iloc[2:10]
+CHT.iloc[2:10,:]
+CHT[CHT.iloc[:,1]&lt;34]
+</code></pre></div></div>
+
+<p>To retieve part of row, should pass boolean variable, <code class="language-plaintext highlighter-rouge">.iloc</code> does not work with the boolean variable, and <code class="language-plaintext highlighter-rouge">.loc</code> should be used.  Consider the median_income in our data, by using quartile divide it into three categories.</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>CHT['famlev'] = ''
+C1=CHT.median_income&lt;=CHT.median_income.quantile(.3)
+C2=CHT.median_income&gt;=CHT.median_income.quantile(.7)
+CHT.loc[C1,'famlev']='L'
+CHT.loc[~C1&amp;~C2,'famlev']='M'
+CHT.loc[C2,'famlev']='H'
+</code></pre></div></div>
+
+<p>In this case we used <code class="language-plaintext highlighter-rouge">.loc</code>, obviously we specify column labels to retrieve columns instead of by position. Note: You can also using [][] apply different conditions on data.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>CHT['median_house_value'][CHT['famlev'] == 'M'].mean()
+</code></pre></div></div>
+
+<p>Selecting or searching can also be done using <code class="language-plaintext highlighter-rouge">np.where</code>,  which evaluates the conditions and return the data that satisfy the conditions.</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>CHT_R=CHT[['total_rooms','total_bedrooms']]
+CHT_R.where(CHT.total_rooms&lt;1000)
+CHT_R.where(CHT.total_rooms&lt;1000,0)
+con= CHT_R&lt;1000
+CHT_R.where(con, -999)
+</code></pre></div></div>
+
+<p>If you want to select specific elements in data-frame, use <code class="language-plaintext highlighter-rouge">.isin()</code>,  the following select element where ‘famlev=M’,</p>
+<pre><code class="language-np.where(CHT.loc[:,'famlev'].isin(['M']))```">
+The ```np.where``` can be used to create a new column:
+
+</code></pre>
+<p>CHT[‘size’]=np.where(CHT.total_rooms&lt;1000, ‘small’, ‘big’)
+CHT_R=CHT[[‘total_rooms’,’total_bedrooms’]]
+CHT_R.where(CHT.total_rooms&lt;1000)
+CHT_R.where(CHT.total_rooms&lt;1000,0)
+con= CHT_R&lt;1000
+CHT_R.where(con, -999)</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Opposite of `np.where` is `np.mask`, replace it with `np.where` and rerun the codes. 
+To drop row and columns use ```.drop```.
+</code></pre></div></div>
+<p>CHT.drop([0,5], axis=0)
+CHT.drop(‘longitude’,axis=1, inplace=True)</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+To replace values, use `df.replace()`
+
+</code></pre></div></div>
+<p>CHT[‘famlev’].replace(‘L’,’Low’).replace(‘M’,’Middle’).replace(‘H’,’High’)
+CHT.drop(‘longitude’,axis=1, inplace=True)</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+Note: the argument ```inplace=True``` apply the change on the original data.
+
+Simple operation using the list comprehension can be done on data-frame as well.
+</code></pre></div></div>
+<p>CHT[‘NN’]=[0 for x in CHT[‘total_rooms’] if x&lt;100]
+CHT[‘size’]=[‘small’ if x&lt;100  else ‘big’  for x in CHT[‘total_rooms’]]</p>
+
+    </div>
+
+  
+    <ul class="tag_box inline">
+      <li><i class="glyphicon glyphicon-open"></i></li>
+      
+      
+
+
+  
+     
+    	<li><a href="/categories.html#Python_learn-ref">
+    		Python_learn <span>16</span>
+    	</a></li>
+     
+    	<li><a href="/categories.html#Pandas-ref">
+    		Pandas <span>9</span>
+    	</a></li>
+    
+  
+
+
+    </ul>
+    
+
+  
+    <ul class="tag_box inline">
+      <li><i class="glyphicon glyphicon-tags"></i></li>
+      
+      
+
+
+  
+     
+    	<li><a href="/tags.html#Pandas-ref">Pandas <span>9</span></a></li>
+     
+    	<li><a href="/tags.html#columns-ref">columns <span>4</span></a></li>
+     
+    	<li><a href="/tags.html#DataFrame-ref">DataFrame <span>5</span></a></li>
+     
+    	<li><a href="/tags.html#iloc-ref">iloc <span>3</span></a></li>
+     
+    	<li><a href="/tags.html#loc-ref">loc <span>3</span></a></li>
+     
+    	<li><a href="/tags.html#np.where-ref">np.where <span>1</span></a></li>
+     
+    	<li><a href="/tags.html#isin-ref">isin <span>1</span></a></li>
+     
+    	<li><a href="/tags.html#drop-ref">drop <span>1</span></a></li>
+     
+    	<li><a href="/tags.html#replace-ref">replace <span>1</span></a></li>
+    
+  
+
+
+
+    </ul>
+    
+  
+    <hr>
+    <ul class="pagination">
+    
+      <li class="prev"><a href="/python_learn/pandas/2019/10/21/data-frame" title="Data-frame">&laquo; Previous</a></li>
+    
+      <li><a href="/archive.html">Archive</a></li>
+    
+      <li class="next"><a href="/python_learn/pandas/2019/10/21/merging-dataframe" title="Merging data-frame">Next &raquo;</a></li>
+    
+    </ul>
+    <hr>
+    
+  </div>
+</div>
+
+
+      </div>
+
+    </div>
+
+	   
+
+
+
+
+  </body>
+
+<div class="footer">
+    <div id="footer">
+      <div class="container">
+        <p>&copy; 2020 Saeid Amiri
+		<a href="https://www.researchgate.net/profile/Saeid_Amiri6"><img src="/assets/images/researchgate.png" /></a>
+		<a href="mailto:saeid.amiri1@gmail.com"><img src="/assets/images/gmail.jpeg" /></a>
+		<a href="https://github.com/saeidamiri1"><img src="/assets/images/GitHub-Mark-64px.png" /></a>
+           <a href="http://saeidamiri1.github.io" target="_blank">Saeid Amiri</a>
+        </p>
+      </div>
+    </div>
+
+    <!-- Latest compiled and minified JavaScript, requires jQuery 1.x (2.x not supported in IE8) -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="/assets/themes/bootstrap-3/bootstrap/js/bootstrap.min.js"></script>
+</div>
+</html>
+

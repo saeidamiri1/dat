@@ -1,0 +1,495 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Summarizing data-frame</title>
+    <meta name="description" content="Summarizing data-frame">
+    <meta name="author" content="Saeid Amiri">
+
+    <!-- Enable responsive viewport -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Bootstrap styles -->
+    <link href="/assets/themes/bootstrap-3/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Optional theme -->
+    <link href="/assets/themes/bootstrap-3/bootstrap/css/bootstrap-theme.min.css" rel="stylesheet">
+    <!-- Sticky Footer -->
+    <link href="/assets/themes/bootstrap-3/bootstrap/css/bs-sticky-footer.css" rel="stylesheet">
+
+    <!-- Custom styles -->
+    <link href="/assets/themes/bootstrap-3/css/style.css?body=1" rel="stylesheet" type="text/css" media="all">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Fav and touch icons -->
+    <!-- Update these with your own images      -->
+      <link rel="shortcut icon" type="image/x-icon" href="http://localhost:4000/assets/images/iconified/favicon.ico">
+      <!-- <link rel="shortcut icon" type="image/png" href="http://localhost:4000/assets/images/iconified/apple-touch-icon.png"> -->
+      <link rel="apple-touch-icon" type="image/png" href="http://localhost:4000/assets/images/iconified/apple-touch-icon.png">
+      <link rel="apple-touch-icon" type="image/png" sizes="76x76" href="http://localhost:4000/images/iconified/apple-touch-icon-76x76.png">
+      <link rel="apple-touch-icon" type="image/png" sizes="114x114" href="http://localhost:4000/images/iconified/apple-touch-icon-114x114.png">
+
+    <!-- atom & rss feed -->
+    <link href="" type="application/atom+xml" rel="alternate" title="Sitewide ATOM Feed">
+    <link href="" type="application/rss+xml" rel="alternate" title="Sitewide RSS Feed">
+    
+  </head>
+
+ <div class="header">
+      <div id="wrap">
+      <nav class="navbar navbar-default" role="navigation">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#jb-navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <!-- <a class="navbar-brand" href="/">Posts relates</a> -->
+		  <a class="navbar-brand" href="/"><img src="https://raw.githubusercontent.com/saeidamiri1/saeidamiri1.github.io/master/public/image/1024px-Python.png" alt="logo" />Posts relates</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="jb-navbar-collapse">
+          <ul class="nav navbar-nav">
+            
+            
+            
+
+
+  
+    
+      
+      	
+      	<li><a href="/about">About</a></li>
+      	
+      
+    
+  
+    
+      
+      	
+      	<li><a href="/archive">Archive</a></li>
+      	
+      
+    
+  
+    
+      
+    
+  
+    
+      
+      	
+      	<li><a href="/categories">Categories</a></li>
+      	
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+      	
+      	<li><a href="/tags">Tags</a></li>
+      	
+      
+    
+  
+    
+  
+    
+  
+
+
+
+          </ul>
+        </div><!-- /.navbar-collapse -->
+      </nav>
+
+    </div>
+</div>
+
+  <body>
+    <div id="wrap">
+      <div class="container">
+        
+
+<div class="page-header">
+  <h1>Summarizing data-frame </h1>
+</div>
+
+<!-- Paste the 3 next lines where you want the sharing button(s) to appear -->
+    <div class="post-sharing">
+     
+
+  
+  		<div id="fb-root"></div>
+
+<ul class="post-share ulno mob">
+
+<!-- Twitter -->
+<li class="tw"><a href="https://twitter.com/share" class="twitter-share-button" data-text="Summarizing data-frame" data-via="" data-related="" data-count="" data-size="">Tweet</a>
+
+<!-- Google+ -->
+<li class="gp"><div class="g-plusone" data-size="medium" data-annotation="bubble" data-width=""></div>
+
+<!-- Facebook -->
+<li class="fb"><div class="fb-like" data-send="false" data-layout="button_count" data-width="90" data-show-faces="false" data-font=""></div>
+
+<!-- Reddit -->
+<li><script type="text/javascript" src="http://www.reddit.com/buttonlite.js?i=4"></script>
+</ul>
+
+<script>
+  
+(function(doc, script) {
+ 	
+    // Async Social Buttons
+    var js, 
+        fjs = doc.getElementsByTagName(script)[0],
+        add = function(url, id) {
+            if (doc.getElementById(id)) {return;}
+            js = doc.createElement(script);
+            js.src = url;
+            id && (js.id = id);
+            fjs.parentNode.insertBefore(js, fjs);
+        };
+
+    // Twitter SDK
+    add('//platform.twitter.com/widgets.js', 'twitter-wjs');
+    
+    // Google+ button
+    add('https://apis.google.com/js/plusone.js');
+    
+    // Facebook SDK
+    add('https://connect.facebook.net/en_GB/all.js#xfbml=1&appId=1424112504267565', 'facebook-jssdk');
+    
+}(document, 'script'));
+
+</script>
+  
+
+
+
+    </div>
+
+<div class="row post-full">
+  <div class="col-xs-12">
+    <div class="date">
+      <span>21 October 2019</span>
+    </div>
+    <div class="content">
+      <h2 id="summarizing-data-frame">Summarizing data-frame</h2>
+<p>To see the type, the information and summary of variables in the data-frame, use <code class="language-plaintext highlighter-rouge">.dtypes</code>,  <code class="language-plaintext highlighter-rouge">.describe()</code>, and   <code class="language-plaintext highlighter-rouge">.info()</code>.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>source ="https://storage.googleapis.com/mledu-datasets/california_housing_train.csv"
+CHT = pd.read_csv(source, sep=",")
+# show the type of variables
+CHT.dtypes
+# generate summary
+CHT.describe()
+CHT.info()
+</code></pre></div></div>
+
+<p>Beside the function print, pandas can show the first and the last part of data, using <code class="language-plaintext highlighter-rouge">.head()</code> and <code class="language-plaintext highlighter-rouge">.tail()</code>. By passing a number in the parenthesis, one can specify the output.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>CHT.head(10)
+CHT.tail(10)
+CHT.sort_values(by='housing_median_age', ascending=False).head(3)
+CHT.columns
+</code></pre></div></div>
+
+<p>It is easy to find the duplicates in data-frame  and  drop them, see below.</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>CHT.duplicated()
+CHT.drop_duplicates()
+</code></pre></div></div>
+<p>To check the duplication in variables, specify their names as well,</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>CHT.duplicated(['longitude'])
+CHT.drop_duplicates(['longitude'], keep='last')
+CHT.index.duplicated()
+</code></pre></div></div>
+
+<p>Although <code class="language-plaintext highlighter-rouge">.describe</code> can give a summary of variables,  more specific summery of variables (columns) can be extracted, see below.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>CHT.count()
+CHT[CHT.iloc[:,1]&lt;34].nunique()
+</code></pre></div></div>
+
+<p>The following table includes the useful functions.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Function</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">count</code></td>
+      <td>Number of non-null observations</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">sum</code></td>
+      <td>Sum of values</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">mean</code></td>
+      <td>Mean of value</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">mad</code></td>
+      <td>Mean absolute deviation</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">median</code></td>
+      <td>median of values</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">min</code></td>
+      <td>Minimum</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">max</code></td>
+      <td>Maximum</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">mode</code></td>
+      <td>Mode</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">abs</code></td>
+      <td>Absolute Value</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">prod</code></td>
+      <td>Product of values</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">std</code></td>
+      <td>Unbiased standard deviation</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">var</code></td>
+      <td>Unbiased variance</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">sem</code></td>
+      <td>Unbiased standard error of the mean</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">skew</code></td>
+      <td>Unbiased skewness (3rd moment)</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">kurt</code></td>
+      <td>Unbiased kurtosis (4th moment)</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">quantile</code></td>
+      <td>Sample quantile (value at %)</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">cumsum</code></td>
+      <td>Cumulative sum</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">cumprod</code></td>
+      <td>Cumulative product</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">cummax</code></td>
+      <td>Cumulative maximum</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">cummin</code></td>
+      <td>Cumulative minimum</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">nunique</code></td>
+      <td>number of unique elements</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">value_counts</code></td>
+      <td>Counts of unique values</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">cov</code></td>
+      <td>Calculate the covariance between columns</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">corr</code></td>
+      <td>Calculate the correlation between columns</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>The summaries can be obtained using any grouping variables in the data set:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>CHT.groupby(['famlev']).groups.keys()
+CHT.groupby(['famlev']).groups['H']
+CHT.groupby(['famlev']).first()
+
+CHT.groupby(['famlev']).sum()
+
+CHT.groupby(['famlev'])['median_house_value'].sum()
+# better output
+CHT.groupby(['famlev'])[['median_house_value']].sum()
+</code></pre></div></div>
+
+<p>The grouped variables would be assigned as indices, to bring them back as variables use <code class="language-plaintext highlighter-rouge">df.reset_index()</code></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>CHT.reset_index()
+</code></pre></div></div>
+
+<p>It is possible to apply even complex function, the following scripts calculate the coefficient of data.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>def cv(x):
+ return (np.mean(x)/np.var(x))
+
+aggr = {
+    'total_rooms':'sum',
+    'population': lambda x: cv(x)
+}
+CHT.groupby('famlev').agg(aggr)
+</code></pre></div></div>
+
+<p>The output can be tidied up,</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>aggr = {
+    'total_rooms':['mean','std']
+}
+grouped = CHT.groupby('famlev').agg(aggr)
+grouped.columns = grouped.columns.droplevel(level=0)
+grouped.rename(columns={"mean": "total_rooms", "std": "total_rooms"})
+grouped.head()
+</code></pre></div></div>
+
+<p>The summarizations can be done using pivot table,</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pd.pivot_table(CHT, index=['famlev'], aggfunc=['mean'])
+</code></pre></div></div>
+
+    </div>
+
+  
+    <ul class="tag_box inline">
+      <li><i class="glyphicon glyphicon-open"></i></li>
+      
+      
+
+
+  
+     
+    	<li><a href="/categories.html#Python_learn-ref">
+    		Python_learn <span>16</span>
+    	</a></li>
+     
+    	<li><a href="/categories.html#Pandas-ref">
+    		Pandas <span>9</span>
+    	</a></li>
+    
+  
+
+
+    </ul>
+    
+
+  
+    <ul class="tag_box inline">
+      <li><i class="glyphicon glyphicon-tags"></i></li>
+      
+      
+
+
+  
+     
+    	<li><a href="/tags.html#Pandas-ref">Pandas <span>9</span></a></li>
+     
+    	<li><a href="/tags.html#columns-ref">columns <span>4</span></a></li>
+     
+    	<li><a href="/tags.html#DataFrame-ref">DataFrame <span>5</span></a></li>
+     
+    	<li><a href="/tags.html#iloc-ref">iloc <span>3</span></a></li>
+     
+    	<li><a href="/tags.html#loc-ref">loc <span>3</span></a></li>
+     
+    	<li><a href="/tags.html#head-ref">head <span>1</span></a></li>
+     
+    	<li><a href="/tags.html#describe-ref">describe <span>1</span></a></li>
+     
+    	<li><a href="/tags.html#groupby-ref">groupby <span>1</span></a></li>
+     
+    	<li><a href="/tags.html#reset_index-ref">reset_index <span>1</span></a></li>
+     
+    	<li><a href="/tags.html#pivot_table-ref">pivot_table <span>1</span></a></li>
+    
+  
+
+
+
+    </ul>
+    
+  
+    <hr>
+    <ul class="pagination">
+    
+      <li class="prev"><a href="/python_learn/pandas/2019/10/21/pipline" title="Pipline">&laquo; Previous</a></li>
+    
+      <li><a href="/archive.html">Archive</a></li>
+    
+      <li class="next"><a href="/python_learn/data/structures/2019/10/22/data-structure" title="Data Structure">Next &raquo;</a></li>
+    
+    </ul>
+    <hr>
+    
+  </div>
+</div>
+
+
+      </div>
+
+    </div>
+
+	   
+
+
+
+
+  </body>
+
+<div class="footer">
+    <div id="footer">
+      <div class="container">
+        <p>&copy; 2020 Saeid Amiri
+		<a href="https://www.researchgate.net/profile/Saeid_Amiri6"><img src="/assets/images/researchgate.png" /></a>
+		<a href="mailto:saeid.amiri1@gmail.com"><img src="/assets/images/gmail.jpeg" /></a>
+		<a href="https://github.com/saeidamiri1"><img src="/assets/images/GitHub-Mark-64px.png" /></a>
+           <a href="http://saeidamiri1.github.io" target="_blank">Saeid Amiri</a>
+        </p>
+      </div>
+    </div>
+
+    <!-- Latest compiled and minified JavaScript, requires jQuery 1.x (2.x not supported in IE8) -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="/assets/themes/bootstrap-3/bootstrap/js/bootstrap.min.js"></script>
+</div>
+</html>
+

@@ -1,0 +1,1422 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+ 
+ <title>Posts relates</title>
+ <link href="https://saeidamiri1.github.io/dat" rel="self"/>
+ <link href="https://saeidamiri1.github.io/dat"/>
+ <updated>2020-09-14T01:48:54-04:00</updated>
+ <id>https://saeidamiri1.github.io/dat</id>
+ <author>
+   <name>Saeid Amiri</name>
+   <email>saeid.amiri1@gmail.com</email>
+ </author>
+
+ 
+ <entry>
+   <title>Introductory Notes on Matplotlib</title>
+   <link href="https://saeidamiri1.github.io/dat/python_learn/plot/2019/12/30/plot"/>
+   <updated>2019-12-30T00:00:00-05:00</updated>
+   <id>https://saeidamiri1.github.io/dat/python_learn/plot/2019/12/30/plot</id>
+   <content type="html">&lt;h2 id=&quot;introductory-notes-on-matplotlib&quot;&gt;Introductory Notes on Matplotlib&lt;/h2&gt;
+
+&lt;h2 id=&quot;contents&quot;&gt;Contents&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;#matplotlib&quot;&gt;Matplotlib&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#scatter-plot&quot;&gt;Scatter plot&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#line&quot;&gt;line&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#Pythonic-approach&quot;&gt;Pythonic approach&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#subplot&quot;&gt;subplot&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;matplotlib&quot;&gt;Matplotlib&lt;/h2&gt;
+&lt;p&gt;Python has very advanced tools for plotting, the plot (pyplot) can be done in two different ways; 1) Pythonic: in this approach an empty object oriented is created and plots are built using programs and assigned to the empty object,and 2) non-pythonic: it relies on non-python machines like the package  &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;matplotlib&lt;/code&gt;,  it is very easy to use and good tools for interactive use. A standard shorthands for this module is &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;import matplotlib.pyplot as plt&lt;/code&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;scatter-plot&quot;&gt;Scatter plot&lt;/h2&gt;
+&lt;p&gt;The most commonly used plot is the scatter plot, see the following scripts that generate random number and plot&lt;/p&gt;
+
+&lt;p&gt;```{Python, echo = FALSE, message = FALSE}
+import matplotlib.pyplot as plt
+import numpy as np
+n = 100
+x = 2 * np.random.rand(n)
+y=2*x+np.random.rand(n)
+plt.scatter(x, y)
+plt.show(block=False)&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+&amp;lt;img src=&quot;https://raw.githubusercontent.com/saeidamiri1/pythonseum/master/public/image/Figure-2019-12-30-plot-1.png&quot; width=&quot;350&quot; height=&quot;300&quot; /&amp;gt;
+
+The scatter plot can be presented using different [arguments](https://matplotlib.org/api/_as_gen/matplotlib.lines.Line2D.html#matplotlib.lines.Line2D), the size of point,
+colour, [marker](https://matplotlib.org/api/markers_api.html) different character for points.  
+```{Python, echo = FALSE, message = FALSE}
+colors = np.random.rand(n)
+plt.scatter(x, y, s=20 /(x+.4)**2 , c=colors, marker=&quot;s&quot;)
+plt.show(block=False)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;Now highlight points that
+```{Python, echo = FALSE, message = FALSE}
+xy=x&lt;strong&gt;2+y&lt;/strong&gt;2
+select=xy&amp;lt;1
+plt.scatter(x, y, alpha=0.3)
+plt.scatter(x[select], y[select],facecolor=’none’,edgecolors=’r’)
+plt.show()&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;lt;img src=&quot;https://raw.githubusercontent.com/saeidamiri1/pythonseum/master/public/image/Figure-2019-12-30-plot-2.png&quot; width=&quot;350&quot; height=&quot;300&quot; /&amp;gt;
+
+
+## line
+Using ```plt.plot``` can plot the line, to explain let consider timesries: 
+```{Python, echo = FALSE, message = FALSE}
+import pandas as pd 
+x=pd.period_range('2019-11-06', periods=12*10,freq='M').to_timestamp()
+y = np.random.randn(len(x)).cumsum()
+y=abs(min(y))+y
+plt.plot(x, y, label='ED')
+plt.title('Example Data') 
+plt.xlabel('Date') 
+plt.ylabel('Y')
+plt.grid(True)
+plt.figtext(1,0, 'note',ha='right', va='bottom')
+plt.legend(loc='best', framealpha=0.5,prop={'size':'small'})
+plt.tight_layout(pad=1)
+plt.gcf().set_size_inches(10, 5)
+plt.show(block=False)
+plt.close()
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/saeidamiri1/pythonseum/master/public/image/Figure-2019-12-30-plot-3.png&quot; width=&quot;350&quot; height=&quot;300&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Example: Write a function to plot the following function
+\(f(x) =
+  \begin{cases}
+    sin(x),       &amp;amp; x\leq \pi/2,\\
+    cos(x)  &amp;amp; x&amp;gt; \pi/2.\\
+  \end{cases}\)&lt;/p&gt;
+
+&lt;p&gt;```{Python, echo = FALSE, message = FALSE}
+x=np.arange(0,np.pi,np.pi/100)
+y=np.where(x&amp;lt;np.pi/2,np.cos(x),np.sin(x))
+plt.plot(x,y)&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;lt;img src=&quot;https://raw.githubusercontent.com/saeidamiri1/pythonseum/master/public/image/Figure-2019-12-30-plot-4.png&quot; width=&quot;350&quot; height=&quot;300&quot; /&amp;gt;
+
+
+The other approach is to use two function instead one, it can be done using the following script,   
+
+```{Python, echo = FALSE, message = FALSE}
+x=np.arange(0,np.pi,np.pi/100)
+y=np.where(x&amp;lt;np.pi/2,np.cos(x),np.sin(x))
+x0=x[x&amp;lt;np.pi/2]
+plt.plot(x0,np.cos(x0), linestyle='--',label='cos(x)')
+plt.axis([0,np.pi,0,1])
+x1=x[(x&amp;gt;=np.pi/2)]
+plt.plot(x1,np.sin(x1), linestyle='--',label='sin(x)')
+plt.legend()
+# it can be done using
+# plt.plot(x0,np.cos(x0), '--',x1,np.sin(x1), '--')
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/saeidamiri1/pythonseum/master/public/image/Figure-2019-12-30-plot-5.png&quot; width=&quot;350&quot; height=&quot;300&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;The argument &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;plt.axis()&lt;/code&gt; defines axes limits, it can also be done using  &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;plt.xlim(,)&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;plt.ylim(,)&lt;/code&gt;.  The style of line is define in &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;'--'&lt;/code&gt;, other styles are&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Type&lt;/th&gt;
+      &lt;th&gt;Description&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;’-‘ or ‘solid’&lt;/td&gt;
+      &lt;td&gt;solid line&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;’–’ or ‘dashed’&lt;/td&gt;
+      &lt;td&gt;dashed line&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;’-.’ or ‘dashdot’&lt;/td&gt;
+      &lt;td&gt;dash-dotted line&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;’:’ or ‘dotted’&lt;/td&gt;
+      &lt;td&gt;dotted line&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;‘None’ or ‘ ‘&lt;/td&gt;
+      &lt;td&gt;draw nothing&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;There are more options for axis, for instance &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;plt.axis('equal')&lt;/code&gt;  and  &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;plt.axis('tight')&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;The labels and title can be added to plot using &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;plt.axes()&lt;/code&gt;,
+```{Python, echo = FALSE, message = FALSE}
+plt.axes(xlim=(0, 10), ylim=(-2, 2),xlabel=’x’, ylabel=’sin(x)’, title=’A Simple Plot’)
+plt.plot(x, np.sin(x), ‘-‘)
+plt.show(block=False)&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+The following plot lines with different markers
+
+```{Python, echo = FALSE, message = FALSE}
+n = 15
+linestyles = ['-', '--', '-.', ':']
+markers = list('ov^&amp;lt;&amp;gt;8sp*hHDdPX')
+x = np.linspace(0, 100, 10)
+for i in range(n): 
+  y = x + x/5*i + i
+  st = linestyles[i % len(linestyles)]
+  ma = markers[i % len(markers)] 
+  plt.plot(x, y,label='Line '+str(i+1)+' '+st+ma, marker=ma,linestyle=st)
+
+plt.grid(True)
+plt.axis('tight')
+plt.legend(loc='best', prop={'size':'small'}) 
+plt.show(block=False)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/saeidamiri1/pythonseum/master/public/image/Figure-2019-12-30-plot-6.png&quot; width=&quot;350&quot; height=&quot;300&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;The legend can be moved to different positions.&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;plt.legend(bbox_to_anchor=(1, 0.5), loc='center left', prop={'size':'small'}) 
+plt.legend(bbox_to_anchor=(0.5, -0.05),loc='upper center', ncol=8, prop={'size':'small'})
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/saeidamiri1/pythonseum/master/public/image/Figure-2019-12-30-plot-7.png&quot; width=&quot;350&quot; height=&quot;300&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/saeidamiri1/pythonseum/master/public/image/Figure-2019-12-30-plot-8.png&quot; width=&quot;350&quot; height=&quot;300&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Note: if you want to save the figure to a file, put the script
+between
+```{Python, echo = FALSE, message = FALSE}
+fig = plt.figure()
+fig.savefig(‘name.png’)&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+
+
+## Pythonic approach
+The following codes show how pythonic approach can be applied to generate several plots; first generate an empty figure from the global Figure factory, then generate your plots and assign to figure. 
+
+```{Python, echo = FALSE, message = FALSE}
+fig = plt.figure()
+for i in range(1,10):
+  x=pd.period_range('2019-11-06', periods=12*10,freq='M').to_timestamp()
+  y = np.random.randn(len(x)).cumsum()
+  y=abs(min(y))+y
+  plt.plot(x, y, label='ED%s'%i)
+  plt.title('Example Data') 
+  plt.xlabel('Date') 
+  plt.ylabel('Y')
+  plt.grid(True)
+  plt.legend(loc='best', framealpha=0.5,prop={'size':'small'})
+  fig = plt.figure(i) # get the figure
+plt.show(block=False)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;you can close figures according the number &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;plt.close(fig.number)&lt;/code&gt;,  all figures &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;plt.close(all)&lt;/code&gt;,  ro the current one &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;plt.close()&lt;/code&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;subplot&quot;&gt;subplot&lt;/h2&gt;
+&lt;p&gt;Figures can be plotted in one figure using &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;.subplot(#row,#col,position)&lt;/code&gt;,&lt;/p&gt;
+
+&lt;p&gt;```{Python, echo = FALSE, message = FALSE}
+x = np.linspace(0, 16, 800)
+plt.subplot(2, 2, 1)
+plt.plot(x, np.sin(x))
+plt.title(“Fig1”)
+plt.xlim(0,1.5&lt;em&gt;np.pi)
+plt.xlabel(“X-axis”)
+plt.ylabel(“sin(x)”)
+plt.subplot(2, 2, 2)
+plt.plot(x, np.cos(x))
+plt.subplot(2, 2, 3)
+plt.plot(x, np.sin(x)&lt;/em&gt;np.cos(x))
+plt.subplot(2, 2, 4)
+plt.plot(x, np.sin(x)+np.cos(x))
+plt.show(block=False)&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;lt;img src=&quot;https://raw.githubusercontent.com/saeidamiri1/pythonseum/master/public/image/Figure-2019-12-30-plot-9.png&quot; width=&quot;350&quot; height=&quot;300&quot; /&amp;gt;
+
+You can not use `plt.axes()` for subplot. 
+
+
+Example: Fit a linear model to a sample data.  
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;x = np.random.randn(100)
+y = x + np.random.randn(100)
+fig, ax = plt.subplots() 
+ax.scatter(x, y, alpha=0.5, color=’orchid’) 
+fig.suptitle(‘Scatter Plot’) 
+fig.tight_layout(pad=2);
+ax.grid(True)
+fit = np.polyfit(x, y, deg=1) 
+ax.plot(x, fit[0]*x + fit[1], ‘-‘,color=’red’, linewidth=2)
+```
+&lt;img src=&quot;https://raw.githubusercontent.com/saeidamiri1/pythonseum/master/public/image/Figure-2019-12-30-plot-10.png&quot; width=&quot;350&quot; height=&quot;300&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;a href=&quot;#contents&quot;&gt;⬆ back to top&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;h3 id=&quot;license&quot;&gt;License&lt;/h3&gt;
+&lt;p&gt;Copyright (c) 2019 Saeid Amiri&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Optimization</title>
+   <link href="https://saeidamiri1.github.io/dat/algorithm/2019/11/02/approximation"/>
+   <updated>2019-11-02T00:00:00-04:00</updated>
+   <id>https://saeidamiri1.github.io/dat/algorithm/2019/11/02/approximation</id>
+   <content type="html">&lt;h2 id=&quot;optimization&quot;&gt;Optimization&lt;/h2&gt;
+
+&lt;h2 id=&quot;contents&quot;&gt;Contents&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;#newton-raphson&quot;&gt;Newton-Raphson&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#gradient-descent&quot;&gt;Gradient Descent&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;newton-raphson-method&quot;&gt;Newton-Raphson method&lt;/h2&gt;
+&lt;p&gt;The Newton-Raphson algorithm is one of the old iterative algorithm to approximately find the roots of a real-valued function;
+&lt;img src=&quot;https://latex.codecogs.com/svg.latex?f(x)=0&quot; alt=&quot;eq1&quot; /&gt;. The idea behind of it is based on the simple linear approximation.
+Given &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;x_0&lt;/code&gt;, a starting point, by solving the root of function by solving&lt;br /&gt;
+&lt;img src=&quot;https://latex.codecogs.com/svg.latex?x_{n+1}=x_n-%20\frac{f(x_n)}{\partial%20f(x_{n})}&quot; alt=&quot;eq2&quot; /&gt;, we get closer to the solution.&lt;/p&gt;
+
+&lt;p&gt;The simple and plain algorithm of Newton-Raphosn is given in the below&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/saeidamiri1/pythonseum/master/public/image/Figure-2019-11-05-newton-raphson-algorithm.png&quot; width=&quot;350&quot; height=&quot;300&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Since we should run the iteration for many time; it is better to replace &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;for&lt;/code&gt; with &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;while&lt;/code&gt; loop. In the below, we present the algorithm in Python.&lt;/p&gt;
+
+&lt;p&gt;To write the algorithm in code, we consider &lt;img src=&quot;https://latex.codecogs.com/svg.latex?f(x)=x^4-3x^2+2&quot; alt=&quot;E_0=mc^2&quot; /&gt; that is also used in &lt;a href=&quot;https://en.wikipedia.org/wiki/Gradient_descent&quot;&gt;Wikipedia&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Define the function&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;def f(x):
+    return x**4 - 3 * x**3+2
+
+def df(x):
+    return 4 * x**3 - 9 * x**2
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;To see the minimum of the function, plot it:&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;from matplotlib import pyplot as plt
+import numpy as np 
+x_ran_0 = np.linspace(-7,7,100) 
+plt.plot(x_ran_0 ,f(x_ran_0))
+plt.xlabel('x')
+plt.ylabel('f(x)')
+plt.show(block=False)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/saeidamiri1/pythonseum/master/public/image/Figure-2019-11-05-approximations-1.png&quot; width=&quot;350&quot; height=&quot;300&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;To see how the algorithm works, we can add the plot pf gradients along running the iterations:&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;import matplotlib as mpl
+
+x_s = -4 # Starting point
+cur_x = x_s
+diff_cur_prev= 1
+precision = 0.001
+max_ite = 1000  #Maximum number of iterations
+
+#Choose different colors for each gradient
+colors = mpl.cm.autumn(np.linspace(0,5,max_ite)) 
+
+plt.plot(x_ran_0 ,f(x_ran_0)) # plot again the  f(x)
+
+i= 1
+while diff_cur_prev &amp;gt; precision:
+    #Plot the points 
+    plt.scatter(cur_x, f(cur_x), color='black', s=10, zorder=2);
+    plt.scatter(cur_x, f(cur_x), color='white', s=5, zorder=2)  
+    x_ran_1= np.linspace(cur_x-5,cur_x+5,10)
+    plt.plot(x_ran_1, (df(cur_x) * (x_ran_1 - cur_x)) + f(cur_x), color=colors[i], zorder=1)
+    prev_x = cur_x
+    cur_x += -f(prev_x) / df(prev_x)
+    diff_cur_prev = abs(cur_x - prev_x)
+    print(&quot;Run: %d, Current: %f, Previous: %f, Different: %f&quot; % (i, cur_x,prev_x,diff_cur_prev))
+    i+= 1
+
+plt.xlim([-10,10])
+plt.xlabel('x')
+plt.ylabel('f(x)')
+plt.show(block=False)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/saeidamiri1/pythonseum/master/public/image/Figure-2019-11-05-approximations-2.png&quot; width=&quot;350&quot; height=&quot;300&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;gradient-descent&quot;&gt;Gradient Descent&lt;/h2&gt;
+&lt;p&gt;Gradient Descent is variant of Newton-Raphson that can be used to find the minimum value of a differentiable function. The local minimum can be obtained by solving&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://latex.codecogs.com/svg.latex?x_{n+1}=x_n-\gamma%20\frac{\partial%20f}{\partial%20x_{n}}&quot; alt=&quot;eq3&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;where &lt;img src=&quot;https://latex.codecogs.com/svg.latex?\gamma&quot; alt=&quot;eq4&quot; /&gt; is called the step size or learning rate, see &lt;a href=&quot;https://en.wikipedia.org/wiki/Gradient_descent&quot;&gt;Wikipedia&lt;/a&gt;.  Obviously, the criterion function is different from the Newton-Raphson Algorithm.&lt;/p&gt;
+
+&lt;p&gt;To write a simple code to find the minimum using the Gradient Descent consider &lt;img src=&quot;https://latex.codecogs.com/svg.latex?f(x)=x^4-3x^2+2&quot; alt=&quot;eq5&quot; /&gt; that is already used for explaining the Newton-Raphson.&lt;/p&gt;
+
+&lt;p&gt;The plot of gradient can be obtained using running the following script:&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;import matplotlib as mpl
+
+x_s = -4 # Starting point
+cur_x = x_s
+diff_cur_prev= 1
+gamma = 0.001 
+precision = 0.001
+max_ite = 1000  #Maximum number of iterations
+
+#Choose different colors for each gradient
+colors = mpl.cm.autumn(np.linspace(0,5,max_ite)) 
+
+plt.plot(x_ran_0 ,f(x_ran_0)) # plot again the  f(x)
+
+i= 1
+while diff_cur_prev &amp;gt; precision:
+    #Plot the points 
+    plt.scatter(cur_x, f(cur_x), color='black', s=10, zorder=2);
+    plt.scatter(cur_x, f(cur_x), color='white', s=5, zorder=2)  
+    x_ran_1= np.linspace(cur_x-5,cur_x+5,10)
+    plt.plot(x_ran_1, (df(cur_x) * (x_ran_1 - cur_x)) + f(cur_x), color=colors[i], zorder=1)
+    prev_x = cur_x
+    cur_x += -gamma * df(prev_x)
+    diff_cur_prev = abs(cur_x - prev_x)
+    print(&quot;Run: %d, Current: %f, Previous: %f, Different: %f&quot; % (i, cur_x,prev_x,diff_cur_prev))
+    i+= 1
+
+plt.xlim([-10,10])
+plt.xlabel('x')
+plt.ylabel('f(x)')
+plt.show(block=False)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/saeidamiri1/pythonseum/master/public/image/Figure-2019-11-05-approximations-3.png&quot; width=&quot;350&quot; height=&quot;300&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;a href=&quot;#contents&quot;&gt;⬆ back to top&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;h3 id=&quot;license&quot;&gt;License&lt;/h3&gt;
+&lt;p&gt;Copyright (c) 2019 Saeid Amiri&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Iteration</title>
+   <link href="https://saeidamiri1.github.io/dat/python_learn/2019/11/02/iteration"/>
+   <updated>2019-11-02T00:00:00-04:00</updated>
+   <id>https://saeidamiri1.github.io/dat/python_learn/2019/11/02/iteration</id>
+   <content type="html">&lt;h2 id=&quot;iteration&quot;&gt;Iteration&lt;/h2&gt;
+&lt;p&gt;Python is equipped with strong tools for the repeat of some commands or produce sequence number.&lt;/p&gt;
+
+&lt;h2 id=&quot;contents&quot;&gt;Contents&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;#range&quot;&gt;Range&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#for&quot;&gt;For&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#while&quot;&gt;While&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#comprehension-structure&quot;&gt;Comprehension structure&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;range&quot;&gt;Range&lt;/h3&gt;
+&lt;p&gt;The function &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;range&lt;/code&gt; can be used to produce series of number between two numbers.&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;range(3,15)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;The advance function of &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;range&lt;/code&gt; is &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;arange&lt;/code&gt; in &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;numpy&lt;/code&gt; which can be used to generate a series of number from a number to another number with specific increment:&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;gt;&amp;gt;&amp;gt; np.arange(8, 20,1)
+array([ 8,  9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19])
+&amp;gt;&amp;gt;&amp;gt; np.arange(2,1,-0.1)
+array([ 2. ,  1.9,  1.8,  1.7,  1.6,  1.5,  1.4,  1.3,  1.2,  1.1])
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;A specified element can be repeated for specific number.&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;gt;&amp;gt;&amp;gt; [2,3]*2
+[2, 3, 2, 3]
+&amp;gt;&amp;gt;&amp;gt; np.repeat([2, 3],[2,3])
+array([2, 2, 3, 3, 3])
+&amp;gt;&amp;gt;&amp;gt; np.repeat([&quot;A&quot;, &quot;B&quot;],[2,3])
+array(['A', 'A', 'B', 'B', 'B'],dtype='&amp;lt;U1')
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;for&quot;&gt;For&lt;/h3&gt;
+&lt;p&gt;The most useful function for the iteration is &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;for&lt;/code&gt;  that repeats the specified commands for specified times, run the following codes to see how does it work&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;gt;&amp;gt;&amp;gt; for r in range(1,5):
+...  print(r^3)
+...
+2
+1
+0
+7
+
+ &amp;gt;&amp;gt;&amp;gt; for i in [2,3,1,7]:
+...  print(i^3)
+...
+1
+0
+2
+4
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;gt;&amp;gt;&amp;gt; score=[10, 15, 7, 20]
+&amp;gt;&amp;gt;&amp;gt; for i in (range(0,4)):
+...  if (score[i]&amp;lt;10):
+...       print(&quot;fail&quot;)
+...  else:
+...        print(&quot;pass&quot;)
+...
+pass
+pass
+fail
+pass
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;gt;&amp;gt;&amp;gt; for i in range(0,4):
+...   if score[i]&amp;lt;10:
+...       print(&quot;fail&quot;)
+...   elif(score[i]&amp;gt;=10&amp;amp;score[i]&amp;lt;14):
+...       print(&quot;middle&quot;)
+...   elif(score[i]&amp;gt;=14&amp;amp;score[i]&amp;lt;17):
+...        print(&quot;good&quot;)
+...   elif(score[i]&amp;gt;=17):
+...       print(&quot;BEST&quot;)
+...
+middle
+middle
+fail
+middle
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;while&quot;&gt;While&lt;/h3&gt;
+&lt;p&gt;The command &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;while&lt;/code&gt; runs iteration until the condition be attained,&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;gt;&amp;gt;&amp;gt; x=8
+&amp;gt;&amp;gt;&amp;gt; i=0
+&amp;gt;&amp;gt;&amp;gt; while(x&amp;lt;12):
+...   i=i+1
+...   x=x+x/8
+...   print(i,x)
+...
+1 9.0
+2 10.125
+3 11.390625
+4 12.814453125
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Inversely, the command of repeat continue until the condition situated inside commands be attained, in the following codes, the loop continues until the condition &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;(x&amp;gt;12)&lt;/code&gt;  is violated.&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;gt;&amp;gt;&amp;gt; x=8
+&amp;gt;&amp;gt;&amp;gt; i=0
+&amp;gt;&amp;gt;&amp;gt; while True:
+...  i=i+1
+...  x=x+x/8
+...  print(i,x)
+...  if (x&amp;gt;12):
+...    break
+...
+1 9.0
+2 10.125
+3 11.390625
+4 12.814453125
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;comprehension-structure&quot;&gt;Comprehension structure&lt;/h3&gt;
+&lt;p&gt;Comprehension structure in Python helps to combine several iteration in one line, to practice let write a simple function to select pair of unequal numbers between (1, 100).&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;combs=[]
+for x in range(3):
+ for y in range(3):
+  if x!= y:
+    combs.append((x,y))
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;The code can be simplify as list comprehension&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;[(x,y) for x in range(3) for y in range(3) if x!=y]
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Comprehension structure can be used for different Python structures, see the following script that generates numbers between (1,10) and put them in different Python structures.&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# A generator expression
+
+print ((x for x in range(10)))
+
+# A list comprehension
+print ([x for x in range(10)])
+
+# A set comprehension
+print ({x for x in range(10)})
+
+# A dictionary comprehension
+print ({x: x for x in range(10)})
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;a href=&quot;#contents&quot;&gt;⬆ back to top&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;h3 id=&quot;license&quot;&gt;License&lt;/h3&gt;
+&lt;p&gt;Copyright (c) 2019 Saeid Amiri&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Data control structure</title>
+   <link href="https://saeidamiri1.github.io/dat/data/structures/python_learn/2019/11/01/data-control-structure"/>
+   <updated>2019-11-01T00:00:00-04:00</updated>
+   <id>https://saeidamiri1.github.io/dat/data/structures/python_learn/2019/11/01/data-control-structure</id>
+   <content type="html">&lt;h2 id=&quot;data-control-structure&quot;&gt;Data control structure&lt;/h2&gt;
+
+&lt;h2 id=&quot;contents&quot;&gt;Contents&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;#boolean-value&quot;&gt;Boolean value&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#control-structure&quot;&gt;Control Structure&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#try-except&quot;&gt;Try Except&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;boolean-value&quot;&gt;Boolean value&lt;/h3&gt;
+&lt;p&gt;The value True (T) and False (F) are referred to as logical values and used the same in Python; their corresponding values are 1 and 0. Run the following codes and explains what the codes do.&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;gt;&amp;gt;&amp;gt; 8&amp;lt;9
+True
+&amp;gt;&amp;gt;&amp;gt; 9&amp;lt;8
+False
+&amp;gt;&amp;gt;&amp;gt; x=3
+&amp;gt;&amp;gt;&amp;gt; y=9
+&amp;gt;&amp;gt;&amp;gt; x&amp;lt;y
+True
+&amp;gt;&amp;gt;&amp;gt; x&amp;gt;y
+False
+&amp;gt;&amp;gt;&amp;gt;
+&amp;gt;&amp;gt;&amp;gt; X=range(-3,3)
+&amp;gt;&amp;gt;&amp;gt; [X[i]&amp;lt;2 for i in range(6)]
+[True, True, True, True, True, False]
+&amp;gt;&amp;gt;&amp;gt; sum([X[i]&amp;lt;2 for i in range(6)])
+5
+&amp;gt;&amp;gt;&amp;gt; sum(X)
+-3
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;One of the main application of logical operator is to extract specific elements, see the following codes,&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;gt;&amp;gt;&amp;gt; weight=[58,89,68,74,62,77,65,65]
+&amp;gt;&amp;gt;&amp;gt; [weight[i]&amp;lt;74 for i in range(len(weight))]
+[True, False, True, False, True, False, True, True]
+&amp;gt;&amp;gt;&amp;gt; weight&amp;lt;74
+Traceback (most recent call last):
+  File &quot;&amp;lt;stdin&amp;gt;&quot;, line 1, in &amp;lt;module&amp;gt;
+TypeError: '&amp;lt;' not supported between instances of 'list' and 'int'
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Obviously &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;weight&amp;lt;74&lt;/code&gt; does not work for the list, To run it change the data to the &lt;a href=&quot;https://saeidamiri1.github.io/pythonseum/numpy/2019/10/22/data-structure&quot;&gt;array&lt;/a&gt; provided in Numpy:&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;gt;&amp;gt;&amp;gt; weight=np.array(weight)
+&amp;gt;&amp;gt;&amp;gt; weight&amp;lt;74
+array([ True, False,  True, False,  True, False,  True,True], dtype=bool)
+&amp;gt;&amp;gt;&amp;gt; (weight&amp;lt;74) &amp;amp; (weight==89)
+array([False, False, False, False, False, False, False, False], dtype=bool)
+&amp;gt;&amp;gt;&amp;gt; weight[(weight&amp;lt;74) &amp;amp; (weight==89)]
+array([], dtype=int64)
+&amp;gt;&amp;gt;&amp;gt; weight[(weight&amp;lt;74) &amp;amp; (weight==62)]
+array([62])
+&amp;gt;&amp;gt;&amp;gt; weight[(weight&amp;lt;74) | (weight==62)]
+array([58, 68, 62, 65, 65])
+&amp;gt;&amp;gt;&amp;gt; weight[~(weight&amp;lt;74) &amp;amp; (weight==62)]
+array([], dtype=int64)
+&amp;gt;&amp;gt;&amp;gt; weight[~((weight&amp;lt;74) | (weight==62))]
+array([89, 74, 77])
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;control-structure&quot;&gt;Control Structure&lt;/h3&gt;
+&lt;p&gt;Commands with control structure often include conditional command that use comparisons operators (&amp;gt;, &amp;lt;, =&amp;gt;, &amp;lt;=, ==, !=, ~, is)&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;gt;&amp;gt;&amp;gt; 3&amp;lt;4
+True
+&amp;gt;&amp;gt;&amp;gt; 3!=4
+True
+&amp;gt;&amp;gt;&amp;gt; 3==4
+False
+&amp;gt;&amp;gt;&amp;gt; 3 is 4
+False
+&amp;gt;&amp;gt;&amp;gt; 'hi' == 'h' + 'i'
+True
+&amp;gt;&amp;gt;&amp;gt; 'HI' != 'hi'
+True
+&amp;gt;&amp;gt;&amp;gt; [1, 2] != [2, 1]
+True
+&amp;gt;&amp;gt;&amp;gt; ~True
+-2
+&amp;gt;&amp;gt;&amp;gt; ~False
+-1
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;The structure command of if is as below.&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;If cond satisfies the cons.expr run otherwise alt.expr run.
+if(cond) cons.expr elif (condition) alt.expr else alt.expr
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;x=4
+y=4
+
+if x&amp;lt;y: 
+  print('x is less than y')
+elif x&amp;gt;y:
+ print('x greater than y')
+else: 
+ print(' x and y are equal')
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;To pass the value inside the quote, use the f-string format&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;if x&amp;lt;y: 
+  print( f'{x} is less than {y}')
+elif x&amp;gt;y:
+ print(f'{x}greater than {y}')
+else: 
+ print(f'x={x} and y={y} are equal')
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;try-except&quot;&gt;Try except&lt;/h3&gt;
+&lt;p&gt;When there is any possibility for error, it is better to use &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;try except&lt;/code&gt;, which tests the statement infront try, if there is an error, it goes to except, otherwise passes and goes to else.&lt;/p&gt;
+
+&lt;p&gt;```{Python, echo = FALSE, message = FALSE}&lt;br /&gt;
+x=’Just test’
+try:
+  print(x)
+except:
+  print(“Something went wrong”)
+else:
+  print(“Nothing went wrong”)&lt;/p&gt;
+
+&lt;p&gt;try:
+  print(y)
+except:
+  print(“Something went wrong”)
+else:
+  print(“Nothing went wrong”)
+```&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;a href=&quot;#contents&quot;&gt;⬆ back to top&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;h3 id=&quot;license&quot;&gt;License&lt;/h3&gt;
+&lt;p&gt;Copyright (c) 2019 Saeid Amiri&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Function in Python</title>
+   <link href="https://saeidamiri1.github.io/dat/python_learn/2019/10/24/function-in-python"/>
+   <updated>2019-10-24T00:00:00-04:00</updated>
+   <id>https://saeidamiri1.github.io/dat/python_learn/2019/10/24/function-in-python</id>
+   <content type="html">&lt;h2 id=&quot;function&quot;&gt;Function&lt;/h2&gt;
+&lt;p&gt;In the context of programming, a function is a sequence of statements that performs a computation. Functions has three parts; argument, script, and output. Python has two kinds of function: built-in function that is in the core of Python or are collected as package. User-defined function that is written by user.&lt;/p&gt;
+
+&lt;h2 id=&quot;contents&quot;&gt;Contents&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;#built-in-function&quot;&gt;Built-in function&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#user-function&quot;&gt;User function&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#in-line-function&quot;&gt;In-line function&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#map-and-filter&quot;&gt;Map and Filter&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#decorators&quot;&gt;Decorators&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;built-in-function&quot;&gt;Built-in function&lt;/h3&gt;
+&lt;p&gt;Python has a number of functions in its core that are always available, &lt;a href=&quot;https://docs.python.org/3/library/functions.html&quot;&gt;see&lt;/a&gt;&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;x=[1,2,3]
+type(x)
+len(x)
+min(x)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;To round the value, use the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;round(value,size)&lt;/code&gt; function&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;round(0.12345,2)
+round(0.12345,3)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;user-function&quot;&gt;User function&lt;/h3&gt;
+&lt;p&gt;Functions has three parts; argument, script, and output. It has simple structure&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;def name (argument):  
+  script
+  return output
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;For instance write a function get two argument, add them together and return it.&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;def sum0 (x,y):  
+  s0=x+y
+  return s0
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;If you do not specify the arguments, use a * argument,&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;def sum0 (x,*y):  
+  s0=x+mean(y)
+  return s0
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;You can define a default value for argument.&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;def sum0 (x,y=1):  
+  s0=x+y
+  return s0
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;You can define an optional argument.&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;def sum0 (x,y=None):  
+  if y is None:
+    return x
+  elif:
+     return x+y
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;def letterGrade(score):
+    if score &amp;gt;= 90:
+        letter = 'A'
+    elif score &amp;gt;= 80:
+        letter = 'B'
+    elif score &amp;gt;= 70:
+        letter = 'C'
+    elif score &amp;gt;= 60:
+        letter = 'D'
+    else:
+        letter = 'F'
+    return letter
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;h3 id=&quot;in-line-function&quot;&gt;In-line function&lt;/h3&gt;
+&lt;p&gt;A simple function can be written in one line,&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sum0 = lambda x, y: x + y
+sum0(2,3)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Such function is more suitable for using inside the other operation, the follow get first and second name, then it sort according the last name.&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;names = ['Sam Amiri', 'Leila Alimehr','Ryan Amiri']
+sorted(names, key=lambda name: name.split()[-1].lower())
+&amp;gt;&amp;gt;&amp;gt; sorted(names, key=lambda name: name.split()[-1].lower())
+['Leila Alimehr', 'Sam Amiri', 'Ryan Amiri']
+&amp;gt;&amp;gt;&amp;gt; sorted(names)
+['Leila Alimehr', 'Ryan Amiri', 'Sam Amiri']
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;map-and-filter&quot;&gt;Map and Filter&lt;/h3&gt;
+&lt;p&gt;Python access to a higher order function  which allows a function operates on other functions, either by taking a function as its argument, or by returning a function. Most popular ones are &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;map&lt;/code&gt; (apply function on element) and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;filter&lt;/code&gt; (apply function, if it is true return element)&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;x=[-1,0,1]
+list(map(abs, x))
+list(filter(lambda x: x &amp;lt;= 0,x))
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Example: Write a function to divide two number, if the denominator is zero, stop the function and give an notification.&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;def divide(x, y):
+  try:
+    x / y
+  except: 
+   print('Can not divide by zero!')
+  else:
+   return x / y
+
+divide(3,1)
+divide(3,0)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;The function is also can be rewritten using &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;raise&lt;/code&gt;, which raise an error and stop the function.&lt;/p&gt;
+
+&lt;p&gt;def divide(x, y):
+    “&quot;”Divide Function”””
+    if y == 0:
+        raise Exception(‘Can not divide by zero!’)
+    return x / y&lt;/p&gt;
+
+&lt;h3 id=&quot;decorators&quot;&gt;Decorators&lt;/h3&gt;
+&lt;p&gt;Decoreators in Python allows you to take a function and add additional uses without modifying its structure, the following example is from &lt;a href=&quot;https://realpython.com/primer-on-python-decorators/#functions&quot;&gt;ref&lt;/a&gt;
+```{Python, echo = FALSE, message = FALSE}
+def my_decorator(func):
+   def wrapper():
+       print(“Something is happening before the function is called.”)
+       func()
+       print(“Something is happening after the function is called.”)
+   return wrapper&lt;/p&gt;
+
+&lt;p&gt;def say_whee():
+   print(“Whee!”)&lt;/p&gt;
+
+&lt;p&gt;say_whee()&lt;/p&gt;
+
+&lt;p&gt;say_whee = my_decorator(say_whee)
+say_whee()&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+The decorator often simplify using
+``@name of decorator``
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;def say_whee():
+   print(“Whee!”)
+```&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;a href=&quot;#contents&quot;&gt;⬆ back to top&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;h3 id=&quot;license&quot;&gt;License&lt;/h3&gt;
+&lt;p&gt;Copyright (c) 2019 Saeid Amiri&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Data Structure</title>
+   <link href="https://saeidamiri1.github.io/dat/python_learn/data/structures/2019/10/22/data-structure"/>
+   <updated>2019-10-22T00:00:00-04:00</updated>
+   <id>https://saeidamiri1.github.io/dat/python_learn/data/structures/2019/10/22/data-structure</id>
+   <content type="html">&lt;h2 id=&quot;data-structures&quot;&gt;Data Structures&lt;/h2&gt;
+&lt;p&gt;Python provides a variety of useful data structures, such as lists, sets, and dictionaries, and a new structure define by programmer which called class.&lt;/p&gt;
+
+&lt;h3 id=&quot;list&quot;&gt;list&lt;/h3&gt;
+&lt;p&gt;A list is a sequence of values that is assigned to the variable. The values in a list are called elements or sometimes items. The value of list can be accessed using the square brackets.&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;weights=[20,15,19,21,16] 
+type(weights)
+colors=['red','blue','green','black','white']
+colors
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Use the square brackets ([]) to index it.&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;colors[1:3]
+colors[:3]
+colors[3:]
+colors[-1]
+colors[1]
+colors[:-1]
+colors[::-1]
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;The following scripts show how reverse, adds new object, and sort the elements.&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;colors.reverse()
+colors
+
+colors.extend('blue')
+colors
+
+colors.extend(['blue'])
+colors
+
+sorted(colors)
+colors.sort()
+colors.sort(key=len)
+colors
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Finding the index of elements and counting them are vey simple, see below.&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;colors.index('blue')
+colors.count('blue')
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;To change the element of list use &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;replace&lt;/code&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;a = 'hello, world!'
+a[2]='z'
+a.replace('l', 'z', 1)
+a.replace('l', 'z')
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;tuple&quot;&gt;Tuple&lt;/h3&gt;
+&lt;p&gt;Tuple is a sequence of objects like list, but it is immutable. To define tuple, Python uses the parenthesis:&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;gt;&amp;gt;&amp;gt; colors=('red','blue','green','black','white')
+&amp;gt;&amp;gt;&amp;gt; type(colors)
+&amp;lt;class 'tuple'&amp;gt;
+&amp;gt;&amp;gt;&amp;gt; colors[1:3]
+('blue', 'green')
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;To access the content in a tuple use brackets like list. Obviously the list and tuple look the same, the objects of tuple is immutable, i.e., when it is created, it can not modified.&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;gt;&amp;gt;&amp;gt; colors[1]
+'blue'
+&amp;gt;&amp;gt;&amp;gt; colors[1]='yellow'
+Traceback (most recent call last):
+  File &quot;&amp;lt;stdin&amp;gt;&quot;, line 1, in &amp;lt;module&amp;gt;
+TypeError: 'tuple' object does not support item assignment
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;A brief comparison of mutable and immutable and application can be found &lt;a href=&quot;https://www.afternerd.com/blog/difference-between-list-tuple/&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h3 id=&quot;set&quot;&gt;Set&lt;/h3&gt;
+&lt;p&gt;Set is a collection of elements without order and index, the same as defined in Algebra. Duplication of elements in set does not make sense, so Python drops the duplication automatically. Use the curly bracket ({) to create the set:&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;colors={'red','blue','green','black','white'}
+type(colors)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;A new object can be added using the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;add&lt;/code&gt;, to add more than one objects, use &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;update&lt;/code&gt;. To drop elements use the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;remove&lt;/code&gt; or &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;discard&lt;/code&gt;, both remove elements but the  &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;discard&lt;/code&gt; does not raise any error notification, if the element does not exist in set.&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;colors.add('pink')
+colors.update(['purple','orange'])
+colors.remove('pink')
+colors.remove('pink')
+colors.discard'(pink')
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;To delete elements and remove the set completely, use &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;clear&lt;/code&gt; and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;del&lt;/code&gt;, respectively. To see whether the element exists in set, use &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;in&lt;/code&gt;. The functions &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;len&lt;/code&gt; and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;sorted&lt;/code&gt; can be applied on set:&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;'blue' in colors
+len(colors)
+sorted(colors)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;The functions &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;len&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;sorted&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;intersection&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;union&lt;/code&gt;, and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;difference&lt;/code&gt; can be applied on sets:&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;'blue' in colors
+len(colors)
+sorted(colors)
+{'red','blue'}.intersection({'red','white'})
+{'red','blue'}.union({'red','white'})
+{'red','blue'}.difference({'red','white'})
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;dictionary&quot;&gt;Dictionary&lt;/h3&gt;
+&lt;p&gt;Dictionary is a generalized form of list, unlike the list its indices can be any type of values. A dictionary maps a set of objects (keys) to another set of objects (values).&lt;/p&gt;
+
+&lt;p&gt;Dictionary includes key and items, the key is actually indices and item is the values. A Python dictionary is a mapping of unique keys to values. Use the curly brackets to construct the dictionary, separate the key and value with colons (:) and with commas (,) between each pair. Keys must be quoted. We can print out the dictionary by printing the reference to it.&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;prices = {
+   'BMW': 50,
+   'BENZ': 55,
+   'Ford': 25,
+   'Chevy': 30,  
+   'GM': 28
+}
+
+prices.values()
+prices.keys()
+prices.items()
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;The dictionary is very simple to manipulate,&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;student={'A':10, 'B':20, 'AB':100 }
+student.values()
+student.keys()
+student['C']=45
+student[45]=34
+del student['C']
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Note, dictionaries are unordered, so the order that the keys are added doesn’t necessarily reflect what order they may be reported back.&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;dic1={
+'x1' : 1,
+'x2' : 2,
+'x3' : 3 }
+
+dic2={
+'y1' : 10,
+'x1' : 11,
+'x2' : 2 }
+
+dic1.keys() &amp;amp; dic2.keys()
+dic1.keys() - dic2.keys()
+dic1.items() &amp;amp; dic2.items()
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Example: Create a list which its elements are dictionary.&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;team = [
+    {
+        'name': 'Saeid',
+        'city': 'Torronto',
+    },
+    {
+        'name': 'Leila',
+        'city': 'Torronto',
+    },
+    {
+        'name': 'Ryan',
+        'city': 'Montreal',
+    },
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;array&quot;&gt;Array&lt;/h3&gt;
+&lt;p&gt;Numpy’s array is a generalization of list, it is more appropriate for the computation.&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;import numpy as np
+weight=[58,89,68,74,62,77,65,65]
+weight
+weight_arr=np.array(weight)
+weight_arr
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;All elements should have the same type, therefore if you add a strict element, it saves all element as strict. Array also accepts multi lists.&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;arr1=np.array([range(i) for i in [1, 2, 3]])
+arr1[1]
+arr1[1][0]
+arr2=np.array([range(i, j+i) for i in [1, 2, 3] for j in [1, 2, 3]])
+arr2[1]
+arr2[1][0]
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;To generate a constant array, use &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;np.full(,)&lt;/code&gt;&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;np.full(2, 2.2)
+np.full((2,1), 2.2)
+np.full((2,2), 2.2)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;np.arange(1,14,4)
+np.arange(21,30,3)
+np.arange(2,1,-0.1)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;To create an array of k values between two values&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;np.linspace(0, 1, 10)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;To refer elements of array should use &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;[]&lt;/code&gt;&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;weight[1]# first element
+weight[2:]# second elements to the rest
+weight[:3]# elements before the third and including the third
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;To refer elements of multi array should use &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;[,]&lt;/code&gt;&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;weight2=np.array([weight_arr,2.20*weight_arr,35.27*weight_arr])
+weight2[1,1]
+weight2[1:,1:]
+weight2[1:,2:]
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;To change the shape, use &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;reshape&lt;/code&gt;:&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;weight2.reshape((8, 3))
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;class&quot;&gt;Class&lt;/h3&gt;
+&lt;p&gt;Python is an object-oriented programming language, and has strong tools working with different objects. If the structure is not defined, one can create own object; the class can be used to present new structure for your data or change the existing one. It is very useful to tie a certain data and functions together.&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;class body(object):
+    &quot;&quot;&quot;Define class&quot;&quot;&quot;
+    &quot;&quot;&quot; we can use weigt and height&quot;&quot;&quot;
+    def __init__(bd, weight,height):
+     bd.weight=weight
+     bd.height=height
+def bmi_body(b):
+    print (' BMI is (%g)' %((b.weight/b.height)))
+
+SAM = body(90,79)
+SAM.weight
+SAM.height
+print (SAM)
+bmi_body(SAM)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Or it can be simplified to&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;class body(object):
+    &quot;&quot;&quot;Define class&quot;&quot;&quot;
+    &quot;&quot;&quot; we can use weight and height&quot;&quot;&quot;
+def bmi_body(b):
+    print (' BMI is (%g)' %((b.weight/b.height)))
+
+SAM = body()
+SAM.weight = 90
+SAM.height = 79
+print (SAM)
+bmi_body(SAM)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Example: American present the data as
+Month/Day/Year. Write a function represent it with Canadian style.&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;class dateg(object):
+    &quot;&quot;&quot;Define class&quot;&quot;&quot;
+    &quot;&quot;&quot;Month, Day, Year &quot;&quot;&quot;
+def ca_date(d):
+    print (' Canadian date is (%g/%g/%g)' %((d.day,d.month,d.year)))
+
+mybirt = dateg()
+mybirt.day = 11
+mybirt.month = 11
+mybirt.year = 11
+print (mybirt)
+ca_date(mybirt)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Summarizing data-frame</title>
+   <link href="https://saeidamiri1.github.io/dat/python_learn/pandas/2019/10/21/summarizing-data-frame"/>
+   <updated>2019-10-21T00:00:00-04:00</updated>
+   <id>https://saeidamiri1.github.io/dat/python_learn/pandas/2019/10/21/summarizing-data-frame</id>
+   <content type="html">&lt;h2 id=&quot;summarizing-data-frame&quot;&gt;Summarizing data-frame&lt;/h2&gt;
+&lt;p&gt;To see the type, the information and summary of variables in the data-frame, use &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;.dtypes&lt;/code&gt;,  &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;.describe()&lt;/code&gt;, and   &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;.info()&lt;/code&gt;.&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;source =&quot;https://storage.googleapis.com/mledu-datasets/california_housing_train.csv&quot;
+CHT = pd.read_csv(source, sep=&quot;,&quot;)
+# show the type of variables
+CHT.dtypes
+# generate summary
+CHT.describe()
+CHT.info()
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Beside the function print, pandas can show the first and the last part of data, using &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;.head()&lt;/code&gt; and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;.tail()&lt;/code&gt;. By passing a number in the parenthesis, one can specify the output.&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;CHT.head(10)
+CHT.tail(10)
+CHT.sort_values(by='housing_median_age', ascending=False).head(3)
+CHT.columns
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;It is easy to find the duplicates in data-frame  and  drop them, see below.&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;CHT.duplicated()
+CHT.drop_duplicates()
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;To check the duplication in variables, specify their names as well,&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;CHT.duplicated(['longitude'])
+CHT.drop_duplicates(['longitude'], keep='last')
+CHT.index.duplicated()
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Although &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;.describe&lt;/code&gt; can give a summary of variables,  more specific summery of variables (columns) can be extracted, see below.&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;CHT.count()
+CHT[CHT.iloc[:,1]&amp;lt;34].nunique()
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;The following table includes the useful functions.&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Function&lt;/th&gt;
+      &lt;th&gt;Description&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;count&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;Number of non-null observations&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;sum&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;Sum of values&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;mean&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;Mean of value&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;mad&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;Mean absolute deviation&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;median&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;median of values&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;min&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;Minimum&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;max&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;Maximum&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;mode&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;Mode&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;abs&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;Absolute Value&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;prod&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;Product of values&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;std&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;Unbiased standard deviation&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;var&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;Unbiased variance&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;sem&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;Unbiased standard error of the mean&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;skew&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;Unbiased skewness (3rd moment)&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;kurt&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;Unbiased kurtosis (4th moment)&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;quantile&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;Sample quantile (value at %)&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;cumsum&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;Cumulative sum&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;cumprod&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;Cumulative product&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;cummax&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;Cumulative maximum&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;cummin&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;Cumulative minimum&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;nunique&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;number of unique elements&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;value_counts&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;Counts of unique values&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;cov&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;Calculate the covariance between columns&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;corr&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;Calculate the correlation between columns&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;The summaries can be obtained using any grouping variables in the data set:&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;CHT.groupby(['famlev']).groups.keys()
+CHT.groupby(['famlev']).groups['H']
+CHT.groupby(['famlev']).first()
+
+CHT.groupby(['famlev']).sum()
+
+CHT.groupby(['famlev'])['median_house_value'].sum()
+# better output
+CHT.groupby(['famlev'])[['median_house_value']].sum()
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;The grouped variables would be assigned as indices, to bring them back as variables use &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;df.reset_index()&lt;/code&gt;&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;CHT.reset_index()
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;It is possible to apply even complex function, the following scripts calculate the coefficient of data.&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;def cv(x):
+ return (np.mean(x)/np.var(x))
+
+aggr = {
+    'total_rooms':'sum',
+    'population': lambda x: cv(x)
+}
+CHT.groupby('famlev').agg(aggr)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;The output can be tidied up,&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;aggr = {
+    'total_rooms':['mean','std']
+}
+grouped = CHT.groupby('famlev').agg(aggr)
+grouped.columns = grouped.columns.droplevel(level=0)
+grouped.rename(columns={&quot;mean&quot;: &quot;total_rooms&quot;, &quot;std&quot;: &quot;total_rooms&quot;})
+grouped.head()
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;The summarizations can be done using pivot table,&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;pd.pivot_table(CHT, index=['famlev'], aggfunc=['mean'])
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Pipline</title>
+   <link href="https://saeidamiri1.github.io/dat/python_learn/pandas/2019/10/21/pipline"/>
+   <updated>2019-10-21T00:00:00-04:00</updated>
+   <id>https://saeidamiri1.github.io/dat/python_learn/pandas/2019/10/21/pipline</id>
+   <content type="html">&lt;h2 id=&quot;pipeline&quot;&gt;pipeline&lt;/h2&gt;
+&lt;p&gt;Pipeline in Pandas allows to build a sequence of function to run in order on data-frame.&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;source =&quot;https://storage.googleapis.com/mledu-datasets/california_housing_train.csv&quot;
+CHT = pd.read_csv(source, sep=&quot;,&quot;)
+
+def categ(x,col):
+  x[col].quantile(.3)
+  x['lev'] = ''
+  C1=x[col]&amp;lt;=x[col].quantile(.3)
+  C2=x[col]&amp;gt;=x[col].quantile(.7)
+  x.loc[C1,'famlev']=0
+  x.loc[~C1&amp;amp;~C2,'famlev']=1
+  x.loc[C2,'famlev']=2
+  return x
+
+def cv(x):
+ return (np.mean(x)/np.var(x))
+
+CHT.pipe(cv)
+CHT.pipe(categ, col='median_income').pipe(cv)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>new column to data-frame</title>
+   <link href="https://saeidamiri1.github.io/dat/python_learn/pandas/2019/10/21/new-column-to-data-frame"/>
+   <updated>2019-10-21T00:00:00-04:00</updated>
+   <id>https://saeidamiri1.github.io/dat/python_learn/pandas/2019/10/21/new-column-to-data-frame</id>
+   <content type="html">&lt;h2 id=&quot;adding-new-column-to-data-frame&quot;&gt;Adding new column to data-frame&lt;/h2&gt;
+&lt;p&gt;A column can easily be added to data-frame&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;df0=pd.DataFrame([38,40,25,33])
+df['Ave_hour']=df0
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Using &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;assign()&lt;/code&gt; can also add new columns, new columns can be generated using functions, see below&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;df=df.assign(Ave_hour=df0)
+df=df.assign(PI1=lambda x: x['population']*x['median_income'],PI2=df['population']/df['median_income'] )
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;A new column can be added to data-frame&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;df.columns=['population1','median_income','Ave_hour','PI1','PI2']
+df=df.rename(columns={'population1': 'pop', 'median_income': 'med_income'})
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Merging data-frame</title>
+   <link href="https://saeidamiri1.github.io/dat/python_learn/pandas/2019/10/21/merging-dataframe"/>
+   <updated>2019-10-21T00:00:00-04:00</updated>
+   <id>https://saeidamiri1.github.io/dat/python_learn/pandas/2019/10/21/merging-dataframe</id>
+   <content type="html">&lt;h2 id=&quot;merging-data-frames&quot;&gt;Merging data-frames&lt;/h2&gt;
+&lt;p&gt;Panada is very useful for merging dataset; to merging data consider the following data sets, where ‘id1’ and ‘id2’ include the ids of data.&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;raw_data = {'id1': range(4),'income': [10,12,14,16]}
+dat1 =pd.DataFrame(raw_data, columns = ['id1', 'income'])
+
+raw_data = {'id2': range(6),'pay': [9,11,13,15,17,19]}
+dat2 =pd.DataFrame(raw_data, columns = ['id2', 'pay'])
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Obviously the id variables are not the same, they can be
+compared using&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;dat1['id1'].isin(dat2['id2']).value_counts()
+dat2['id2'].isin(dat1['id1']).value_counts()
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;pd.merge&lt;/code&gt; can merge different data-frames, the merging can be done based on the identities of left dataset, if there is no match in the right file, Python adds &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;NaN&lt;/code&gt;.&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;result = pd.merge(dat1, dat2, left_on='id1', right_on='id2',how='left')
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;On contrary, one can the right dataset as matching,&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;result = pd.merge(dat1, dat2, left_on='id1', right_on='id2',how='right')
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Since the ids are not the same, one can do merging based on the
+intersection of the ids,&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;result = pd.merge(dat1, dat2, left_on='id1', right_on='id2',how='inner')
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Merging can also be done based on the union of the ids,&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;result = pd.merge(dat1, dat2, left_on='id1', right_on='id2',how='outer')
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Note: If the names of id variables are the same in the both datasets, you can use &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;on=id_name&lt;/code&gt; instead of &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;left_on=&lt;/code&gt; and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;right_on=&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Note: if you want to identify where the elements in rows are from, add  argument &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;indicator=True&lt;/code&gt;, then new column named &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;_merge&lt;/code&gt; would be added to the merged data which shows its originate.&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;result = pd.merge(dat1, dat2, left_on='id1', right_on='id2',how='outer', indicator=True)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;To combine datasets row-wisely, use &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;concat&lt;/code&gt;,&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;result = pd.concat([dat1, dat2],axis=1)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+</content>
+ </entry>
+ 
+ 
+</feed>
