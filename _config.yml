@@ -86,7 +86,7 @@ JB :
   # Some JB helpers refer to these paths; change them here if needed.
   #
   categories_path : /categories.html
-  archive_path: /archive.html
+  archive_path: /aarchive.html
   tags_path : /tags.html
   about_path: /about.html
   # atom_path : /atom.xml
