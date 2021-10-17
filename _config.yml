@@ -2,7 +2,7 @@
 # For more see: http://jekyllrb.com/docs/permalinks/
 permalink: /:categories/:year/:month/:day/:title
 
-exclude: [".rvmrc", ".rbenv-version", "Rakefile", "changelog.md"]
+exclude: [".rvmrc", ".rbenv-version", "README.md", "Rakefile", "changelog.md"]
 highlighter: rouge
 syntax_highlighter_opts:
     # Use existing pygments syntax highlighting css
@@ -86,7 +86,7 @@ JB :
   # Some JB helpers refer to these paths; change them here if needed.
   #
   categories_path : /categories.html
-  archive_path: /aarchive.html
+  archive_path: /archive.html
   tags_path : /tags.html
   about_path: /about.html
   # atom_path : /atom.xml
