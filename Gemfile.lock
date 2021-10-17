@@ -76,10 +76,11 @@ GEM
     thread_safe (0.3.6-java)
     tzinfo (1.2.9)
       thread_safe (~> 0.1)
-    tzinfo-data (1.2021.3)
+    tzinfo-data (1.2021.4)
       tzinfo (>= 1.0.0)
     unicode-display_width (1.8.0)
     wdm (0.1.1)
+    webrick (1.7.0)
 
 PLATFORMS
   java
@@ -95,6 +96,7 @@ DEPENDENCIES
   tzinfo (~> 1.2)
   tzinfo-data
   wdm (~> 0.1.1)
+  webrick (~> 1.7)
 
 BUNDLED WITH
-   2.2.26
+   2.2.29
