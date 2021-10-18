@@ -114,7 +114,7 @@ dygraph(as.xts(crime_mtl_count)) %>%
 ```
 
 
-<iframe src="https://github.com/saeidamiri1/dat/blob/main/public/Crimemtl/graph1.html" height="600" width="100%">
+<iframe src="https://raw.githubusercontent.com/saeidamiri1/dat/main/public/Crimemtl/graph1.html" height="600" width="100%">
  </iframe>
 
 
