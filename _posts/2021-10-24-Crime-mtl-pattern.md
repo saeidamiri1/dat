@@ -10,15 +10,15 @@ categories: R_learn Practice
 comments: no
 ---
 
-## Introduction
-Last year, someone broke our car's window parked inside the parking and took something from it, I though, it is good to look at the rubbing data in Montreal where we have been living about two years. 
+# Introduction
+Last year, someone broke our car's window parked inside the parking and took some stuff, I though, it is good idea to look at the rubbing data in Montreal where we have been living. 
 
-Montreal is one of the AI hub city, and provides open data [open data](http://donnees.ville.montreal.qc.ca/dataset) to accessible for every one. Amazingly Montreal police has also been releasing detailed data, which can be used to explore this multicultural city. The analysis was completed using data from the [website](http://donnees.ville.montreal.qc.ca/) and R. Here, the analysis is done in Rmarkdown. The following analyses show the criminal hotspots and concentrations that has high high risk. 
+Montreal is one of the AI hub city, and provides open data [open data](http://donnees.ville.montreal.qc.ca/dataset) to accessible for every one. Amazingly Montreal police has also been releasing detailed data, which can be used to explore this multicultural city. The analysis was completed using data from the [website](http://donnees.ville.montreal.qc.ca/) and R. The following analyses show the criminal hotspots and concentrations. 
 
 ## Contents
 - [Import data](#import-data)
 - [Pattern through years](#pattern-through-years)
-- [Spread of robbing](#spread-of-robbing)
+- [Spread of breaking into house](#spread-of-breaking-into-house)
    - [Pattern over day](#pattern-over-day)
    - [Pattern over night](#pattern-over-night)
    - [Pattern over evenin](#pattern-over-evening)
@@ -89,7 +89,7 @@ Here we are interested in exploring the pattern of
 breaking and entering a public establishment or a private residence, so we drop unrelated crime. 
 
 
-```r
+```
 crime_mtl_b <- subset(crime_mtl,CATEGORIE == "breaking_into_house")
 crime_mtl_b<-crime_mtl_b[crime_mtl_b$LAT>1,]
 ```
@@ -97,7 +97,7 @@ crime_mtl_b<-crime_mtl_b[crime_mtl_b$LAT>1,]
 The scatter plot over year shows there has been a decline which is a very good news. 
 
 
-```r
+```
 suppressMessages(library(tidyverse))
 suppressMessages(library(xts))
 suppressMessages(library(lubridate))
@@ -132,11 +132,11 @@ dygraph(as.xts(crime_mtl_count)) %>%
 ```
 
 
-<iframe src="https://saeidamiri1.github.io/dat/public/Crimemtl/graph1.html" height="600" width="100%">
+<iframe src="https://saeidamiri1.github.io/dat/public/crime-mtl-pattern/graph1.html" height="600" width="100%">
  </iframe>
 
 
-## Spread of robbing
+## Spread of breaking into house
 ### Pattern over day
 ```
 library(KernSmooth)
@@ -165,7 +165,7 @@ im<-leaflet(spgons) %>% addTiles() %>%
 
 im
 ```
-<iframe src="https://saeidamiri1.github.io/dat/public/Crimemtl/graph2.html" height="600" width="100%">
+<iframe src="https://saeidamiri1.github.io/dat/public/crime-mtl-pattern/graph2.html" height="600" width="100%">
  </iframe>
 
 ### Pattern over night
@@ -191,7 +191,7 @@ im<-leaflet(spgons) %>% addTiles() %>%
 
 im
 ```
-<iframe src="https://saeidamiri1.github.io/dat/public/Crimemtl/graph3.html" height="600" width="100%">
+<iframe src="https://saeidamiri1.github.io/dat/public/crime-mtl-pattern/graph3.html" height="600" width="100%">
  </iframe>
 
 ### Pattern over evening
@@ -218,7 +218,7 @@ im<-leaflet(spgons) %>% addTiles() %>%
 im
 ```
 
-<iframe src="https://saeidamiri1.github.io/dat/public/Crimemtl/graph4.html" height="600" width="100%">
+<iframe src="https://saeidamiri1.github.io/dat/public/crime-mtl-pattern/graph4.html" height="600" width="100%">
  </iframe>
 
 
