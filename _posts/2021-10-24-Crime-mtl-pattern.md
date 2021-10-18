@@ -10,18 +10,23 @@ categories: R_learn Practice
 comments: no
 ---
 
-
-
 ## Introduction
 Last year, someone broke our car's window parked inside the parking and took something from it, I though, it is good to look at the rubbing data in Montreal where we have been living about two years. 
 
 Montreal is one of the AI hub city, and provides open data [open data](http://donnees.ville.montreal.qc.ca/dataset) to accessible for every one. Amazingly Montreal police has also been releasing detailed data, which can be used to explore this multicultural city. The analysis was completed using data from the [website](http://donnees.ville.montreal.qc.ca/) and R. Here, the analysis is done in Rmarkdown. The following analyses show the criminal hotspots and concentrations that has high high risk. 
 
-## Reading data
-Import data:
+## Contents
+- [Import data](#import-data)
+- [Pattern through years](#pattern-through-years)
+- [Spread of robbing](#spread-of-robbing)
+   - [Pattern over day](#pattern-over-day)
+   - [Pattern over night](#pattern-over-night)
+   - [Pattern over evenin](#pattern-over-evening)
 
 
-```r
+## Import data
+
+```
 # Load the data Montreal and prepare 
 crime_mtl<- read.csv("https://data.montreal.ca/dataset/5829b5b0-ea6f-476f-be94-bc2b8797769a/resource/c6f482bf-bf0f-4960-8b2f-9982c211addd/download/interventionscitoyendo.csv", header = TRUE)
 
@@ -133,7 +138,7 @@ dygraph(as.xts(crime_mtl_count)) %>%
 
 ## Spread of robbing
 ### Pattern over day
-```{r, echo=FALSE}
+```
 library(KernSmooth)
 LonLat<-crime_mtl_bj[,7:8]
 kde <- bkde2D(LonLat,bandwidth=c(0.00225, 0.00225))
@@ -215,3 +220,10 @@ im
 
 <iframe src="https://saeidamiri1.github.io/dat/public/Crimemtl/graph4.html" height="600" width="100%">
  </iframe>
+
+
+**[⬆ back to top](#contents)**
+
+
+### License
+Copyright (c) 2021 Saeid Amiri
