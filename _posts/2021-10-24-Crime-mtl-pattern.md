@@ -44,6 +44,7 @@ knitr::kable(crime_mtl[1:5,])
 |mischief  |2017-07-21 |jour  |  21|      0.0|       0| -76.23729|  0.00000|
 |mischief  |2017-07-29 |jour  |  12|      0.0|       0| -76.23729|  0.00000|
 
+
 The data includes:  
 
 - breaking_into_house(Fr: Introduction) : breaking and entering a public establishment or a private residence, theft of a firearm from a residence.
@@ -55,6 +56,18 @@ Vol qualifié : Robbery accompanied by commercial violence, financial institutio
 
 ## Pattern through years
 It might also be interesting to see if the percentage changed through year, the following code provides the table of interest.  
+
+```
+per_year<-matrix(,nrow=7,ncol=6)
+dat_cat<-table(substring((crime_mtl$DATE),1,4), crime_mtl$CATEGORIE)
+for (i in 1:6){
+ per_year[,i]<-t(prop.table(t(dat_cat[,i])))
+}
+rownames(per_year)<-rownames(dat_cat)
+colnames(per_year)<-colnames(dat_cat)
+
+knitr::kable(per_year)
+```
 
 
 |     | breaking_into_house|  mischief| other types of robbery| resulting_in_death| theft_of_vehicle_part|   vehicle|
@@ -120,7 +133,35 @@ dygraph(as.xts(crime_mtl_count)) %>%
 
 ## Spread of robbing
 ### Pattern over day
+```{r, echo=FALSE}
+library(KernSmooth)
+LonLat<-crime_mtl_bj[,7:8]
+kde <- bkde2D(LonLat,bandwidth=c(0.00225, 0.00225))
+CL <- contourLines(kde$x1 , kde$x2 , kde$fhat,nlevels = 8)
 
+## EXTRACT CONTOUR LINE LEVELS
+LEVS <- as.factor(sapply(CL, `[[`, "level"))
+NLEV <- length(levels(LEVS))
+
+## CONVERT CONTOUR LINES TO POLYGONS
+library(sp)
+pgons <- lapply(1:length(CL), function(i)
+  Polygons(list(Polygon(cbind(CL[[i]]$x, CL[[i]]$y))), ID=i))
+spgons = SpatialPolygons(pgons)
+
+
+## Leaflet map with polygons
+library(leaflet)
+im<-leaflet(spgons) %>% addTiles() %>%
+  addPolygons(color = heat.colors(NLEV, NULL)[LEVS]) %>%
+  addRectangles(lng1=min(LonLat[,1]), lat1=min(LonLat[,2]),
+                lng2=max(LonLat[,1]), lat2=max(LonLat[,2]),
+                fillColor = "transparent")
+
+im
+```
+<iframe src="https://saeidamiri1.github.io/dat/public/Crimemtl/graph2.html" height="600" width="100%">
+ </iframe>
 
 ### Pattern over night
 
@@ -145,6 +186,8 @@ im<-leaflet(spgons) %>% addTiles() %>%
 
 im
 ```
+<iframe src="https://saeidamiri1.github.io/dat/public/Crimemtl/graph3.html" height="600" width="100%">
+ </iframe>
 
 ### Pattern over evening
 
@@ -169,3 +212,6 @@ im<-leaflet(spgons) %>% addTiles() %>%
 
 im
 ```
+
+<iframe src="https://saeidamiri1.github.io/dat/public/Crimemtl/graph4.html" height="600" width="100%">
+ </iframe>
