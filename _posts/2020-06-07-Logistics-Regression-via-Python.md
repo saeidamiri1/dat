@@ -4,7 +4,7 @@ title: Logistic Regression via Python
 description: How to fit Logistics regression using Python
 date: 2020-06-07
 author: Saeid Amiri
-published: false
+published: true
 tags: Python logisticRegression
 categories: Python_learn Fitting-Model Machine_Learning
 comments: false
