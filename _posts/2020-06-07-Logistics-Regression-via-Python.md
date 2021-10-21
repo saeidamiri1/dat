@@ -6,7 +6,7 @@ date: 2020-06-07
 author: Saeid Amiri
 published: false
 tags: Python logisticRegression
-categories: Fitting-Model
+categories: Python_learn Fitting-Model Machine_Learning
 comments: false
 ---
 
@@ -14,11 +14,16 @@ comments: false
 The logistics regression is used when the response variable is a binary variable, such as (0 or 1), (live or die), and (fail or succeed). 
 
 ## Contents
+- [Mathematical presentation](#Mathematical-presentation)
 - [data](#data)
-- [Necessary modules](#necessary-modules)
-- [Select variable](#select-variables)
+    - Necessary packages
+    - Import data
+    - Check data
+    - Select variables
 - [Fit model ](#fit-model)
-- [Run of codes](#run-of-codes)
+    - Fit directrly 
+    - Fit using Cross-validation
+- [Model evaluation](#Model-evaluation)
 
 ## Mathematical presentation
 The model consideres the probability of event instead the event in model: 
@@ -39,51 +44,51 @@ where ![](https://latex.codecogs.com/svg.latex?\frac{\pi_{i}}{1-\pi_{i}})
 
 
 ## Data 
-To show how fit the logistics regression using Python, we consider the [frogs] data,which is about the distribution of the Southern Corroboree frog, which occurs in the Snowy Mountains area of New South Wales, Australia.
+To show how fit the logistics regression using Python, we consider the [frogs] data, which is about the distribution of the Southern Corroboree frog, which occurs in the Snowy Mountains area of New South Wales, Australia.
 
-#### Necessary packages
+### Necessary packages
 ```
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
-from sklearn.metrics import classification_report,confusion_matrix
+from sklearn.metrics import classification_report,confusion_matrix, accuracy_score
 from sklearn.linear_model import LogisticRegression
-from sklearn.model_selection import train_test_split
-from sklearn.model_selection import cross_val_score
+from sklearn.model_selection import train_test_split,GridSearchCV,cross_val_score
 ```
 
-#### Import data
+### Import data
 ```
-import pandas as pd
 frog_data = pd.read_csv("/Volumes/F/for_my_website/saeidamiri1.github.io0/saeidamiri1.github.io/public/general_data/logistic_frog/frogs.csv", delimiter=";", decimal=",")
 frog_data.columns
 frog_data.head(10)
 ```
 
-## Check data
+### Check data
 Check whether the data has missing value or not?
 ```
 # Check there is any missing values 
 frog_data.isnull().any().any()
 ```
 
-## Select variables
+### Select variables
 Select the variables and depict the scatter plot to see the relation between them
 ```
 colors = ["" for x in range(frog_data.shape[0])]
 colors=pd.array(colors)
 colors[frog_data['pres.abs']==1]=['red']
 colors[frog_data['pres.abs']==0]=['blue']
-sns.regplot(frog_data['meanmin'],frog_data['pres.abs'], fit_reg=False, x_jitter=0.1, 
- y_jitter=0.1, scatter_kws={'alpha': 0.5,'s':20})  
-plt.axes().set(ylabel='Present of frogs', xlabel='mean minimum Spring temperature')
+df=frog_data[['meanmin','pres.abs']]
+ax=sns.regplot(x='meanmin', y="pres.abs", data=df, fit_reg=True, x_jitter=0.1,y_jitter=0.1, scatter_kws={'alpha': 0.5,'s':20})  
+ax.legend().set(ylabel='Present of frogs', xlabel='mean minimum Spring temperature')
 plt.show()
 ```
 
 ## Fit model
+### Fit directrly
+Logistic regression can be fit directly 
 ```
-x_train, x_test, y_train, y_test = train_test_split(df['x'], df['y'], test_size=0.3)
+x_train, x_test, y_train, y_test = train_test_split(df['meanmin'], df['pres.abs'], test_size=0.3)
 x_train=x_train[:,np.newaxis]
 x_test=x_test[:,np.newaxis]
 logistic_model = LogisticRegression(random_state=0)
@@ -93,8 +98,8 @@ y_test_pred=logistic_model.predict(x_test)
 logistic_model.coef_
 ```
 
-### Cross-validation 
-We can can run cross-validation to find the best estimate
+### Fit using Cross-validation 
+We can run cross-validation to find the best estimate
 ```
 cross_val_model = LogisticRegression(random_state=0)
 scores = cross_val_score(cross_val_model, x_train, y_train, cv=10)
@@ -109,17 +114,17 @@ random_state=[0]
 hyperparameters = dict(C=C, penalty=penalty, random_state=random_state)
 ```
 
-## Stochastic Gradient Descent
+Now define the Stochastic Gradient Descent
 
 ```
-clf = GridSearchCV(estimator = model, param_grid = hyperparameters, cv=5)
+clf = GridSearchCV(estimator = logistic_model, param_grid = hyperparameters, cv=5)
 best_model = clf.fit(x_train, y_train)
 print('Best Penalty:', best_model.best_estimator_.get_params()['penalty'])
 print('Best C:', best_model.best_estimator_.get_params()['C'])
 best_predicted_values = best_model.predict(x_test)
 print(best_predicted_values)
 
-accuracy_score(best_predicted_values, Y_test.values)
+accuracy_score(best_predicted_values, y_test.values)
 ```
 
 ## Model evaluation
@@ -131,15 +136,6 @@ print(cfm_test)
 print(classification_report(y_train,y_train_pred))
 print(classification_report(y_test,y_test_pred))
 ```
-
-
-
-
-## Run of codes
-
-<iframe src="https://saeidamiri1.github.io/source/post/2019-10-14-Regression-via-R-and-Python.html" height="600" width="100%">
- </iframe>
-
 
 **[⬆ back to top](#contents)**
 

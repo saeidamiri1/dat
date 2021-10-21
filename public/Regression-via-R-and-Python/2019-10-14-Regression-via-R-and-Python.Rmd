@@ -1,15 +1,19 @@
 ---
-layout: post
 title: Multiple Regression via R and Python
 description: How to fit Multiple regression using R and Python
 date: 2019-10-14
 author: Saeid Amiri
 published: true
 tags: Python R Regression
-categories: Python_learn R_learn Fitting-Model
+categories: [blog]
 comments: false
 ---
 
+```{r setup,include=FALSE}
+library(reticulate)
+use_virtualenv('r-reticulate')
+use_python('/usr/local/bin/python3', required = TRUE)
+```
 
 # Data 
 To show how fit the multiple regression using R and Python, we consider the car data [car] which has the car specifications; HwyMPG, Model, etc,. We fit different regreesion models to predict Highway MPG using the car specifications.
@@ -18,21 +22,18 @@ To show how fit the multiple regression using R and Python, we consider the car 
 - [Import data](#import-data)
 - [Preprocessing data](#preprocessing-data)
 - [Select variable](#select-variables)
-- [Fit model ](#fit-model)
-- [Run of codes](#run-of-codes)
+- [Fit model ](#fit-model )
 
 ## Import data
 #### Using R
-
-```
+```{R, echo = TRUE, message = FALSE}
 car_data=read.csv2("https://raw.githubusercontent.com/saeidamiri1/saeidamiri1.github.io/master/public/data/cardata.csv")
 names(car_data)
 head(car_data)
 ```
 
 #### Using Python
-
-```
+```{python, echo = TRUE}
 import pandas as pd
 car_data = pd.read_csv("https://raw.githubusercontent.com/saeidamiri1/saeidamiri1.github.io/master/public/data/cardata.csv", delimiter=";", decimal=",")
 car_data.columns
@@ -43,8 +44,7 @@ car_data.head(10)
 Select the numerical variables to fit the simple regression model. The data have the missing values, so we run an imputuion procedure to fill the missiong values.
 
 #### Using R
-
-```
+```{R, echo = TRUE, message = FALSE}
 # Select numerical variables
 v0=as.numeric(which(unlist(lapply(car_data, is.numeric))))
 # Check there is any missing values 
@@ -57,10 +57,8 @@ m_car_data<-mice(car_data,print=FALSE)
 m_car_data<-complete(m_car_data)
 anyNA(m_car_data$imp)
 ```
-
 #### Using Python
-
-```
+```{python, echo = TRUE}
 # Select numerical variables
 car_data=car_data.select_dtypes(exclude=['object'])
 # Check there is any missing values 
@@ -80,8 +78,7 @@ m_car_data.columns=car_data.columns
 To select variable, calculate the correlation
 
 #### Using R
-
-```
+```{R, echo = TRUE, message = FALSE}
 cor(m_car_data,m_car_data$HwyMPG,)
 cor(m_car_data$HwyMPG,m_car_data$GasTank)
 cor(m_car_data$HwyMPG,m_car_data$Rev)
@@ -90,8 +87,7 @@ plot(car_data[,c('HwyMPG','GasTank','Rev')])
 ```
 
 #### Using Python
-
-```
+```{python, echo = TRUE}
 m_car_data.corr().HwyMPG
 m_car_data.loc[:,['HwyMPG','Length']].corr()
 m_car_data.loc[:,['HwyMPG','Width']].corr()
@@ -104,8 +100,7 @@ plt.show()
 
 ## Fit model
 ### Using R
-
-```
+```{R, echo = TRUE, message = FALSE}
 model_r=lm(HwyMPG ~ Rev, data=m_car_data)
 summary(model_r)$r.squared
 
@@ -117,8 +112,7 @@ summary(model_rg)$r.squared
 ```
 
 ### Using Python
-
-```
+```{python, echo = TRUE}
 from sklearn.linear_model import LinearRegression
 lr = LinearRegression(normalize=True)
 model_r=lr.fit(m_car_data.loc[:,['Rev']], m_car_data.HwyMPG)
@@ -134,11 +128,6 @@ model_rg=lr.fit(m_car_data.loc[:,['Rev','GasTank']], m_car_data.HwyMPG)
 model_rg_pred = model_rg.predict(m_car_data.loc[:,['Rev','GasTank']])
 r2_score(m_car_data.HwyMPG, model_rg_pred )
 ```
-
-## Run of codes
-
-<iframe src="https://saeidamiri1.github.io/dat/public/2019-10-14-Regression-via-R-and-Python.html" height="600" width="100%">
- </iframe>
 
 
 **[⬆ back to top](#contents)**
