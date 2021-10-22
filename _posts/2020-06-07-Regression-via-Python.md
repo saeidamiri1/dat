@@ -4,9 +4,9 @@ title: Regression via Python
 description: How to fit regression using Python
 date: 2020-06-07
 author: Saeid Amiri
-published: false
-tags: Python R Regression
-categories: Fitting-Model
+published: true
+tags: Python_learn Python Fitting-Model
+categories: Fitting-Model Python_learn
 comments: false
 ---
 
