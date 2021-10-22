@@ -5,8 +5,8 @@ description: How run apply on array
 date: 2021-10-22
 author: Saeid Amiri
 published: true
-tags: python
-categories:  python_learn
+tags: Python Python_learn
+categories:  Python_learn
 comments: false
 ---
 
@@ -17,13 +17,6 @@ x = np.array([[5,2,1,3], [2,1,5]])
 fun = lambda t: np.argmax(t)
 np.array([fun(xi) for xi in x])
 ```
-
-**[⬆ back to top](#contents)**
-
-### License
-Copyright (c) 2021 Saeid Amiri
-
-**[⬆ back to top](#contents)**
 
 
 
