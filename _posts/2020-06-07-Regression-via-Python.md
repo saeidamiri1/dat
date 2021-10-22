@@ -25,7 +25,7 @@ To show how fit the multiple regression using R and Python, we consider the car 
 #### Import data
 ```
 import pandas as pd
-car_data = pd.read_csv("https://saeidamiri1.github.io/dat/public/cardata.csv", delimiter=";", decimal=",")
+car_data = pd.read_csv("https://raw.githubusercontent.com/saeidamiri1/dat/main/public/RVP/cardata.csv", delimiter=";", decimal=",")
 car_data.columns
 car_data.head(10)
 ```
@@ -168,7 +168,7 @@ plt.show(block=False)
 
 ## Run of codes
 
-<iframe src="https://saeidamiri1.github.io/dat/public/2019-10-14-Regression-via-R-and-Python.html" height="600" width="100%">
+<iframe src="https://saeidamiri1.github.io/dat/public/RVP/2020-06-07-Regression-via-Python.html" height="600" width="100%">
  </iframe>
 
 
