@@ -12,7 +12,8 @@ comments: false
 
 
 # Introduction 
-TensorFlow is a module developed to achieve the machine learning models. It is develped based on manipulating tensors, which are actually multidimensional array. 
+TensorFlow is a module developed to achieve the machine learning models. It is develped based on manipulating tensors, which are actually multidimensional array.  It supports
+the hardware acceleration (GPU), which makes it suitable for machine learning model that need alot of computation. 
 
 ## Contents
 - [basic](#basic)
@@ -69,6 +70,21 @@ add = tf.add(matrix1, matrix2)
 mul = tf.matmul(matrix1, matrix2)
 ```
 
+You can easily use Python list and matrix to tensor object: 
+```
+vector = tf.convert_to_tensor([1, 3, 2, 4])
+matrix = tf.convert_to_tensor([[1, 1, 1],
+                               [2, 2, 2],
+                               [3, 3, 3]])
+```
+
+In the case, you want to modify the tensor object, consider a variable's object
+```
+variable = tf.Variable([[1, 1, 1],
+                        [2, 2, 2],
+                        [3, 3, 3]])
+```
+
 ## Regression
 Here, we are going to show how to fit the regression model, we consider car data. The below shows how to select the explanatory and dependent variables.
 ```
@@ -91,7 +107,16 @@ m_car_data.columns=car_data.columns
 from sklearn.linear_model import LinearRegression
 X=np.array(m_car_data.loc[:,['Rev','RPM']],dtype='float32')
 y=np.array(m_car_data.HwyMPG)
+
+import matplotlib.pyplot as plt
+plt.subplot(2, 1, 1)
+plt.scatter(X[:,0], y)
+plt.subplot(2, 1, 2)
+plt.scatter(X[:,1], y)
+plt.show(block=False)
 ```
+ <img src="https://saeidamiri1.github.io/dat/public/tensorflow/figure_1.png" width="500" height="300" />
+
 
 ### Define you model
 We consider a linear model
@@ -115,7 +140,7 @@ b = tf.Variable(tf.random.normal([1]))
 ```
 
 ### Define loss function
-We need define a loos function, for the regression model, the loof function is mean squared error (MSE)
+We need define a loos function, the goal of modeling is to  for the regression model, the loss function is mean squared error (MSE)
 ```
 def loss(y_pred, y_true):
      return(tf.reduce_mean(tf.square(y_pred-y_true)))
@@ -161,6 +186,8 @@ for step in range(1, training_steps + 1):
     ax.plot(X[:,0],X[:,1], Model(X).numpy()[0,:])
     plt.pause(0.001)
 ```
+
+ <img src="https://saeidamiri1.github.io/dat/public/tensorflow/figure_2.png" width="500" height="300" />
 
 ## Logistic regression 
 Here we consider the logistic regression,

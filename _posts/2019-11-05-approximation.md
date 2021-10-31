@@ -5,12 +5,13 @@ description: Optimization using Newton-Raphson and Gradient Descent
 date: 2019-11-02
 author: Saeid Amiri
 published: true
-tags: Gradient-Descent Newton-Raphson Python
+tags: Gradient-Descent Newton-Raphson learning-rate Python
 categories: Algorithm
 comments: false
 ---
 
-## Optimization
+# Optimization
+When we do not have a closed form, we can use the optimization to find estimate of parameters. In order to find optimization, you need a loos function and use a procedure to minimize the value of loss function based on the parameter values. 
 
 ## Contents
 - [Newton-Raphson](#newton-raphson)
@@ -18,10 +19,11 @@ comments: false
 
 
 ## Newton-Raphson method
-The Newton-Raphson algorithm is one of the old iterative algorithm to approximately find the roots of a real-valued function;
+The Newton-Raphson algorithm is one of the old iterative algorithm to approximately find the roots of a real-valued function (loos function);
 ![eq1](https://latex.codecogs.com/svg.latex?f(x)=0). The idea behind of it is based on the simple linear approximation.
 Given `x_0`, a starting point, by solving the root of function by solving  
-![eq2](https://latex.codecogs.com/svg.latex?x_{n+1}=x_n-%20\frac{f(x_n)}{\partial%20f(x_{n})}), we get closer to the solution.
+![eq2](https://latex.codecogs.com/svg.latex?x_{n+1}=x_n-%20\frac{f(x_n)}{\partial%20f(x_{n})}), we get closer to the solution. 
+
 
 The simple and plain algorithm of Newton-Raphosn is given in the below
 
@@ -95,9 +97,12 @@ plt.show(block=False)
 ## Gradient Descent
 Gradient Descent is variant of Newton-Raphson that can be used to find the minimum value of a differentiable function. The local minimum can be obtained by solving 
 
-![eq3](https://latex.codecogs.com/svg.latex?x_{n+1}=x_n-\gamma%20\frac{\partial%20f}{\partial%20x_{n}})
+![eq3](https://latex.codecogs.com/svg.latex?x_{n+1}=x_n-\gamma%20\frac{\partial%20f}{\partial%20x_{n}}).
 
-where ![eq4](https://latex.codecogs.com/svg.latex?\gamma) is called the step size or learning rate, see [Wikipedia](https://en.wikipedia.org/wiki/Gradient_descent).  Obviously, the criterion function is different from the Newton-Raphson Algorithm. 
+We often use theta instead of  `x`: 
+![eq3](https://latex.codecogs.com/svg.latex?\theta_{n+1}=\theta_n-\gamma\nabla%20L(\theta_n)), where  ![eq2](https://latex.codecogs.com/svg.latex?\nabla%20L(\theta_n)) is the derivative of loss function for the given parameters.   
+
+where ![eq4](https://latex.codecogs.com/svg.latex?\gamma) is called the step size or learning rate, see [Wikipedia](https://en.wikipedia.org/wiki/Gradient_descent).  To not take big step, we use  Obviously, the criterion function is different from the Newton-Raphson Algorithm. 
 
 To write a simple code to find the minimum using the Gradient Descent consider ![eq5](https://latex.codecogs.com/svg.latex?f(x)=x^4-3x^2+2) that is already used for explaining the Newton-Raphson. 
 
