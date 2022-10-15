@@ -1,13 +1,13 @@
 ---
-title: "Passwordless login linux system
-"Saeid Amiri"
-date: '2021-11-2'
-description: Passwordless login linux system
 layout: post
-published: yes
+title: Passwordless login linux system
+author: Saeid Amiri
+date: 2021-11-2
+description: Passwordless login linux system
+published: true
 tags: ssh
 categories: DataScience
-comments: no
+comments: false
 ---
 
 # Introduction
