@@ -6,7 +6,7 @@ date: 2020-05-25
 author: Saeid Amiri
 published: true
 tags: Classification Python
-categories:  Python_learn Deep-learning   Machine_Learning 
+categories:  Python_learn Deep-learning Machine_Learning 
 comments: false
 ---
 

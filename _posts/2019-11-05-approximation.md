@@ -102,7 +102,7 @@ Gradient Descent is variant of Newton-Raphson that can be used to find the minim
 We often use theta instead of  `x`: 
 ![eq3](https://latex.codecogs.com/svg.latex?\theta_{n+1}=\theta_n-\gamma\nabla%20L(\theta_n)), where  ![eq2](https://latex.codecogs.com/svg.latex?\nabla%20L(\theta_n)) is the derivative of loss function for the given parameters.   
 
-where ![eq4](https://latex.codecogs.com/svg.latex?\gamma) is called the step size or learning rate, see [Wikipedia](https://en.wikipedia.org/wiki/Gradient_descent).  To not take big step, we use  Obviously, the criterion function is different from the Newton-Raphson Algorithm. 
+where ![eq4](https://latex.codecogs.com/svg.latex?\gamma) is called the step size or learning rate, see [Wikipedia](https://en.wikipedia.org/wiki/Gradient_descent).  To not take big steps we use ![eq4](https://latex.codecogs.com/svg.latex?\gamma<1). We use  Obviously, the criterion function is different from the Newton-Raphson Algorithm. 
 
 To write a simple code to find the minimum using the Gradient Descent consider ![eq5](https://latex.codecogs.com/svg.latex?f(x)=x^4-3x^2+2) that is already used for explaining the Newton-Raphson. 
 
