@@ -11,15 +11,15 @@ comments: false
 ---
 
 # Introduction
-We often use ssh (Secure SHELL) to connect server via terminal remotely. If you are tired  entering password to login the server, just do the following steps to enter passwordless 
+We often use ssh (Secure SHELL) to connect server via terminal remotely. If you are tired  entering password to login the server, just do the following steps to enter passwordless.
 
 ## Add server info to config file
-Open the ssh config file on your PC (PC)
+Open the ssh config file on your PC (ssh client)
 ```
 vim \$HOME/.ssh/config
 ```
 
-add a name, the server ip (hostname), and the user id on server to the config file:
+Add a name, the server ip (hostname), and the user id on server to the config file:
 ```
 Host server1
 HostName 8.8.8.8
@@ -38,7 +38,7 @@ Run the follwoing code to copy key to server1, and add enter password
 ssh-copy-id server1
 ```
 
-now enter to server 
+Now you should be able to enter the server passwordlessly. 
 ```
 ssh server1
 ```
